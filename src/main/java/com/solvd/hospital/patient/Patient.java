@@ -12,7 +12,6 @@ import java.util.ArrayList;
 public class Patient {
 
 
-
     private String patientId;
     private String illnessCategory;
     private PersonalInformation personalInfo;
@@ -34,15 +33,17 @@ public class Patient {
     public void setAppointmentInfo(ArrayList<Appointment> appointmentInfo) {
         this.appointmentList = appointmentInfo;
     }
+
     public void setAppointmentInfo(Appointment appointmentInfo) {
         this.appointmentList.add(appointmentInfo);
     }
+
     public void setMedicationInfoList(Medication medication) {
         this.medicationInfoList.add(medication);
     }
 
     public void setMedicationInfoList(ArrayList<Medication> medication) {
-        this.medicationInfoList= medication;
+        this.medicationInfoList = medication;
     }
 
     public void setPersonalInfo(PersonalInformation personalInfo) {
@@ -71,22 +72,18 @@ public class Patient {
     }
 
 
-
-
     public ArrayList<Appointment> getAppointmentInfo() {
         return this.appointmentList;
     }
+
     public ArrayList<Medication> getMedicationInfo() {
         return this.medicationInfoList;
     }
 
 
-
-
     public Patient(String patientId) {
         this.patientId = patientId;
     }
-
 
 
 }

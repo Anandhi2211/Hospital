@@ -9,11 +9,10 @@ import java.util.UUID;
 
 public class Hospital {
     int option = 0;
-    PersonalInformation personalInfo = new PersonalInformation();
     //ArrayList<Appointment> appointments = new ArrayList<Appointment>() ;
-    ArrayList<Patient> patientList = new ArrayList<Patient>() ;
-    public void welcomePage()
-    {
+    ArrayList<Patient> patientList = new ArrayList<Patient>();
+
+    public void welcomePage() {
         do {
             System.out.println("Welcome to Hospital Portal!");
             System.out.println("New Patient -- option 1");
@@ -21,18 +20,20 @@ public class Hospital {
             System.out.println("Home Page -- option 3");
             System.out.println("Exit Portal -- option 4");
             System.out.println("Please Enter your option");
-
+            System.out.println();
             Scanner in = new Scanner(System.in);
             option = in.nextInt();
-            switch (option)
-            {
+            switch (option) {
                 case 1:
                     System.out.println("Inside option 1");
                     Patient patient = new Patient(UUID.randomUUID().toString());
                     System.out.println("Enter your first name:");
+
+                    PersonalInformation personalInfo = new PersonalInformation();
                     personalInfo.setFistName(in.next());
                     patient.setPersonalInfo(personalInfo);
-                    patientList.add(patient);
+                    //patientList.add(patient);
+
                     System.out.println("Enter the Medical Category Options");
                     System.out.println("1.Ophthalmologist");
                     System.out.println("2.Dentistry");
@@ -42,7 +43,7 @@ public class Hospital {
                         System.out.println("Ophthalmologist is Assigned");
                         Appointment app = new Appointment();
                         app.setAppointmentStatus("Confirmed");
-                       // patientList.add(patient);
+                        // patientList.add(patient);
                         patient.setAppointmentInfo(app);
                         Medication medication = new Medication();
                         medication.setMedicationStatus("Medicine Prescribed");
@@ -60,19 +61,17 @@ public class Hospital {
 
                     break;
                 case 2:
-                    for(Patient p :patientList)
+                    for (Patient p : patientList) {
+                        System.out.println("First Name " + p.getPersonalInfo().getFistName());
+                        System.out.println("Patients ID " + p.getPatientId());
+                        //  System.out.println("Appointment Status " + p.);
+                        // System.out.println("Medicine Status " + p.getMedicationInfo().get(0).getMedicationStatus());
+                        System.out.println("***********************************************************");
 
-                {
-                    System.out.println("First Name " + p.getPersonalInfo().getFistName());
-                    System.out.println("Patients ID "+p.getPatientId());
-                  //  System.out.println("Appointment Status " + p.);
-                   // System.out.println("Medicine Status " + p.getMedicationInfo().get(0).getMedicationStatus());
-                    System.out.println("***********************************************************");
-
-                }
+                    }
 
 
-                break;
+                    break;
                 case 3:
 
                     break;
@@ -82,8 +81,9 @@ public class Hospital {
 
                     break;
             }
-        }while (option<4);
+        } while (option < 4);
     }
+
     public static void main(String[] args) {
 
         Hospital hospital = new Hospital();

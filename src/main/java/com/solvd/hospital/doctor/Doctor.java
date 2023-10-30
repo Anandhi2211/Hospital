@@ -1,4 +1,5 @@
 package main.java.com.solvd.hospital.doctor;
+
 import main.java.com.solvd.hospital.department.Department;
 import main.java.com.solvd.hospital.personalInformation.PersonalInformation;
 

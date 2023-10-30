@@ -1,19 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="74eb0404-aa43-413b-9304-752eca48e403" name="Changes" comment="">
+    <list default="true" id="74eb0404-aa43-413b-9304-752eca48e403" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hospital.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/appointment/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/appointment/Appointment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/billing/Billing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/billing/Billing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/department/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/department/Department.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/doctor/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/insurance/Insurance.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/insurance/Insurance.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/labresults/LabResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/labresults/LabResults.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medicalCategory/MedicalCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medicalCategory/MedicalCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medication/Medication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medication/Medication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/patient/Patient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/personalInformation/PersonalInformation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/personalInformation/PersonalInformation.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +77,14 @@
       <option name="presentableId" value="Default" />
       <updated>1698526223239</updated>
     </task>
+    <task id="LOCAL-00001" summary="commit">
+      <created>1698638562518</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1698638562518</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -98,6 +100,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

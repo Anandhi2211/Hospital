@@ -31,7 +31,6 @@ public class Medication {
     }
 
 
-
     public void setFollowUpStatus(String followUpStatus) {
         this.followUpStatus = followUpStatus;
     }
@@ -47,7 +46,6 @@ public class Medication {
     public String getPharmacyZipcode() {
         return pharmacyZipcode;
     }
-
 
 
     public String getFollowUpStatus() {
