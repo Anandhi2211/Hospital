@@ -1,4 +1,4 @@
-package main.java.com.solvd.hospital.personalInfomation;
+package main.java.com.solvd.hospital.personalInformation;
 
 public class PersonalInformation {
 
@@ -58,7 +58,7 @@ public class PersonalInformation {
     }
 
     public String getLastName() {
-        return PersonalInformation;
+        return lastName;
     }
 
     public String getGender() {

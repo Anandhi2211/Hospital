@@ -1,4 +1,4 @@
-package main.java.com.solvd.hospital.medical;
+package main.java.com.solvd.hospital.medicalCategory;
 
 public class MedicalCategory {
 
