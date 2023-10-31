@@ -5,12 +5,15 @@ public class Medication {
     private String pharmacyName;
     private String pharmacyAddress;
     private String pharmacyZipcode;
+    private String medicationStatus ;
+
 
     public String getMedicationStatus() {
-        return medicationStatus;
+
+            return medicationStatus;
+
     }
 
-    private String medicationStatus;
 
     private String followUpStatus;
 

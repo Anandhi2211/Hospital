@@ -4,8 +4,8 @@
     <list default="true" id="74eb0404-aa43-413b-9304-752eca48e403" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Hospital.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hospital.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/appointment/Appointment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/appointment/Appointment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/doctor/Doctor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/doctor/Doctor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medicalCategory/MedicalCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medicalCategory/MedicalCategory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medication/Medication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/medication/Medication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/patient/Patient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/solvd/hospital/patient/Patient.java" afterDir="false" />
     </list>
@@ -42,17 +42,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "full.screen.before.presentation.mode": "true",
-    "jdk.selected.JAVA_MODULE": "11",
-    "settings.editor.selected.configurable": "Errors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;11&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="main.java.com.solvd.hospital.patient" />
@@ -84,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698638562518</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="commit">
+      <created>1698640606760</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1698640606760</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

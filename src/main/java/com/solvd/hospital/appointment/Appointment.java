@@ -2,7 +2,7 @@ package main.java.com.solvd.hospital.appointment;
 
 public class Appointment {
 
-    private String appointmentStatus;
+    private String appointmentStatus = "Not Assigned";
     private String nextAppointment;
 
     public void setAppointmentStatus(String appointmentStatus) {

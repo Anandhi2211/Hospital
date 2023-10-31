@@ -2,6 +2,7 @@ package main.java.com.solvd.hospital.patient;
 
 import main.java.com.solvd.hospital.appointment.Appointment;
 import main.java.com.solvd.hospital.billing.Billing;
+import main.java.com.solvd.hospital.doctor.Doctor;
 import main.java.com.solvd.hospital.insurance.Insurance;
 import main.java.com.solvd.hospital.labresults.LabResults;
 import main.java.com.solvd.hospital.medication.Medication;
@@ -15,6 +16,16 @@ public class Patient {
     private String patientId;
     private String illnessCategory;
     private PersonalInformation personalInfo;
+
+    public ArrayList<Doctor> getDoctorList() {
+        return doctorList;
+    }
+
+    public void setDoctorList(Doctor doctorList) {
+        this.doctorList.add(doctorList);
+    }
+
+    private ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
     private ArrayList<Appointment> appointmentList = new ArrayList<Appointment>();
     private ArrayList<Medication> medicationInfoList = new ArrayList<Medication>();
     private ArrayList<Billing> billingInfoList = new ArrayList<Billing>();
