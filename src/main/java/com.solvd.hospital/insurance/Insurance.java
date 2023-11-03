@@ -1,4 +1,4 @@
-package main.java.com.solvd.hospital.insurance;
+package com.solvd.hospital.insurance;
 
 public class Insurance {
 
@@ -8,10 +8,12 @@ public class Insurance {
     private String benefitsEligibilityStatus;
 
     public void setInsuranceName(String insuranceName) {
+
         this.insuranceName = insuranceName;
     }
 
     public void setInsuranceNumber(String insuranceNumber) {
+
         this.insuranceNumber = insuranceNumber;
     }
 
@@ -20,14 +22,17 @@ public class Insurance {
     }
 
     public String getInsuranceName() {
+
         return insuranceName;
     }
 
     public String getInsuranceNumber() {
+
         return insuranceNumber;
     }
 
     public String getBenefitsEligibilityStatus() {
+
         return benefitsEligibilityStatus;
     }
 }

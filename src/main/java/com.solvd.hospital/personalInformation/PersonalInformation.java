@@ -1,18 +1,19 @@
-package main.java.com.solvd.hospital.personalInformation;
+package com.solvd.hospital.personalInformation;
 
-public class PersonalInformation {
+import com.solvd.hospital.patient.Patient;
+
+public abstract class PersonalInformation {
 
     private String fistName;
     private String lastName;
     private String gender;
     private int age;
-    private String address;
-    private String state;
-    private String city;
-    private String Country;
     private String contactNumber;
     private String emailAddress;
 
+    public abstract void printInformation(); // Abstract method overloading
+
+    public abstract void printInformation(Patient patient); //Abstract Method Overloading
     public void setFistName(String fistName) {
         this.fistName = fistName;
     }
@@ -27,22 +28,6 @@ public class PersonalInformation {
 
     public void setAge(int age) {
         this.age = age;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public void setCountry(String country) {
-        Country = country;
     }
 
     public void setContactNumber(String contactNumber) {
@@ -69,22 +54,6 @@ public class PersonalInformation {
         return age;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public String getCountry() {
-        return Country;
-    }
-
     public String getContactNumber() {
         return contactNumber;
     }
@@ -92,4 +61,7 @@ public class PersonalInformation {
     public String getEmailAddress() {
         return emailAddress;
     }
+
+
+
 }
