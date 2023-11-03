@@ -1,5 +1,7 @@
 ### IntelliJ IDEA ###
-out/
+out
+.idea
+Hospital.iml
 !**/src/main/**/out/
 !**/src/test/**/out/
 
