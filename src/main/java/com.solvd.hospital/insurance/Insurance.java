@@ -1,8 +1,6 @@
-package com.solvd.hospital.insurance;
+/*package com.solvd.hospital.insurance;
 
 public class Insurance {
-
-
     private String insuranceName;
     private String insuranceNumber;
     private String benefitsEligibilityStatus;
@@ -35,4 +33,4 @@ public class Insurance {
 
         return benefitsEligibilityStatus;
     }
-}
+}*/

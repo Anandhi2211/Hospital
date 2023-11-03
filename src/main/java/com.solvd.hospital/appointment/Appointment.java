@@ -9,17 +9,14 @@ public  class  Appointment {
 
         this.appointmentStatus = appointmentStatus;
     }
-
     public void setNextAppointment(String nextAppointment) {
 
         this.nextAppointment = nextAppointment;
     }
-
     public String getAppointmentStatus() {
 
         return appointmentStatus;
     }
-
     public String getNextAppointment() {
 
         return nextAppointment;

@@ -1,10 +1,8 @@
 package com.solvd.hospital.medicalCategory;
 
-import com.solvd.hospital.department.Department;
+public class MedicalCategory {
 
-public  class MedicalCategory extends Department {
-
-
+    private String patientSymtom;
 
     public String getPatientSymtom() {
         return patientSymtom;
@@ -14,24 +12,4 @@ public  class MedicalCategory extends Department {
         this.patientSymtom = patientSymtom;
     }
 
-    private String patientSymtom;
-
-    public String[] getSymtoms() {
-        return symtoms;
-    }
-
-    public void setSymtoms(String[] symtoms) {
-        this.symtoms = symtoms;
-    }
-
-    private String[] symtoms;
-
-
-
-
-
-    @Override
-    public void assignedDoctor() {
-
-    }
 }

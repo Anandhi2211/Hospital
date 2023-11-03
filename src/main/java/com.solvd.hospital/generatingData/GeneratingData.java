@@ -18,16 +18,14 @@ public class GeneratingData {
         p.setContactNumber("2222222222");
         p.setEmailAddress("ashokkumar@gmail.com");
         p.setPatientId("1000");
-        category.setPatientSymtom("Eye infection");
+        category.setPatientSymtom("Skin Infection");
         p.setCategory(category);
         p.setPersonalInfo(p);
 
         patientList.add(p);
 
 
-
-
-        p=new Patient();
+        p = new Patient();
         category = new MedicalCategory();
         p.setFistName("Anand");
         p.setLastName("Lakshman");
@@ -43,7 +41,7 @@ public class GeneratingData {
 
         patientList.add(p);
 
-        p=new Patient();
+        p = new Patient();
         category = new MedicalCategory();
         p.setFistName("Abi");
         p.setLastName("Shekar");
@@ -52,13 +50,13 @@ public class GeneratingData {
         p.setContactNumber("4444444444");
         p.setEmailAddress("abishekar@gmail.com");
         p.setPatientId("1002");
-        category.setPatientSymtom("Eye Infection");
+        category.setPatientSymtom("Red Eyes");
         p.setCategory(category);
 
         p.setPersonalInfo(p);
         patientList.add(p);
 
-        p=new Patient();
+        p = new Patient();
         category = new MedicalCategory();
         p.setFistName("Ranjith");
         p.setLastName("kumar");
@@ -73,7 +71,7 @@ public class GeneratingData {
         p.setPersonalInfo(p);
         patientList.add(p);
 
-        p=new Patient();
+        p = new Patient();
         category = new MedicalCategory();
         p.setFistName("Anil");
         p.setLastName("kumar");
@@ -87,11 +85,11 @@ public class GeneratingData {
 
         p.setPersonalInfo(p);
         patientList.add(p);
-        for(Patient list : patientList)
+       /* for(Patient list : patientList)
         {
             System.out.println(list);
 
-        }
+        }/*
 /*
         p=new Patient();
         p.setFistName("Shika");
@@ -159,109 +157,103 @@ public class GeneratingData {
 
     public void addDoctorDetails(ArrayList<Doctor> doctorList) {
 
-        Doctor d = new Doctor();
-       // Department d = new Department();
-        d.setDoctorId("20000");
-        d.setDepartmentCode("100");
-        d.setDepartmentName("Dermatology");
+        Doctor doctor = new Doctor();
+        // Department doctor = new Department();
+        doctor.setDoctorId("20000");
+        doctor.setDepartmentCode("100");
+        doctor.setDepartmentName("Dermatology");
+        doctor.setTreatableSymtom("Skin Infection");
+        doctor.setTreatableSymtom("Skin Rashes");
+        doctor.setTreatableSymtom("Tan Removal");
+        doctor.setTreatableSymtom("Skin pigmentation");
 
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d = new Doctor();
-      //  d = new Department();
-        d.setDoctorId("20001");
-        d.setDepartmentCode("101");
-        d.setDepartmentName("Otolaryngology");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        //  doctor = new Department();
+        doctor.setDoctorId("20001");
+        doctor.setDepartmentCode("101");
+        doctor.setDepartmentName("Otolaryngology");
+        doctor.setTreatableSymtom("Eye Infection");
+        doctor.setTreatableSymtom("Red Eyes");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d = new Doctor();
-        //d = new Department();
+        doctor = new Doctor();
+        //doctor = new Department();
 
-        d.setDoctorId("20002");
-        d.setDepartmentCode("102");
-        d.setDepartmentName("Orthopedic");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor.setDoctorId("20002");
+        doctor.setDepartmentCode("102");
+        doctor.setDepartmentName("Orthopedic");
+        doctor.setTreatableSymtom("Knee Pain");
 
-        d = new Doctor();
-        //d = new Department();
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d.setDoctorId("20003");
-        d.setDepartmentCode("100");
-        d.setDepartmentName("Dermatology");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        //doctor = new Department();
 
-        d = new Doctor();
-       // d = new Department();
+        doctor.setDoctorId("20003");
+        doctor.setDepartmentCode("100");
+        doctor.setDepartmentName("Dermatology");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d.setDoctorId("20004");
-        d.setDepartmentCode("101");
-        d.setDepartmentName("Otolaryngology");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        // doctor = new Department();
 
-        d = new Doctor();
-       // d = new Department();
+        doctor.setDoctorId("20004");
+        doctor.setDepartmentCode("101");
+        doctor.setDepartmentName("Otolaryngology");
+        doctor.setTreatableSymtom("Ear Infection");
+        doctor.setTreatableSymtom("Ear Pain");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d.setDoctorId("20005");
-        d.setDepartmentCode("102");
-        d.setDepartmentName("Orthopedic");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        // doctor = new Department();
 
-        d = new Doctor();
-       // d = new Department();
+        doctor.setDoctorId("20005");
+        doctor.setDepartmentCode("102");
+        doctor.setDepartmentName("Orthopedic");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d.setDoctorId("20006");
-        d.setDepartmentCode("100");
-        d.setDepartmentName("Dermatology");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        // doctor = new Department();
 
-        d = new Doctor();
-       // d = new Department();
+        doctor.setDoctorId("20006");
+        doctor.setDepartmentCode("100");
+        doctor.setDepartmentName("Dermatology");
+        doctor.setDepartmentInfo(doctor);
+        doctor.setTreatableSymtom("Skin Infection");
+        doctor.setTreatableSymtom("Skin Rashes");
+        doctor.setTreatableSymtom("Tan Removal");
+        doctor.setTreatableSymtom("Skin pigmentation");
+        doctorList.add(doctor);
 
-        d.setDoctorId("20007");
-        d.setDepartmentCode("101");
-        d.setDepartmentName("Otolaryngology");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        // doctor = new Department();
 
-        d = new Doctor();
-      //  d = new Department();
+        doctor.setDoctorId("20007");
+        doctor.setDepartmentCode("101");
+        doctor.setDepartmentName("Otolaryngology");
+        doctor.setTreatableSymtom("Ear Infection");
+        doctor.setTreatableSymtom("Ear Pain");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
-        d.setDoctorId("20008");
-        d.setDepartmentCode("102");
-        d.setDepartmentName("Orthopedic");
-        d.setDepartmentInfo(d);
-        doctorList.add(d);
+        doctor = new Doctor();
+        //  doctor = new Department();
 
-
-    }
-
-    public void addSymtomDetails() {
-
-
-        MedicalCategory category = new MedicalCategory();
-        String [] symtoms = {"Knee Pain","Leg Sprain","Neck Pain","Bone Fracture","Wrist pain","Skin infection","Skin allergy","Skin lightening","Tan Removal"};
-
-       // String [] dermoSymtoms = {"Skin infection","Skin allergy","Skin lightening","Tan Removal"};
-
-        category.setSymtoms(symtoms);
-        for(String c : symtoms)
-        {
-         System.out.println(c);
-        }
-       // doctor.setSymptoms(dermoSymtoms);
-        //doctorList.add(doctor);
-
-
-
-
+        doctor.setDoctorId("20008");
+        doctor.setDepartmentCode("102");
+        doctor.setDepartmentName("Orthopedic");
+        doctor.setDepartmentInfo(doctor);
+        doctorList.add(doctor);
 
 
     }
+
 }

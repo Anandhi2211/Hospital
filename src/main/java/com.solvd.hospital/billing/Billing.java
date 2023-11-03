@@ -1,9 +1,6 @@
 package com.solvd.hospital.billing;
 
 public class Billing {
-
-
-
     private String billingNumber;
     public String getBillingNumber() {
         return this.billingNumber;
