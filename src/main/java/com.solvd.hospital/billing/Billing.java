@@ -1,17 +1,25 @@
 package com.solvd.hospital.billing;
 
-public class Billing {
-    private String billingNumber;
-    public String getBillingNumber() {
-        return this.billingNumber;
-    }
+import java.util.UUID;
 
-    public void setBillingNumber(String billingNumber) {
-        this.billingNumber = billingNumber;
-    }
+public class Billing implements IBilling {
+    String billingNumber;
 
-    public String toString()
-    {
-        return this.billingNumber;
+    @Override
+    public void billNumberGenerated(String departmentCode) {
+
+        if (departmentCode.equals("100")) {
+            this.billingNumber = UUID.randomUUID().toString();
+            System.out.println("Bill Generated for the Patient : " + this.billingNumber);
+            System.out.println("Copay amount for Dermatology visit: " + Billing.dermatologyCoPay);
+        } else if (departmentCode.equals("101")) {
+            this.billingNumber = UUID.randomUUID().toString();
+            System.out.println("Bill Generated for the Patient : " + this.billingNumber);
+            System.out.println("Copay amount for Otolaryngology visit: " + Billing.OtolaryngologyCoPay);
+        } else if (departmentCode.equals("102")) {
+            this.billingNumber = UUID.randomUUID().toString();
+            System.out.println("Bill Generated for the Patient : " + this.billingNumber);
+            System.out.println("Copay amount for Orthopedic visit: " + Billing.OrthopedicCoPay);
+        }
     }
 }

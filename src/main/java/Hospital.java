@@ -1,83 +1,115 @@
+import com.solvd.hospital.PatientRecord.PatientRecord;
 import com.solvd.hospital.billing.Billing;
+import com.solvd.hospital.billing.IBilling;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.generatingData.GeneratingData;
-import com.solvd.hospital.medicalCategory.MedicalCategory;
-import com.solvd.hospital.medication.Medication;
-import com.solvd.hospital.patient.Patient;
+import com.solvd.hospital.patient.HospitalAdmin;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-import java.util.UUID;
 
 public class Hospital {
-    int option = 0;
-    String answer;
-    String patientName;
-    public static ArrayList<Patient> patientList = new ArrayList<Patient>();
+
+    public static ArrayList<PatientRecord> patientRecords = new ArrayList<PatientRecord>();
     public static ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
 
-    public void welcomePage() {
-        do {
-            System.out.println("Welcome to Hospital Portal!");
-            System.out.println("Please choose the options");
-            System.out.println("List Patients Name -- option 1");
-            System.out.println("Assign Doctor for each Patient -- option 2");
-            System.out.println("Look up particular patient -- option 3");
-            System.out.println("View all the patient Details  -- option 4");
-            System.out.println("Exit Portal -- option 5");
-            System.out.println("Please Enter your option");
-            System.out.println();
-            Scanner in = new Scanner(System.in);
-            option = in.nextInt();
-            switch (option) {
-                case 1:
-                    for (Patient p : patientList) {
-                        p.printInformation(p); // displays only patient name abstract method overloading
-                    }
-                   /* for(Doctor d : doctorList)
-                    {
-                        System.out.println(d);; // displays only patient name abstract method overloading
-                    }*/
-                    break;
-                case 2:
-                    System.out.println("Enter the Patient Name: ");
-                    patientName = in.next();
-                    Doctor doctor = new Doctor();
-                    doctor.assignedDoctor(patientName, patientList, in, doctorList); // Abstract metthod
-
-                    System.out.println("****************************************************************************************************");
-                    break;
-                case 3:
-                    System.out.println("Enter Patient Name: ");
-                    patientName = in.next();
-                    for (Patient p : patientList) {
-
-                        if (p.getPersonalInfo().getFistName().equalsIgnoreCase(patientName)) {
-                            System.out.println("****************************************************************************************************");
-                            p.printInformation();// abstract method to print Patient ID(Patient class extends personal) and firstname(abstract Personal Class)
-                            System.out.println("****************************************************************************************************");
-                        }
-                    }
-                    break;
-                case 4:
-                    for (Patient list : patientList) // printing all the details for the patient
-                    {
-                        System.out.println(list);
-                    }
-                    System.out.println("Thanks for Checking with us");
-                    System.out.println("****************************************************************************************************");
-                    break;
-                default:
-                    System.out.println("Enter the valid option between 1 and 4 ");
-            }
-        } while (option < 4);
-    }
-
     public static void main(String[] args) {
-        Hospital hospital = new Hospital();
+        int option;
+        HospitalAdmin admin = new HospitalAdmin();
         GeneratingData data = new GeneratingData();
-        data.addPatientDetails(patientList);
+        data.addPatientDetails(patientRecords);
         data.addDoctorDetails(doctorList); // add doctor details
-        hospital.welcomePage();
+        {
+            do {
+                admin.welcomePage();
+                Scanner in = new Scanner(System.in);
+                option = in.nextInt();
+                switch (option) {
+                    case 1:
+                        for (PatientRecord p : patientRecords) {
+                            p.printInformation(); // displays only patient records abstract method overloading
+                        }
+                        break;
+                    case 2:
+                        for (Doctor doc : doctorList) {
+                            doc.printInformation(); // displays only Doctor Details name abstract method overloading
+                        }
+                        break;
+                    case 3:
+                        String patientName = admin.getPatientName();
+                        for (int i = 0; i < patientRecords.size(); i++) {
+                            PatientRecord p = patientRecords.get(i);
+                            if (p.getFistName().equalsIgnoreCase(patientName)) {
+                                String patientSymtom = p.getCategory().getPatientSymtom();
+                                System.out.print("Patient Symptoms: " + patientSymtom);
+                                System.out.print("Do you want to make appointment?  Y/N ");
+                                String answer = in.next();
+                                if (answer.equalsIgnoreCase("y")) {
+                                    for (Doctor doctor : doctorList) {
+                                        if (doctor.isTreatable(patientSymtom)) {
+                                            System.out.print("This Doctor ID " + doctor.getDoctorId() + "is assigned for this Patient");
+                                            p.setAssignedDoctor(doctor);
+                                            p.setPatientVisitedHospital(true);
+                                            patientRecords.set(i, p);
+                                            break;
+                                        }
+                                    }
+                                    System.out.println("");
+                                } else if (answer.equalsIgnoreCase("N")) {
+                                    System.out.println("Doctor is not assigned..!!");
+                                    break;
+                                } else {
+                                    System.out.println("Enter the correct Value and Start from the beginning");
+                                }
+                            }
+                        }
+                        System.out.println("****************************************************************************************************");
+                        break;
+
+                    case 4:
+                        patientName = admin.getPatientName();
+                        for (PatientRecord p : patientRecords) {
+                            if (p.getFistName().equalsIgnoreCase(patientName)) {
+                                System.out.println(p);
+                            }
+                        }
+                        System.out.println("****************************************************************************************************");
+                        break;
+                    case 5:
+                        patientName = admin.getPatientName();
+                        for (PatientRecord p : patientRecords) {
+                            if (p.getFistName().equalsIgnoreCase(patientName)) {
+                                if (p.getPatientVisitedHospital()) {
+                                    IBilling billing = new Billing();
+                                    for (Doctor assignedDoctor : p.getAssignedDoctorList()) {
+                                        System.out.println(assignedDoctor.getDepartmentInfo().getDepartmentCode());
+                                        billing.billNumberGenerated(assignedDoctor.getDepartmentInfo().getDepartmentCode());
+                                    }
+                                } else {
+                                    System.out.println("Patient did not visit the hospital yet");
+                                }
+                            }
+                        }
+                        System.out.println("****************************************************************************************************");
+                        break;
+                    case 6:
+
+                        for (PatientRecord patientRecord : patientRecords) // printing all the details for the patient
+                        {
+                            System.out.println(patientRecord);
+                        }
+                        break;
+
+                    case 7:
+                        System.out.println("Thanks for Checking with us");
+                        System.out.println("****************************************************************************************************");
+                        break;
+
+                    default:
+                        System.out.print("Enter the valid option between 1 and 7: ");
+                }
+            } while (option < 7);
+        }
     }
+
 }

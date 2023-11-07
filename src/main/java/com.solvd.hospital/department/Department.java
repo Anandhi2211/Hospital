@@ -1,15 +1,10 @@
 package com.solvd.hospital.department;
 
 import com.solvd.hospital.doctor.Doctor;
-import com.solvd.hospital.patient.Patient;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-public abstract class Department  {
+public class Department extends Doctor {
     private String departmentName;
     private String departmentCode;
-   // private String[] symptoms;
 
     public String getDepartmentName() {
         return this.departmentName;
@@ -27,5 +22,5 @@ public abstract class Department  {
         this.departmentCode = departmentCode;
     }
 
-    public abstract void assignedDoctor(String patientName, ArrayList<Patient> patientList, Scanner in, ArrayList<Doctor> doctorList);
+
 }

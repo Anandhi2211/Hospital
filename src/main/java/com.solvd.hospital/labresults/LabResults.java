@@ -1,4 +1,4 @@
-/*package com.solvd.hospital.labresults;
+package com.solvd.hospital.labresults;
 
 public class LabResults {
 
@@ -24,4 +24,4 @@ public class LabResults {
 
         return results;
     }
-}*/
+}
