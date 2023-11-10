@@ -1,28 +1,51 @@
 package com.solvd.hospital.PatientRecord;
 
-import com.solvd.hospital.billing.IBilling;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.medicalCategory.MedicalCategory;
+import com.solvd.hospital.medicalrecords.IMedicalRecords;
+import com.solvd.hospital.medicalrecords.MedicalRecords;
 import com.solvd.hospital.patient.Patient;
-import com.solvd.hospital.patient.IHospitalAdmin;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
-public class PatientRecord extends Patient {
+public class PatientRecord extends Patient implements IMedicalRecords {
+    private static final Logger logger = LogManager.getLogger(PatientRecord.class);
+
     private Boolean patientVisitedHospital = false;
 
-    private MedicalCategory category = new MedicalCategory();
-    private ArrayList<Doctor> assignedDoctorList = new ArrayList<Doctor>();
-    private ArrayList<IBilling> IBillingInfoList = new ArrayList<IBilling>();
+    private Boolean prescriptionStatus;
 
+    private MedicalCategory category;
+
+    private ArrayList<Doctor> assignedDoctorList;
+
+    private ArrayList<MedicalRecords> medicalRecordsList;
+
+    public PatientRecord() {
+
+        if (this.assignedDoctorList == null) {
+            this.assignedDoctorList = new ArrayList<Doctor>();
+        }
+        if (this.category == null) {
+            this.category = new MedicalCategory();
+
+        }
+        if (this.medicalRecordsList == null) {
+            this.medicalRecordsList = new ArrayList<MedicalRecords>();
+        }
+    }
 
     public ArrayList<Doctor> getAssignedDoctorList() {
-
-        return assignedDoctorList;
+        return this.assignedDoctorList;
     }
 
     public void setAssignedDoctor(Doctor doctor) {
 
+        if (this.assignedDoctorList == null) {
+            this.assignedDoctorList = new ArrayList<Doctor>();
+        }
         this.assignedDoctorList.add(doctor);
     }
 
@@ -46,14 +69,17 @@ public class PatientRecord extends Patient {
         this.category = category;
     }
 
-    public ArrayList<IBilling> getBillingInfoList() {
-
-        return this.IBillingInfoList;
+    public ArrayList<MedicalRecords> getMedicalRecords() {
+        return this.medicalRecordsList;
     }
 
-    public void setBillingInfoList(IBilling IBilling) {
+    public void setMedicalRecords(MedicalRecords medicalRecord) {
 
-        this.IBillingInfoList.add(IBilling);
+        if (this.medicalRecordsList == null) {
+            this.medicalRecordsList = new ArrayList<MedicalRecords>();
+        } else {
+            this.medicalRecordsList.add(medicalRecord);
+        }
     }
 
     public String printDoctorInfo() {
@@ -66,20 +92,53 @@ public class PatientRecord extends Patient {
         return infoToPrint;
     }
 
+    public Boolean printPrescriptionStatus() {
+        Boolean prescriptionStatus = false;
+        if (medicalRecordsList != null) {
+            for (MedicalRecords medicalRecords : medicalRecordsList) {
+                prescriptionStatus = true;
+            }
+        }
+        return prescriptionStatus;
+    }
+
+    public String printTestName() {
+        String testName = "No Test is assigned";
+        if (medicalRecordsList != null) {
+            for (MedicalRecords medicalRecords : medicalRecordsList) {
+                testName = medicalRecords.getTestName();
+            }
+        }
+        return testName;
+    }
+
     public String toString() {
         return "\tPatient Id: " + this.getPatientId() + "\n" +
                 "\tDoctor Id: " + this.printDoctorInfo() + "\n" +
-                " \tFirst Name: " + this.getFistName() + "\n" +
+                " \tFirst Name: " + this.getFirstName() + "\n" +
                 " \tGender: " + this.getGender() + "\n" +
                 " \tAge: " + this.getAge() + "\n" +
                 " \tContact Number: " + this.getContactNumber() + "\n" +
                 " \tEmail Address: " + this.getEmailAddress() + "\n" +
-                " \tIllness Category: " + getCategory().getPatientSymtom() + "\n" +
-                "\tVisited status: " + this.getPatientVisitedHospital() + "\n";
+                " \tIllness Category: " + this.getCategory().getPatientSymtom() + "\n" +
+                "\tVisited status: " + this.getPatientVisitedHospital() + "\n" +
+                "\tPrescription status: " + this.printPrescriptionStatus() + "\n" +
+                "\tTest Name: " + this.printTestName() + "\n";
     }
 
     public void printInformation() {
-        System.out.println("Patient Id: " + this.getPatientId());
-        System.out.println("Patient Name: " + this.getFistName());
+        logger.info("Patient Id: " + this.getPatientId());
+        logger.info("Patient Name: " + this.getFirstName());
+        logger.info("Patient Symtoms: " + this.getCategory().getPatientSymtom());
+    }
+
+    @Override
+    public void printPatientMedicalRecords() {
+
+        logger.info("Patient Id: " + this.getPatientId());
+        logger.info("Patient Name: " + this.getFirstName());
+        logger.info("Patient Symtoms: " + this.getCategory().getPatientSymtom());
+        logger.info("Patient Prescription Status: " + this.printPrescriptionStatus());
+        logger.info("Patient Test Name: "+ this.printTestName());
     }
 }

@@ -2,15 +2,21 @@ package com.solvd.hospital.doctor;
 
 import com.solvd.hospital.department.Department;
 import com.solvd.hospital.personalInformation.PersonalInformation;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 
 public class Doctor extends PersonalInformation {
+    private static final Logger logger = LogManager.getLogger(Doctor.class);
 
     private String doctorId;
     public Department departmentInfo;
-    private ArrayList<String> treatableSymtomList = new ArrayList<String>();
+    private ArrayList<String> treatableSymptomList;
 
+    public Doctor() {
+
+    }
 
     public String getDoctorId() {
 
@@ -24,7 +30,11 @@ public class Doctor extends PersonalInformation {
 
     public Department getDepartmentInfo() {
 
-        return departmentInfo;
+        if (this.departmentInfo == null) {
+            this.departmentInfo = new Department();
+            return departmentInfo;
+        } else
+            return departmentInfo;
     }
 
     public void setDepartmentInfo(Department departmentInfo) {
@@ -32,19 +42,27 @@ public class Doctor extends PersonalInformation {
         this.departmentInfo = departmentInfo;
     }
 
-    public ArrayList<String> getTreatableSymtomList() {
+    public ArrayList<String> getTreatableSymptomList() {
 
-        return this.treatableSymtomList;
+        return this.treatableSymptomList;
     }
 
-    public void setTreatableSymtom(String symtom) {
+    public void setTreatableSymptom(String symptom) {
 
-        this.treatableSymtomList.add(symtom);
+        if (this.treatableSymptomList == null) {
+            this.treatableSymptomList = new ArrayList<String>();
+            this.treatableSymptomList.add(symptom);
+        } else
+            this.treatableSymptomList.add(symptom);
     }
 
-    public boolean isTreatable(String symtom) {
+    public boolean isTreatable(String symptom) {
 
-        return this.treatableSymtomList.contains(symtom);
+        if (this.treatableSymptomList == null) {
+            this.treatableSymptomList = new ArrayList<String>();
+            return this.treatableSymptomList.contains(symptom);
+        }
+        return this.treatableSymptomList.contains(symptom);
     }
 
     public String toString() {
@@ -55,11 +73,23 @@ public class Doctor extends PersonalInformation {
     @Override
     public void printInformation() {
 
-        System.out.println("Doctor Details");
-        System.out.println("Name: " + this.getFistName());
-        System.out.println("Id: " + this.getDoctorId());
-        System.out.println("Department Code: " + this.getDepartmentInfo().getDepartmentCode());
-        System.out.println("Contact Number:" + this.getContactNumber());
+//        logger.info("Doctor Details");
+        logger.info("Name: " + this.getFirstName());
+        logger.info("Id: " + this.getDoctorId());
+//        logger.info("Department Code: " + this.getDepartmentInfo().getDepartmentCode());
+//        logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
+//        logger.info("Contact Number:" + this.getContactNumber());
+    }
 
+    public void symptomsDoctorTreat(String doctorId) {
+        if (this.treatableSymptomList == null) {
+            this.treatableSymptomList = new ArrayList<String>();
+        } else {
+            if (this.doctorId.equals(doctorId)) {
+                for (String sym : this.treatableSymptomList) {
+                    logger.info("List of symptoms: " + sym);
+                }
+            }
+        }
     }
 }

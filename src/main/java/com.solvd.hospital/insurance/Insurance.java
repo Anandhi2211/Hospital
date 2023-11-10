@@ -16,6 +16,7 @@ public class Insurance {
     }
 
     public void setBenefitsEligibilityStatus(String benefitsEligibilityStatus) {
+
         this.benefitsEligibilityStatus = benefitsEligibilityStatus;
     }
 

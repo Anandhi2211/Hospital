@@ -1,19 +1,27 @@
 package com.solvd.hospital.personalInformation;
 
+import java.util.regex.Pattern;
+
 public abstract class PersonalInformation {
 
-    String fistName;
+    String firstName;
     String gender;
     int age;
     String contactNumber;
     String emailAddress;
 
-    public String getFistName() {
-        return fistName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
+    public void setFirstName(String firstName) throws ExceptionPersonalInformation {
+
+        String regex = "[A-Za-z]+";
+        if (!Pattern.matches(regex, firstName)) {
+            throw new ExceptionPersonalInformation("Not Valid Name");
+        } else {
+            this.firstName = firstName;
+        }
     }
 
     public String getGender() {
@@ -49,6 +57,5 @@ public abstract class PersonalInformation {
     }
 
     public abstract void printInformation(); // Abstract method overloading
-
 
 }

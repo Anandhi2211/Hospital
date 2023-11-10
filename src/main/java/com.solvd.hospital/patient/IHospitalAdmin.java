@@ -4,7 +4,7 @@ public interface IHospitalAdmin {
 
     void welcomePage();
 
-    String getPatientName();
+    String getPatientName() throws ExceptionHospitalAdmin;
 
 
 }
