@@ -22,7 +22,7 @@ public class Hospital {
     public static HashSet<String> billNumber = new HashSet<>();
 
     public static void main(String[] args) {
-        Integer option = 0;
+        int option ;
         Scanner in = new Scanner(System.in);
         HospitalAdmin admin = new HospitalAdmin();
         Hospital hospital = new Hospital();
@@ -34,7 +34,7 @@ public class Hospital {
                 do {
                     admin.welcomePage();
                     option = in.nextInt();
-                    if (!(option >= 1) && !(option <= 8)) {
+                    if (!(option >= 1) && !(option <= 9)) {
                         throw new ExceptionHospitalAdmin("Invalid Input");
                     }
                     switch (option) {
@@ -99,12 +99,12 @@ public class Hospital {
                     medicalRecord.setPrescriptionStatus(true);
                     p.setMedicalRecords(medicalRecord);
                     patientRecordHashMap.put(patientId, p);
-                    for (int docterIndex = 0; docterIndex < p.getAssignedDoctorList().size(); docterIndex++) {
-                        Doctor doctor = p.getAssignedDoctorList().get(docterIndex);
+                    for (int doctorIndex = 0; doctorIndex < p.getAssignedDoctorList().size(); doctorIndex++) {
+                        Doctor doctor = p.getAssignedDoctorList().get(doctorIndex);
                         if (doctor.getDepartmentInfo().getDepartmentCode().equals("100")) {
                             logger.info("1.Blood Test");
                             logger.info("2.Laser Test");
-                            Integer option = in.nextInt();
+                            int option = in.nextInt();
                             switch (option) {
                                 case 1:
                                     medicalRecord.setTestName("Blood Test");
@@ -120,7 +120,7 @@ public class Hospital {
                         } else if (doctor.getDepartmentInfo().getDepartmentCode().equals("101")) {
                             logger.info("1.MRI Test");
                             logger.info("2.CT Scan");
-                            Integer option = in.nextInt();
+                            int option = in.nextInt();
                             switch (option) {
                                 case 1:
                                     medicalRecord.setTestName("MRI Test");
@@ -136,7 +136,7 @@ public class Hospital {
                         } else if (doctor.getDepartmentInfo().getDepartmentCode().equals("102")) {
                             logger.info("1.X-Ray");
                             logger.info("2.MRI");
-                            Integer option = in.nextInt();
+                            int option = in.nextInt();
                             switch (option) {
                                 case 1:
                                     medicalRecord.setTestName("X-Ray");
@@ -154,7 +154,7 @@ public class Hospital {
                     p.printPatientMedicalRecords();
                     logger.info(p);
                 } else if (answer.equalsIgnoreCase("n")) {
-                    logger.info("Dont want to prescribe medication,  Enter the details again.");
+                    logger.info("Do not want to prescribe medication,  Enter the details again.");
                 }
             } else {
                 logger.info("Doctor was not assigned to the patient");
@@ -224,12 +224,12 @@ public class Hospital {
                             if (!doctorIdentified) {
                                 logger.info("Doctor is not available");
                             }
-                    } else if (answer.equalsIgnoreCase("N")) {
+                    }  if (answer.equalsIgnoreCase("N")) {
                         logger.info("Doctor is not assigned");
                     }
                 }
             }
-            else if (p.getPatientAssignedDoctor())
+             if (p.getPatientAssignedDoctor())
             {
                 logger.info("Already Doctor Assigned for the Patient");
             }
