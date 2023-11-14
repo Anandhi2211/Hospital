@@ -4,11 +4,11 @@ import java.util.regex.Pattern;
 
 public abstract class PersonalInformation {
 
-    String firstName;
-    String gender;
-    Integer age;
-    String contactNumber;
-    String emailAddress;
+    private String firstName;
+    private String gender;
+    private Integer age;
+    private String contactNumber;
+    private String emailAddress;
 
     public String getFirstName() {
         return firstName;
@@ -23,7 +23,6 @@ public abstract class PersonalInformation {
             this.firstName = firstName;
         }
     }
-
     public String getGender() {
         return gender;
     }

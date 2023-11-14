@@ -6,7 +6,6 @@ import com.solvd.hospital.generatingData.GeneratingData;
 import com.solvd.hospital.medicalrecords.MedicalRecords;
 import com.solvd.hospital.patient.ExceptionHospitalAdmin;
 import com.solvd.hospital.patient.HospitalAdmin;
-import com.solvd.hospital.personalInformation.ExceptionPersonalInformation;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -18,7 +17,6 @@ public class Hospital {
     public static ArrayList<PatientRecord> patientRecords = new ArrayList<>();
     public static HashMap<String, PatientRecord> patientRecordHashMap = new HashMap<>();
     public static ArrayList<Doctor> doctorList = new ArrayList<>();
-
     public static Set<String> departmentNameList = new HashSet<>();
     public static HashSet<String> billNumber = new HashSet<>();
 
@@ -30,7 +28,7 @@ public class Hospital {
         GeneratingData data = new GeneratingData();
         try {
             data.addPatientDetails(patientRecords, patientRecordHashMap); // add Patient Details
-            data.addDoctorDetails(doctorList,departmentNameList); // add Doctor details
+            data.addDoctorDetails(doctorList, departmentNameList); // add Doctor details
             {
                 do {
                     admin.welcomePage();
@@ -73,10 +71,9 @@ public class Hospital {
                     }
                 } while (option < 9);
             }
-        } catch (ExceptionHospitalAdmin e) {
-            logger.error(e.getMessage());
-        } catch (ExceptionPersonalInformation e) {
-            logger.error(e.getMessage());
+        } finally {
+            logger.info("Finally No Exception found");
+
         }
     }
 
@@ -253,10 +250,6 @@ public class Hospital {
             patientRecordHashMap.get(patientId).printInformation();
 //            p.printInformation(); // displays only patient records abstract method overloading
         }
-
-
-
-
     }
 
     private void printAllBillNumber()
@@ -270,7 +263,4 @@ public class Hospital {
         logger.info("Department in the Hospital");
         logger.info(departmentNameList);
     }
-
-
-
 }

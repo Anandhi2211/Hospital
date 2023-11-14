@@ -1,22 +1,15 @@
 package com.solvd.hospital.patient;
 
-import com.solvd.hospital.PatientRecord.PatientRecord;
-import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.medicalrecords.IMedicalRecords;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class HospitalAdmin implements IHospitalAdmin , IMedicalRecords {
     private static final Logger logger = LogManager.getLogger(HospitalAdmin.class);
-
     Scanner in = new Scanner(System.in);
-    public static ArrayList<PatientRecord> patientRecords =new ArrayList<PatientRecord>();
-    public static ArrayList<Doctor> doctorList = new ArrayList<Doctor>();
-
     @Override
     public void welcomePage() {
         logger.info("Welcome to Hospital Portal!");
@@ -44,9 +37,7 @@ public class HospitalAdmin implements IHospitalAdmin , IMedicalRecords {
             return patientId;
         }
     }
-
     @Override
     public void printPatientMedicalRecords() {
-
     }
 }

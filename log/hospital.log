@@ -1,12 +1,15 @@
-2023-11-14 14:46:44.418 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Welcome to Hospital Portal!
-2023-11-14 14:46:44.425 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Please choose the options
-2023-11-14 14:46:44.425 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Patient and Doctor Details using HashMap-- option 1
-2023-11-14 14:46:44.425 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Assign Doctor for each Patient -HashMap- option 2
-2023-11-14 14:46:44.426 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Look up particular patient -- option 3
-2023-11-14 14:46:44.426 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Generate Bill for each patient: -- option 4 
-2023-11-14 14:46:44.426 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Doctor treats Patient -- option 5
-2023-11-14 14:46:44.426 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - View all the patient Details  using HASHMAP-- option 6
-2023-11-14 14:46:44.427 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Department in the hospital using SET -- option 7
-2023-11-14 14:46:44.427 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - List of the all the Bill using HASHMAP-- option 8
-2023-11-14 14:46:44.427 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Exit Portal -- option 9
-2023-11-14 14:46:44.428 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Please Enter your option
+2023-11-14 15:10:23.309 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Welcome to Hospital Portal!
+2023-11-14 15:10:23.315 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Please choose the options
+2023-11-14 15:10:23.316 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Patient and Doctor Details using HashMap-- option 1
+2023-11-14 15:10:23.316 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Assign Doctor for each Patient -HashMap- option 2
+2023-11-14 15:10:23.316 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Look up particular patient -- option 3
+2023-11-14 15:10:23.317 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Generate Bill for each patient: -- option 4 
+2023-11-14 15:10:23.317 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Doctor treats Patient -- option 5
+2023-11-14 15:10:23.317 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - View all the patient Details  using HASHMAP-- option 6
+2023-11-14 15:10:23.318 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Department in the hospital using SET -- option 7
+2023-11-14 15:10:23.318 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - List of the all the Bill using HASHMAP-- option 8
+2023-11-14 15:10:23.318 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Exit Portal -- option 9
+2023-11-14 15:10:23.319 [main] INFO  com.solvd.hospital.patient.HospitalAdmin - Please Enter your option
+2023-11-14 15:10:26.012 [main] INFO  Hospital - Thanks for Checking with us
+2023-11-14 15:10:26.013 [main] INFO  Hospital - *************************************************
+2023-11-14 15:10:26.013 [main] INFO  Hospital - Finally No Exception found

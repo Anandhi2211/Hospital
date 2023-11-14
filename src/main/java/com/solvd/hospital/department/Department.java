@@ -11,7 +11,6 @@ public class Department extends Doctor {
     }
 
     public String getDepartmentCode() {
-
         return this.departmentCode;
     }
 
@@ -22,6 +21,4 @@ public class Department extends Doctor {
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
     }
-
-
 }

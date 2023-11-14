@@ -7,9 +7,9 @@ import java.util.HashSet;
 
 public interface IBilling {
 
-    final static String dermatologyCoPay = "$50";
-    final static String OtolaryngologyCoPay = "$70";
-    final static String OrthopedicCoPay = "$100";
+    String dermatologyCoPay = "$50";
+    String OtolaryngologyCoPay = "$70";
+    String OrthopedicCoPay = "$100";
 
     void billNumberGenerated(String patientId, HashMap<String, PatientRecord> patientRecordHashMap, String departmentCode, HashSet<String> billNumber);
 

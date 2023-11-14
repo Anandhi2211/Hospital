@@ -17,29 +17,25 @@ public class PatientRecord extends Patient implements IMedicalRecords {
     private Boolean patientAssignedDoctor = false;
 
     private Boolean prescriptionStatus;
-
     private MedicalCategory category;
-
     private ArrayList<Billing> billingsList;
     private ArrayList<Doctor> assignedDoctorList;
-
     private ArrayList<MedicalRecords> medicalRecordsList;
-
     public PatientRecord() {
 
-        if (this.assignedDoctorList == null) {
-            this.assignedDoctorList = new ArrayList<>();
-        }
-        if (this.category == null) {
-            this.category = new MedicalCategory();
-
-        }
-        if (this.medicalRecordsList == null) {
-            this.medicalRecordsList = new ArrayList<>();
-        }
-        if (this.billingsList == null) {
-            this.billingsList = new ArrayList<Billing>();
-        }
+//        if (this.assignedDoctorList == null) {
+//            this.assignedDoctorList = new ArrayList<>();
+//        }
+//        if (this.category == null) {
+//            this.category = new MedicalCategory();
+//
+//        }
+//        if (this.medicalRecordsList == null) {
+//            this.medicalRecordsList = new ArrayList<>();
+//        }
+//        if (this.billingsList == null) {
+//            this.billingsList = new ArrayList<Billing>();
+//        }
     }
 
     public ArrayList<Billing> getBillingsList() {
@@ -139,8 +135,6 @@ public class PatientRecord extends Patient implements IMedicalRecords {
         }
         return billNumber;
     }
-
-
     public String toString() {
         return "\tPatient Id: " + this.getPatientId() + "\n" +
                 "\tDoctor Id: " + this.printDoctorInfo() + "\n" +

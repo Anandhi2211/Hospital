@@ -10,6 +10,7 @@ import java.util.UUID;
 
 public class Billing implements IBilling {
     private static final Logger logger = LogManager.getLogger(Billing.class);
+    private String billingNumber;
 
     public String getBillingNumber() {
         return billingNumber;
@@ -19,7 +20,7 @@ public class Billing implements IBilling {
         this.billingNumber = billingNumber;
     }
 
-    public String billingNumber;
+
 
     @Override
     public void billNumberGenerated(String patientId, HashMap<String, PatientRecord> patientRecordHashMap, String departmentCode, HashSet<String> billNumber) {
