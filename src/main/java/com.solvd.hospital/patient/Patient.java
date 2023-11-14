@@ -11,7 +11,6 @@ public class Patient extends PersonalInformation {
     private String patientId;
     private MedicalCategory category;
 
-
     public Patient() {
         if (this.category == null) {
             this.category = new MedicalCategory();

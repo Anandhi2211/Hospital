@@ -10,6 +10,5 @@ public class ExceptionPersonalInformation extends Exception {
     public ExceptionPersonalInformation(String message) {
 
         logger.error(message);
-//        super(message);
     }
 }

@@ -72,13 +72,9 @@ public class Doctor extends PersonalInformation {
 
     @Override
     public void printInformation() {
-
-//        logger.info("Doctor Details");
         logger.info("Name: " + this.getFirstName());
         logger.info("Id: " + this.getDoctorId());
-//        logger.info("Department Code: " + this.getDepartmentInfo().getDepartmentCode());
-//        logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
-//        logger.info("Contact Number:" + this.getContactNumber());
+        logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
     }
 
     public void symptomsDoctorTreat(String doctorId) {

@@ -7,10 +7,12 @@ import com.solvd.hospital.medicalCategory.MedicalCategory;
 import com.solvd.hospital.personalInformation.ExceptionPersonalInformation;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 public class GeneratingData {
 
-    public void addPatientDetails(ArrayList<PatientRecord> patientList) throws ExceptionPersonalInformation {
+    public void addPatientDetails(ArrayList<PatientRecord> patientList, HashMap<String, PatientRecord> patientRecordHashMap) throws ExceptionPersonalInformation {
 
         PatientRecord p = new PatientRecord();
         MedicalCategory category = new MedicalCategory();
@@ -23,6 +25,8 @@ public class GeneratingData {
         category.setPatientSymtom("Skin Infection");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
+
 
         p = new PatientRecord();
         category = new MedicalCategory();
@@ -35,6 +39,7 @@ public class GeneratingData {
         category.setPatientSymtom("Neck pain");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
 
         p = new PatientRecord();
         category = new MedicalCategory();
@@ -47,6 +52,7 @@ public class GeneratingData {
         category.setPatientSymtom("Ear Fluid");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
 
         p = new PatientRecord();
         category = new MedicalCategory();
@@ -59,6 +65,8 @@ public class GeneratingData {
         category.setPatientSymtom("Ear Pain");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
+
 
         p = new PatientRecord();
         category = new MedicalCategory();
@@ -71,6 +79,8 @@ public class GeneratingData {
         category.setPatientSymtom("Ear Infection");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
+
 
         p = new PatientRecord();
         category = new MedicalCategory();
@@ -83,9 +93,11 @@ public class GeneratingData {
         category.setPatientSymtom("stomach Infection");
         p.setCategory(category);
         patientList.add(p);
+        patientRecordHashMap.put(p.getPatientId(), p);
+
     }
 
-    public void addDoctorDetails(ArrayList<Doctor> doctorList) throws ExceptionPersonalInformation {
+    public void addDoctorDetails(ArrayList<Doctor> doctorList, Set<String> departmentNameList) throws ExceptionPersonalInformation {
 
         Doctor doctor = new Doctor();
         Department dep = new Department();
@@ -94,6 +106,8 @@ public class GeneratingData {
         doctor.setFirstName("Ram");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
+        departmentNameList.add(dep.getDepartmentName());
+
 
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
@@ -109,6 +123,8 @@ public class GeneratingData {
         doctor.setFirstName("Kiran");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear blocked");
         doctor.setContactNumber("7887877845");
@@ -121,6 +137,8 @@ public class GeneratingData {
         doctor.setFirstName("Selva");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("Neck pain");
         doctor.setTreatableSymptom("Back Pain");
@@ -134,6 +152,8 @@ public class GeneratingData {
         doctor.setFirstName("Tony");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setContactNumber("5432659887");
@@ -146,6 +166,8 @@ public class GeneratingData {
         doctor.setFirstName("Som");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Fluid");
         doctor.setContactNumber("6532655487");
@@ -158,6 +180,8 @@ public class GeneratingData {
         doctor.setFirstName("Jothi");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setContactNumber("326598875421");
         doctor.setDepartmentInfo(dep);
         doctorList.add(doctor);
@@ -168,6 +192,8 @@ public class GeneratingData {
         doctor.setFirstName("Poonam");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setDepartmentInfo(dep);
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
@@ -182,6 +208,8 @@ public class GeneratingData {
         doctor.setFirstName("Geetha");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Pain");
         doctor.setContactNumber("9887656598");
@@ -194,6 +222,8 @@ public class GeneratingData {
         doctor.setFirstName("Raju");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
+        departmentNameList.add(dep.getDepartmentName());
+
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("wrist Pain");
         doctor.setContactNumber("989898659887");

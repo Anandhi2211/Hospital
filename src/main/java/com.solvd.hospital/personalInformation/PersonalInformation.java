@@ -6,7 +6,7 @@ public abstract class PersonalInformation {
 
     String firstName;
     String gender;
-    int age;
+    Integer age;
     String contactNumber;
     String emailAddress;
 
@@ -32,11 +32,11 @@ public abstract class PersonalInformation {
         this.gender = gender;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 

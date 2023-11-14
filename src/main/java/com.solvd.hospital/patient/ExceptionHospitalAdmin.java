@@ -9,6 +9,5 @@ public class ExceptionHospitalAdmin extends Exception {
     public ExceptionHospitalAdmin(String message) {
 
         logger.error(message);
-//        super(message);
     }
 }

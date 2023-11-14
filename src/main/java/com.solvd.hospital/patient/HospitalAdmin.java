@@ -21,38 +21,27 @@ public class HospitalAdmin implements IHospitalAdmin , IMedicalRecords {
     public void welcomePage() {
         logger.info("Welcome to Hospital Portal!");
         logger.info("Please choose the options");
-        logger.info("List Patients Name -- option 1");
-        logger.info("List Doctors Name --- option 2");
-        logger.info("Assign Doctor for each Patient -- option 3");
-        logger.info("Look up particular patient -- option 4");
-        logger.info("Generate Bill for each patient: -- option 5 ");
-        logger.info("View all the patient Details  -- option 6");
-        logger.info("Doctor treats Patient -- option 7");
-        logger.info("Exit Portal -- option 8");
+        logger.info("Patient and Doctor Details using HashMap-- option 1");
+        logger.info("Assign Doctor for each Patient -HashMap- option 2");
+        logger.info("Look up particular patient -- option 3");
+        logger.info("Generate Bill for each patient: -- option 4 ");
+        logger.info("Doctor treats Patient -- option 5");
+        logger.info("View all the patient Details  using HASHMAP-- option 6");
+        logger.info("Department in the hospital using SET -- option 7");
+        logger.info("List of the all the Bill using HASHMAP-- option 8");
+        logger.info("Exit Portal -- option 9");
         logger.info("Please Enter your option");
     }
 
-    public String getPatientName() throws ExceptionHospitalAdmin {
+    public String getPatientId() throws ExceptionHospitalAdmin {
 
-        logger.info("Enter the Patient Name: ");
-        String patientName = in.next();
-        String regex = "[A-Za-z]+";
-        if (!Pattern.matches(regex, patientName)) {
-            throw new ExceptionHospitalAdmin("Not Valid Name");
+        logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
+        String patientId = in.next();
+        String regex = "[0-9]+";
+        if (!Pattern.matches(regex, patientId)) {
+            throw new ExceptionHospitalAdmin("Not Valid Id");
         } else {
-            return patientName;
-        }
-    }
-
-    public void printPatientDetails(ArrayList<PatientRecord> patientList) {
-
-        if(this.patientRecords == null)
-        {
-            this.patientRecords = new ArrayList<PatientRecord>();
-        }
-        logger.info("Printing Patient Details");
-        for (PatientRecord p : patientRecords) {
-            p.printInformation(); // displays only patient records abstract method overloading
+            return patientId;
         }
     }
 

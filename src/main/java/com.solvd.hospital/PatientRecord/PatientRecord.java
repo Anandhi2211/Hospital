@@ -1,5 +1,6 @@
 package com.solvd.hospital.PatientRecord;
 
+import com.solvd.hospital.billing.Billing;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.medicalCategory.MedicalCategory;
 import com.solvd.hospital.medicalrecords.IMedicalRecords;
@@ -13,12 +14,13 @@ import java.util.ArrayList;
 public class PatientRecord extends Patient implements IMedicalRecords {
     private static final Logger logger = LogManager.getLogger(PatientRecord.class);
 
-    private Boolean patientVisitedHospital = false;
+    private Boolean patientAssignedDoctor = false;
 
     private Boolean prescriptionStatus;
 
     private MedicalCategory category;
 
+    private ArrayList<Billing> billingsList;
     private ArrayList<Doctor> assignedDoctorList;
 
     private ArrayList<MedicalRecords> medicalRecordsList;
@@ -26,15 +28,30 @@ public class PatientRecord extends Patient implements IMedicalRecords {
     public PatientRecord() {
 
         if (this.assignedDoctorList == null) {
-            this.assignedDoctorList = new ArrayList<Doctor>();
+            this.assignedDoctorList = new ArrayList<>();
         }
         if (this.category == null) {
             this.category = new MedicalCategory();
 
         }
         if (this.medicalRecordsList == null) {
-            this.medicalRecordsList = new ArrayList<MedicalRecords>();
+            this.medicalRecordsList = new ArrayList<>();
         }
+        if (this.billingsList == null) {
+            this.billingsList = new ArrayList<Billing>();
+        }
+    }
+
+    public ArrayList<Billing> getBillingsList() {
+        return this.billingsList;
+    }
+
+    public void setBillingsList(Billing billingNumber) {
+
+        if (billingsList == null) {
+            this.billingsList = new ArrayList<>();
+        }
+        this.billingsList.add(billingNumber);
     }
 
     public ArrayList<Doctor> getAssignedDoctorList() {
@@ -44,19 +61,19 @@ public class PatientRecord extends Patient implements IMedicalRecords {
     public void setAssignedDoctor(Doctor doctor) {
 
         if (this.assignedDoctorList == null) {
-            this.assignedDoctorList = new ArrayList<Doctor>();
+            this.assignedDoctorList = new ArrayList<>();
         }
         this.assignedDoctorList.add(doctor);
     }
 
-    public Boolean getPatientVisitedHospital() {
+    public Boolean getPatientAssignedDoctor() {
 
-        return this.patientVisitedHospital;
+        return this.patientAssignedDoctor;
     }
 
-    public void setPatientVisitedHospital(Boolean patientVisitedHospital) {
+    public void setPatientAssignedDoctor(Boolean patientAssignedDoctor) {
 
-        this.patientVisitedHospital = patientVisitedHospital;
+        this.patientAssignedDoctor = patientAssignedDoctor;
     }
 
     public MedicalCategory getCategory() {
@@ -76,7 +93,7 @@ public class PatientRecord extends Patient implements IMedicalRecords {
     public void setMedicalRecords(MedicalRecords medicalRecord) {
 
         if (this.medicalRecordsList == null) {
-            this.medicalRecordsList = new ArrayList<MedicalRecords>();
+            this.medicalRecordsList = new ArrayList<>();
         } else {
             this.medicalRecordsList.add(medicalRecord);
         }
@@ -96,6 +113,7 @@ public class PatientRecord extends Patient implements IMedicalRecords {
         Boolean prescriptionStatus = false;
         if (medicalRecordsList != null) {
             for (MedicalRecords medicalRecords : medicalRecordsList) {
+
                 prescriptionStatus = true;
             }
         }
@@ -112,18 +130,30 @@ public class PatientRecord extends Patient implements IMedicalRecords {
         return testName;
     }
 
+    private String printBillNumber() {
+        String billNumber = "Bill Not Genereated";
+        if (billingsList != null) {
+            for (Billing billing : billingsList) {
+                billNumber = billing.getBillingNumber();
+            }
+        }
+        return billNumber;
+    }
+
+
     public String toString() {
         return "\tPatient Id: " + this.getPatientId() + "\n" +
                 "\tDoctor Id: " + this.printDoctorInfo() + "\n" +
-                " \tFirst Name: " + this.getFirstName() + "\n" +
-                " \tGender: " + this.getGender() + "\n" +
-                " \tAge: " + this.getAge() + "\n" +
-                " \tContact Number: " + this.getContactNumber() + "\n" +
-                " \tEmail Address: " + this.getEmailAddress() + "\n" +
-                " \tIllness Category: " + this.getCategory().getPatientSymtom() + "\n" +
-                "\tVisited status: " + this.getPatientVisitedHospital() + "\n" +
+                "\tFirst Name: " + this.getFirstName() + "\n" +
+                "\tGender: " + this.getGender() + "\n" +
+                "\tAge: " + this.getAge() + "\n" +
+                "\tContact Number: " + this.getContactNumber() + "\n" +
+                "\tEmail Address: " + this.getEmailAddress() + "\n" +
+                "\tIllness Category: " + this.getCategory().getPatientSymtom() + "\n" +
+                "\tVisited status: " + this.getPatientAssignedDoctor() + "\n" +
                 "\tPrescription status: " + this.printPrescriptionStatus() + "\n" +
-                "\tTest Name: " + this.printTestName() + "\n";
+                "\tTest Name: " + this.printTestName() + "\n" +
+                "\t Billing Number: " + this.printBillNumber() + "\n";
     }
 
     public void printInformation() {
@@ -139,6 +169,6 @@ public class PatientRecord extends Patient implements IMedicalRecords {
         logger.info("Patient Name: " + this.getFirstName());
         logger.info("Patient Symtoms: " + this.getCategory().getPatientSymtom());
         logger.info("Patient Prescription Status: " + this.printPrescriptionStatus());
-        logger.info("Patient Test Name: "+ this.printTestName());
+        logger.info("Patient Test Name: " + this.printTestName());
     }
 }
