@@ -12,6 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.util.*;
 
+
 public class Hospital {
     private static final Logger logger = LogManager.getLogger(Hospital.class);
     public static ArrayList<PatientRecord> patientRecords = new ArrayList<>();
