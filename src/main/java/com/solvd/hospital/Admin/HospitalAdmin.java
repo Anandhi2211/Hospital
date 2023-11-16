@@ -1,4 +1,4 @@
-package com.solvd.hospital.patient;
+package com.solvd.hospital.Admin;
 
 import com.solvd.hospital.medicalrecords.IMedicalRecords;
 import org.apache.logging.log4j.LogManager;
@@ -7,12 +7,12 @@ import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class HospitalAdmin implements IHospitalAdmin , IMedicalRecords {
+public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
     private static final Logger logger = LogManager.getLogger(HospitalAdmin.class);
     Scanner in = new Scanner(System.in);
     @Override
     public void welcomePage() {
-        logger.info("Welcome to Hospital Portal!");
+        logger.info("Welcome to com.solvd.hospital.Hospital Portal!");
         logger.info("Please choose the options");
         logger.info("Patient and Doctor Details using HashMap-- option 1");
         logger.info("Assign Doctor for each Patient -HashMap- option 2");

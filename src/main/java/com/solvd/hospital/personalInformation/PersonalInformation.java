@@ -4,14 +4,16 @@ import java.util.regex.Pattern;
 
 public abstract class PersonalInformation {
 
-    private String firstName;
+//    Parameter<String> firstName;
+
+    private String firstname;
     private String gender;
-    private Integer age;
+//    private Integer age;
     private String contactNumber;
     private String emailAddress;
 
     public String getFirstName() {
-        return firstName;
+        return firstname;
     }
 
     public void setFirstName(String firstName) throws ExceptionPersonalInformation {
@@ -20,24 +22,32 @@ public abstract class PersonalInformation {
         if (!Pattern.matches(regex, firstName)) {
             throw new ExceptionPersonalInformation("Not Valid Name");
         } else {
-            this.firstName = firstName;
+            this.firstname=firstName;
         }
     }
     public String getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setGender(String gender) throws ExceptionPersonalInformation {
+        if((!gender.equals("M")) && (!gender.equals("F")))
+        {
+            throw new ExceptionPersonalInformation("Gender should be either M/F");
+        }
+        else{
+            this.gender = gender;
+        }
     }
 
-    public Integer getAge() {
-        return age;
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
+//    public Integer getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(Integer age) {
+//
+//
+//        this.age = age;
+//    }
 
     public String getContactNumber() {
         return contactNumber;

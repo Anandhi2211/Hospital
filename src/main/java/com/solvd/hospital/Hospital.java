@@ -1,11 +1,12 @@
+package com.solvd.hospital;
+
 import com.solvd.hospital.PatientRecord.PatientRecord;
 import com.solvd.hospital.billing.Billing;
-import com.solvd.hospital.billing.IBilling;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.generatingData.GeneratingData;
-import com.solvd.hospital.medicalrecords.MedicalRecords;
-import com.solvd.hospital.patient.ExceptionHospitalAdmin;
-import com.solvd.hospital.patient.HospitalAdmin;
+import com.solvd.hospital.medicalrecords.MedicalRecord;
+import com.solvd.hospital.Admin.ExceptionHospitalAdmin;
+import com.solvd.hospital.Admin.HospitalAdmin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,7 +15,7 @@ import java.util.*;
 
 public class Hospital {
     private static final Logger logger = LogManager.getLogger(Hospital.class);
-    public static ArrayList<PatientRecord> patientRecords = new ArrayList<>();
+    public static ArrayList<PatientRecord> patientRecordList = new ArrayList<>();
     public static HashMap<String, PatientRecord> patientRecordHashMap = new HashMap<>();
     public static ArrayList<Doctor> doctorList = new ArrayList<>();
     public static Set<String> departmentNameList = new HashSet<>();
@@ -27,13 +28,13 @@ public class Hospital {
         Hospital hospital = new Hospital();
         GeneratingData data = new GeneratingData();
         try {
-            data.addPatientDetails(patientRecords, patientRecordHashMap); // add Patient Details
+            data.addPatientDetails(); // add Patient Details
             data.addDoctorDetails(doctorList, departmentNameList); // add Doctor details
             {
                 do {
                     admin.welcomePage();
                     option = in.nextInt();
-                    if (!(option >= 1) && !(option <= 9)) {
+                    if (!(option >= 1) || !(option <= 9)) {
                         throw new ExceptionHospitalAdmin("Invalid Input");
                     }
                     switch (option) {
@@ -86,16 +87,17 @@ public class Hospital {
         String patientId = admin.getPatientId();
         PatientRecord p = patientRecordHashMap.get(patientId);
         if (patientRecordHashMap.containsKey(patientId)) {
-            System.out.println(p.getPatientAssignedDoctor());
             if (p.getPatientAssignedDoctor()) {
                 p.printInformation();
                 logger.info("Enter the Prescriptions : y/n");
                 Scanner in = new Scanner(System.in);
                 String answer = in.next();
                 if (answer.equalsIgnoreCase("y")) {
-                    MedicalRecords medicalRecord = new MedicalRecords();
+                    MedicalRecord medicalRecord = new MedicalRecord();
                     medicalRecord.setPrescriptionStatus(true);
                     p.setMedicalRecords(medicalRecord);
+
+
                     patientRecordHashMap.put(patientId, p);
                     for (int doctorIndex = 0; doctorIndex < p.getAssignedDoctorList().size(); doctorIndex++) {
                         Doctor doctor = p.getAssignedDoctorList().get(doctorIndex);
@@ -108,6 +110,8 @@ public class Hospital {
                                     medicalRecord.setTestName("Blood Test");
                                     p.setMedicalRecords(medicalRecord);
                                     patientRecordHashMap.put(patientId, p);
+
+
                                     break;
                                 case 2:
                                     medicalRecord.setTestName("Laser Test");
@@ -150,7 +154,6 @@ public class Hospital {
                         }
                     }
                     p.printPatientMedicalRecords();
-                    logger.info(p);
                 } else if (answer.equalsIgnoreCase("n")) {
                     logger.info("Do not want to prescribe medication,  Enter the details again.");
                 }
@@ -161,16 +164,38 @@ public class Hospital {
             logger.info("Patient Not Found");
         }
     }
-
     private void generateBillForEachPatient() throws ExceptionHospitalAdmin { // Generate bill once only after assigning doctor to a patient
         HospitalAdmin admin = new HospitalAdmin();
         String patientId = admin.getPatientId();
         if (patientRecordHashMap.containsKey(patientId)) {
             PatientRecord p = patientRecordHashMap.get(patientId);
             if (p.getPatientAssignedDoctor()) {
-                IBilling billing = new Billing();
                 for (Doctor assignedDoctor : p.getAssignedDoctorList()) {
-                    billing.billNumberGenerated(patientId, patientRecordHashMap, assignedDoctor.getDepartmentInfo().getDepartmentCode(),billNumber);
+                        if (assignedDoctor.getDepartmentInfo().getDepartmentCode().equals("100")) {
+                            Billing billing = new Billing();
+                            billing.setBillingNumber(UUID.randomUUID().toString());
+                            logger.info("Bill Generated for the Patient : " + billing.getBillingNumber());
+                            p.setBillingsList(billing);
+                            patientRecordHashMap.put(patientId, p);
+                            billNumber.add(billing.getBillingNumber());
+                            logger.info("Co-pay amount for Dermatology visit: " + Billing.dermatologyCoPay);
+                        } else if (assignedDoctor.getDepartmentInfo().getDepartmentCode().equals("101")) {
+                            Billing billing = new Billing();
+                            billing.setBillingNumber(UUID.randomUUID().toString());
+                            logger.info("Bill Generated for the Patient : " + billing.getBillingNumber());
+                            p.setBillingsList(billing);
+                            patientRecordHashMap.put(patientId, p);
+                            billNumber.add(billing.getBillingNumber());
+                            logger.info("Co-pay amount for Otolaryngology visit: " + Billing.OtolaryngologyCoPay);
+                        } else if (assignedDoctor.getDepartmentInfo().getDepartmentCode().equals("102")) {
+                            Billing billing = new Billing();
+                            billing.setBillingNumber(UUID.randomUUID().toString());
+                            logger.info("Bill Generated for the Patient : " + billing.getBillingNumber());
+                            p.setBillingsList(billing);
+                            patientRecordHashMap.put(patientId, p);
+                            billNumber.add(billing.getBillingNumber());
+                            logger.info("Co-pay amount for Orthopedic visit: " + Billing.OrthopedicCoPay);
+                        }
                 }
             } else {
                 logger.info("Patient did not visit the hospital yet");
@@ -200,7 +225,7 @@ public class Hospital {
             PatientRecord p = patientRecordHashMap.get(patientId);
             if(!p.getPatientAssignedDoctor())
             {
-                String patientSymptom = p.getCategory().getPatientSymtom();
+                String patientSymptom = p.getPatient().getSymptoms().getPatientSymptom();
                 logger.info("Patient Symptoms: " + patientSymptom);
                 logger.info("Do you want to make appointment?  Y/N ");
                 String answer = in.next();
@@ -248,7 +273,6 @@ public class Hospital {
         logger.info("Printing Patient Details");
         for (String patientId : patientRecordHashMap.keySet()) {
             patientRecordHashMap.get(patientId).printInformation();
-//            p.printInformation(); // displays only patient records abstract method overloading
         }
     }
 

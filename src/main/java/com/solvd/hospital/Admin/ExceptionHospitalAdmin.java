@@ -1,4 +1,4 @@
-package com.solvd.hospital.patient;
+package com.solvd.hospital.Admin;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

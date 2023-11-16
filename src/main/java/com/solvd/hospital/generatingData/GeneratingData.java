@@ -1,99 +1,137 @@
 package com.solvd.hospital.generatingData;
 
+import com.solvd.hospital.Hospital;
 import com.solvd.hospital.PatientRecord.PatientRecord;
 import com.solvd.hospital.department.Department;
 import com.solvd.hospital.doctor.Doctor;
-import com.solvd.hospital.medicalCategory.MedicalCategory;
+import com.solvd.hospital.medicalrecords.Symptoms;
+import com.solvd.hospital.patient.Patient;
+import com.solvd.hospital.person.Person;
 import com.solvd.hospital.personalInformation.ExceptionPersonalInformation;
+import com.solvd.hospital.personalInformation.Parameter;
+import com.solvd.hospital.personalInformation.PersonalInformation;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Set;
 
 public class GeneratingData {
 
-    public void addPatientDetails(ArrayList<PatientRecord> patientList, HashMap<String, PatientRecord> patientRecordHashMap) throws ExceptionPersonalInformation {
+    public void addPatientDetails() throws ExceptionPersonalInformation {
 
-        PatientRecord p = new PatientRecord();
-        MedicalCategory category = new MedicalCategory();
-        p.setFirstName("Ashok");
-        p.setGender("M");
-        p.setAge(20);
-        p.setContactNumber("2222222222");
-        p.setEmailAddress("ashokkumar@gmail.com");
-        p.setPatientId("1000");
-        category.setPatientSymtom("Skin Infection");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
-
-
-        p = new PatientRecord();
-        category = new MedicalCategory();
-        p.setFirstName("Anand");
-        p.setGender("M");
-        p.setAge(25);
-        p.setContactNumber("3333333333");
-        p.setEmailAddress("anandlakshman@gmail.com");
-        p.setPatientId("1001");
-        category.setPatientSymtom("Neck pain");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
-
-        p = new PatientRecord();
-        category = new MedicalCategory();
-        p.setFirstName("Abi");
-        p.setGender("F");
-        p.setAge(28);
-        p.setContactNumber("4444444444");
-        p.setEmailAddress("abishekar@gmail.com");
-        p.setPatientId("1002");
-        category.setPatientSymtom("Ear Fluid");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
-
-        p = new PatientRecord();
-        category = new MedicalCategory();
-        p.setFirstName("Ranjith");
-        p.setGender("M");
-        p.setAge(30);
-        p.setContactNumber("8888888888");
-        p.setEmailAddress("ranjith@gmail.com");
-        p.setPatientId("1003");
-        category.setPatientSymtom("Ear Pain");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
+        Parameter<PersonalInformation> parameter = new Parameter<>();
+        PatientRecord patientRecord = new PatientRecord();
+        Person person = new Person();
+        Symptoms symptoms = new Symptoms();
+        Patient patient = new Patient();
+        person.setFirstName("Ashok");
+        person.setGender("M");
+        person.setContactNumber("2222222222");
+        person.setEmailAddress("ashokkumar@gmail.com");
+        parameter.setObj(person);
+        symptoms.setPatientSymptom("Skin Infection");
+        patient.setPatientId("1000");
+        patient.setSymptoms(symptoms);
+        patient.setPerson(person);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
 
 
-        p = new PatientRecord();
-        category = new MedicalCategory();
-        p.setFirstName("Anil");
-        p.setGender("M");
-        p.setAge(30);
-        p.setContactNumber("7898653221");
-        p.setEmailAddress("anilkumar@gmail.com");
-        p.setPatientId("1004");
-        category.setPatientSymtom("Ear Infection");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
-
-
-        p = new PatientRecord();
-        category = new MedicalCategory();
-        p.setFirstName("arav");
-        p.setGender("M");
-        p.setAge(30);
-        p.setContactNumber("8979898989");
-        p.setEmailAddress("anilkumar@gmail.com");
-        p.setPatientId("1004");
-        category.setPatientSymtom("stomach Infection");
-        p.setCategory(category);
-        patientList.add(p);
-        patientRecordHashMap.put(p.getPatientId(), p);
+//        PatientRecord patientRecord = new PatientRecord();
+//        Person person = new Person();
+//        Symptoms symptoms = new Symptoms();
+//        Patient patient = new Patient();
+//        person.setFirstName("Ashok");
+//        person.setGender("M");
+////        person.setAge(20);
+//        person.setContactNumber("2222222222");
+//        person.setEmailAddress("ashokkumar@gmail.com");
+//        symptoms.setPatientSymptom("Skin Infection");
+//        patient.setPatientId("1000");
+//        patient.setSymptoms(symptoms);
+//        patient.setPerson(person);
+//        patientRecord.setPatient(patient);
+//        Hospital.patientRecordList.add(patientRecord);
+//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+//
+//
+//        patientRecord = new PatientRecord();
+//        person = new Person();
+//        symptoms = new Symptoms();
+//        patient = new Patient();
+//        person.setFirstName("Anand");
+//        person.setGender("M");
+////        person.setAge(25);
+//        person.setContactNumber("3333333333");
+//        person.setEmailAddress("anandlakshman@gmail.com");
+//        patient.setPatientId("1001");
+//        symptoms.setPatientSymptom("Neck pain");
+//        patient.setSymptoms(symptoms);
+//        patient.setPerson(person);
+//        patientRecord.setPatient(patient);
+//        Hospital.patientRecordList.add(patientRecord);
+//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+//
+//        patientRecord = new PatientRecord();
+//        person = new Person();
+//        symptoms = new Symptoms();
+//        person.setFirstName("Abi");
+//        person.setGender("F");
+////        p.setAge(28);
+//        person.setContactNumber("4444444444");
+//        person.setEmailAddress("abishekar@gmail.com");
+//        patient.setPatientId("1002");
+//        symptoms.setPatientSymptom("Ear Fluid");
+//        patient.setSymptoms(symptoms);
+//        patient.setPerson(person);
+//        patientRecord.setPatient(patient);
+//        Hospital.patientRecordList.add(patientRecord);
+//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+//
+//
+//        patientRecord = new PatientRecord();
+//        symptoms = new Symptoms();
+//        person = new Person();
+//        person.setFirstName("Ranjith");
+//        person.setGender("M");
+////        person.setAge(30);
+//        person.setContactNumber("8888888888");
+//        person.setEmailAddress("ranjith@gmail.com");
+//        patient.setPatientId("1003");
+//        symptoms.setPatientSymptom("Ear Pain");
+//        patient.setSymptoms(symptoms);
+//        patient.setPerson(person);
+//        patientRecord.setPatient(patient);
+//        Hospital.patientRecordList.add(patientRecord);
+//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+//
+//
+//        p = new PatientRecord();
+//        symptoms = new MedicalCategory();
+//        p.setFirstName("Anil");
+//        p.setGender("M");
+//        p.setAge(30);
+//        p.setContactNumber("7898653221");
+//        p.setEmailAddress("anilkumar@gmail.com");
+//        p.setPatientId("1004");
+//        symptoms.setPatientSymtom("Ear Infection");
+//        p.setCategory(symptoms);
+//        patientRecordList.add(p);
+//        patientRecordHashMap.put(p.getPatientId(), p);
+//
+//
+//        p = new PatientRecord();
+//        symptoms = new MedicalCategory();
+//        p.setFirstName("arav");
+//        p.setGender("M");
+//        p.setAge(30);
+//        p.setContactNumber("8979898989");
+//        p.setEmailAddress("anilkumar@gmail.com");
+//        p.setPatientId("1004");
+//        symptoms.setPatientSymtom("stomach Infection");
+//        p.setCategory(symptoms);
+//        patientRecordList.add(p);
+//        patientRecordHashMap.put(p.getPatientId(), p);
 
     }
 
@@ -107,13 +145,10 @@ public class GeneratingData {
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
         departmentNameList.add(dep.getDepartmentName());
-
-
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setTreatableSymptom("Skin pigmentation");
-
         doctor.setDepartmentInfo(dep);
         doctorList.add(doctor);
 
@@ -124,7 +159,6 @@ public class GeneratingData {
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear blocked");
         doctor.setContactNumber("7887877845");
@@ -138,7 +172,6 @@ public class GeneratingData {
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("Neck pain");
         doctor.setTreatableSymptom("Back Pain");
@@ -153,7 +186,6 @@ public class GeneratingData {
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setContactNumber("5432659887");
@@ -167,7 +199,6 @@ public class GeneratingData {
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Fluid");
         doctor.setContactNumber("6532655487");
@@ -181,7 +212,6 @@ public class GeneratingData {
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setContactNumber("326598875421");
         doctor.setDepartmentInfo(dep);
         doctorList.add(doctor);
@@ -193,7 +223,6 @@ public class GeneratingData {
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setDepartmentInfo(dep);
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
@@ -209,7 +238,6 @@ public class GeneratingData {
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Pain");
         doctor.setContactNumber("9887656598");
@@ -223,7 +251,6 @@ public class GeneratingData {
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
         departmentNameList.add(dep.getDepartmentName());
-
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("wrist Pain");
         doctor.setContactNumber("989898659887");

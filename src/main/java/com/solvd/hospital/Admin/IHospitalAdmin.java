@@ -1,4 +1,4 @@
-package com.solvd.hospital.patient;
+package com.solvd.hospital.Admin;
 
 public interface IHospitalAdmin {
     void welcomePage();

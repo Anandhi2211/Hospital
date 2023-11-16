@@ -1,18 +1,21 @@
 package com.solvd.hospital.medicalrecords;
 
-public  class MedicalRecords {
+public class MedicalRecord {
+
     private Boolean prescriptionStatus;
     private String testName;
 
     public Boolean getPrescriptionStatus() {
-        return prescriptionStatus;
+        return this.prescriptionStatus;
     }
 
     public void setPrescriptionStatus(Boolean prescriptionStatus) {
-        prescriptionStatus = prescriptionStatus;
+
+        this.prescriptionStatus = prescriptionStatus;
     }
+
     public String getTestName() {
-        return testName;
+        return this.testName;
     }
 
     public void setTestName(String testName) {
