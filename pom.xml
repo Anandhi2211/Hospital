@@ -1,32 +1,38 @@
 <project>
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>com.solvd</groupId>
     <artifactId>Hospital</artifactId>
     <version>1</version>
-
     <packaging>jar</packaging>
 
     <properties>
-        <mavenVersion>3.9.5</mavenVersion>
+        <log4jVersion>2.21.1</log4jVersion>
     </properties>
 
     <dependencies>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.21.1</version>
+            <version>${log4jVersion}</version>
         </dependency>
-
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
-            <version>2.21.1</version>
+            <version>${log4jVersion}</version>
         </dependency>
-
-
     </dependencies>
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+            <source>11.0.20</source>
+                <target>11.0.20</target>
+            </configuration>
 
-
+        </plugin>
+    </plugins>
+</build>
 </project>
