@@ -10,15 +10,40 @@ public class Department extends Doctor {
         return this.departmentName;
     }
 
-    public String getDepartmentCode() {
-        return this.departmentCode;
-    }
-
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
 
+    public String getDepartmentCode() {
+        return this.departmentCode;
+    }
+
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
+    }
+
+    @Override
+    public String toString() {
+        return "Department{" +
+                "departmentName='" + this.getDepartmentName() + '\'' +
+                ", departmentCode='" + this.getDepartmentCode() + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null || obj.getClass() != this.getClass())
+            return false;
+        return (this.departmentCode.equals(((Department) obj).getDepartmentCode()) &&
+
+                this.departmentName.equals(((Department) obj).getDepartmentName()));
+    }
+
+    @Override
+    public int hashCode() {
+        return departmentName.hashCode() ^ departmentCode.hashCode();
     }
 }
