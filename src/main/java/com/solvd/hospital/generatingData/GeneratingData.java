@@ -4,138 +4,184 @@ import com.solvd.hospital.Hospital;
 import com.solvd.hospital.PatientRecord.PatientRecord;
 import com.solvd.hospital.department.Department;
 import com.solvd.hospital.doctor.Doctor;
+import com.solvd.hospital.insurance.Insurance;
 import com.solvd.hospital.medicalrecords.Symptoms;
 import com.solvd.hospital.patient.Patient;
-import com.solvd.hospital.person.Person;
 import com.solvd.hospital.personalInformation.ExceptionPersonalInformation;
-import com.solvd.hospital.personalInformation.Parameter;
-import com.solvd.hospital.personalInformation.PersonalInformation;
-
-import java.util.ArrayList;
-import java.util.Set;
 
 public class GeneratingData {
 
     public void addPatientDetails() throws ExceptionPersonalInformation {
 
-        Parameter<PersonalInformation> parameter = new Parameter<>();
         PatientRecord patientRecord = new PatientRecord();
-        Person person = new Person();
         Symptoms symptoms = new Symptoms();
         Patient patient = new Patient();
-        person.setFirstName("Ashok");
-        person.setGender("M");
-        person.setContactNumber("2222222222");
-        person.setEmailAddress("ashokkumar@gmail.com");
-        parameter.setObj(person);
+        Insurance insurance = new Insurance();
+        patient.setFirstName("Ashok");
+        patient.setGender("M");
+        patient.setContactNumber("2222222222");
+        patient.setEmailAddress("ashokkumar@gmail.com");
+        patient.setAnnualIncome("40000");
+        insurance.setInsuranceName("cigna");
+        insurance.setInsuranceNumber("459878");
+        patient.setInsurance(insurance);
         symptoms.setPatientSymptom("Skin Infection");
-        patient.setPatientId("1000");
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
         patient.setSymptoms(symptoms);
-        patient.setPerson(person);
         patientRecord.setPatient(patient);
         Hospital.patientRecordList.add(patientRecord);
         Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
 
+        patientRecord = new PatientRecord();
+        symptoms = new Symptoms();
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Anand");
+        patient.setGender("M");
+        patient.setContactNumber("3333333333");
+        patient.setEmailAddress("anandlakshman@gmail.com");
+        patient.setAnnualIncome("50000");
+        insurance.setInsuranceName("Anthem");
+        insurance.setInsuranceNumber("123265");
+        patient.setInsurance(insurance);
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
+        symptoms.setPatientSymptom("Neck pain");
+        patient.setSymptoms(symptoms);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
 
-//        PatientRecord patientRecord = new PatientRecord();
-//        Person person = new Person();
-//        Symptoms symptoms = new Symptoms();
-//        Patient patient = new Patient();
-//        person.setFirstName("Ashok");
-//        person.setGender("M");
-////        person.setAge(20);
-//        person.setContactNumber("2222222222");
-//        person.setEmailAddress("ashokkumar@gmail.com");
-//        symptoms.setPatientSymptom("Skin Infection");
-//        patient.setPatientId("1000");
-//        patient.setSymptoms(symptoms);
-//        patient.setPerson(person);
-//        patientRecord.setPatient(patient);
-//        Hospital.patientRecordList.add(patientRecord);
-//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
-//
-//
-//        patientRecord = new PatientRecord();
-//        person = new Person();
-//        symptoms = new Symptoms();
-//        patient = new Patient();
-//        person.setFirstName("Anand");
-//        person.setGender("M");
-////        person.setAge(25);
-//        person.setContactNumber("3333333333");
-//        person.setEmailAddress("anandlakshman@gmail.com");
-//        patient.setPatientId("1001");
-//        symptoms.setPatientSymptom("Neck pain");
-//        patient.setSymptoms(symptoms);
-//        patient.setPerson(person);
-//        patientRecord.setPatient(patient);
-//        Hospital.patientRecordList.add(patientRecord);
-//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
-//
-//        patientRecord = new PatientRecord();
-//        person = new Person();
-//        symptoms = new Symptoms();
-//        person.setFirstName("Abi");
-//        person.setGender("F");
-////        p.setAge(28);
-//        person.setContactNumber("4444444444");
-//        person.setEmailAddress("abishekar@gmail.com");
-//        patient.setPatientId("1002");
-//        symptoms.setPatientSymptom("Ear Fluid");
-//        patient.setSymptoms(symptoms);
-//        patient.setPerson(person);
-//        patientRecord.setPatient(patient);
-//        Hospital.patientRecordList.add(patientRecord);
-//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
-//
-//
-//        patientRecord = new PatientRecord();
-//        symptoms = new Symptoms();
-//        person = new Person();
-//        person.setFirstName("Ranjith");
-//        person.setGender("M");
-////        person.setAge(30);
-//        person.setContactNumber("8888888888");
-//        person.setEmailAddress("ranjith@gmail.com");
-//        patient.setPatientId("1003");
-//        symptoms.setPatientSymptom("Ear Pain");
-//        patient.setSymptoms(symptoms);
-//        patient.setPerson(person);
-//        patientRecord.setPatient(patient);
-//        Hospital.patientRecordList.add(patientRecord);
-//        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
-//
-//
-//        p = new PatientRecord();
-//        symptoms = new MedicalCategory();
-//        p.setFirstName("Anil");
-//        p.setGender("M");
-//        p.setAge(30);
-//        p.setContactNumber("7898653221");
-//        p.setEmailAddress("anilkumar@gmail.com");
-//        p.setPatientId("1004");
-//        symptoms.setPatientSymtom("Ear Infection");
-//        p.setCategory(symptoms);
-//        patientRecordList.add(p);
-//        patientRecordHashMap.put(p.getPatientId(), p);
-//
-//
-//        p = new PatientRecord();
-//        symptoms = new MedicalCategory();
-//        p.setFirstName("arav");
-//        p.setGender("M");
-//        p.setAge(30);
-//        p.setContactNumber("8979898989");
-//        p.setEmailAddress("anilkumar@gmail.com");
-//        p.setPatientId("1004");
-//        symptoms.setPatientSymtom("stomach Infection");
-//        p.setCategory(symptoms);
-//        patientRecordList.add(p);
-//        patientRecordHashMap.put(p.getPatientId(), p);
+        patientRecord = new PatientRecord();
+        patient = new Patient();
+        symptoms = new Symptoms();
+        insurance = new Insurance();
+        patient.setFirstName("Abi");
+        patient.setGender("F");
+        patient.setContactNumber("4444444444");
+        patient.setEmailAddress("abishekar@gmail.com");
+        patient.setAnnualIncome("120000");
+        insurance.setInsuranceName("medicaid");
+        insurance.setInsuranceNumber("659865");
+        patient.setInsurance(insurance);
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
+        symptoms.setPatientSymptom("Ear Fluid");
+        patient.setSymptoms(symptoms);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
 
+        patientRecord = new PatientRecord();
+        symptoms = new Symptoms();
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Ranjith");
+        patient.setGender("M");
+        patient.setContactNumber("8888888888");
+        patient.setEmailAddress("ranjith@gmail.com");
+        patient.setAnnualIncome("100000");
+        insurance.setInsuranceName("carePlus");
+        insurance.setInsuranceNumber("852541");
+        patient.setInsurance(insurance);
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
+        symptoms.setPatientSymptom("Ear Pain");
+        patient.setSymptoms(symptoms);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+
+        patientRecord = new PatientRecord();
+        symptoms = new Symptoms();
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Anil");
+        patient.setGender("M");
+        patient.setContactNumber("7898653221");
+        patient.setEmailAddress("anilkumar@gmail.com");
+        patient.setAnnualIncome("90000");
+        insurance.setInsuranceName("cigna");
+        insurance.setInsuranceNumber("986695");
+        patient.setInsurance(insurance);
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
+        symptoms.setPatientSymptom("Ear Infection");
+        patient.setSymptoms(symptoms);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
+
+        patientRecord = new PatientRecord();
+        symptoms = new Symptoms();
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("arav");
+        patient.setGender("M");
+        patient.setContactNumber("8979898989");
+        patient.setEmailAddress("anilkumar@gmail.com");
+        patient.setAnnualIncome("150000");
+        insurance.setInsuranceName("Anthem");
+        insurance.setInsuranceNumber("6598696");
+        patient.setInsurance(insurance);
+        patient.setPatientId(String.valueOf(Hospital.patientId+1));
+        symptoms.setPatientSymptom("stomach Infection");
+        patient.setSymptoms(symptoms);
+        patientRecord.setPatient(patient);
+        Hospital.patientRecordList.add(patientRecord);
+        Hospital.patientRecordHashMap.put(patient.getPatientId(), patientRecord);
     }
 
-    public void addDoctorDetails(ArrayList<Doctor> doctorList, Set<String> departmentNameList) throws ExceptionPersonalInformation {
+    public void addNewPatientList() {
+
+        Patient patient = new Patient();
+        Insurance insurance = new Insurance();
+        patient.setFirstName("Lakshmi");
+        patient.setGender("F");
+        patient.setContactNumber("9897786545");
+        patient.setEmailAddress("laksmi@gmail.com");
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName("cigna");
+        patient.setInsurance(insurance);
+        Hospital.newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Nithya");
+        patient.setGender("F");
+        patient.setContactNumber("9897786545");
+        patient.setEmailAddress("Nithya@gmail.com");
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName("cigna");
+        patient.setInsurance(insurance);
+        Hospital.newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Hema");
+        patient.setGender("F");
+        patient.setContactNumber("9897786545");
+        patient.setEmailAddress("hema@gmail.com");
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName("cigna");
+        patient.setInsurance(insurance);
+        Hospital.newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        patient.setFirstName("Chandru");
+        patient.setGender("F");
+        patient.setContactNumber("9897786545");
+        patient.setEmailAddress("chan@gmail.com");
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName("cigna");
+        patient.setInsurance(insurance);
+        Hospital.newPatientList.add(patient);
+
+
+
+    }
+    public void addDoctorDetails() throws ExceptionPersonalInformation {
 
         Doctor doctor = new Doctor();
         Department dep = new Department();
@@ -144,13 +190,13 @@ public class GeneratingData {
         doctor.setFirstName("Ram");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setTreatableSymptom("Skin pigmentation");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -158,12 +204,12 @@ public class GeneratingData {
         doctor.setFirstName("Kiran");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear blocked");
         doctor.setContactNumber("7887877845");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -171,13 +217,13 @@ public class GeneratingData {
         doctor.setFirstName("Selva");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("Neck pain");
         doctor.setTreatableSymptom("Back Pain");
         doctor.setContactNumber("8998653265");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -185,12 +231,12 @@ public class GeneratingData {
         doctor.setFirstName("Tony");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setContactNumber("5432659887");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -198,12 +244,12 @@ public class GeneratingData {
         doctor.setFirstName("Som");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Fluid");
         doctor.setContactNumber("6532655487");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -211,10 +257,10 @@ public class GeneratingData {
         doctor.setFirstName("Jothi");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setContactNumber("326598875421");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -222,14 +268,14 @@ public class GeneratingData {
         doctor.setFirstName("Poonam");
         dep.setDepartmentCode("100");
         dep.setDepartmentName("Dermatology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setDepartmentInfo(dep);
         doctor.setTreatableSymptom("Skin Infection");
         doctor.setTreatableSymptom("Skin Rashes");
         doctor.setTreatableSymptom("Tan Removal");
         doctor.setTreatableSymptom("Skin pigmentation");
         doctor.setContactNumber("6598875421");
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -237,12 +283,12 @@ public class GeneratingData {
         doctor.setFirstName("Geetha");
         dep.setDepartmentCode("101");
         dep.setDepartmentName("Otolaryngology");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Ear Infection");
         doctor.setTreatableSymptom("Ear Pain");
         doctor.setContactNumber("9887656598");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
+        Hospital.doctorList.add(doctor);
 
         doctor = new Doctor();
         dep = new Department();
@@ -250,12 +296,11 @@ public class GeneratingData {
         doctor.setFirstName("Raju");
         dep.setDepartmentCode("102");
         dep.setDepartmentName("Orthopedic");
-        departmentNameList.add(dep.getDepartmentName());
+        Hospital.departmentList.add(dep);
         doctor.setTreatableSymptom("Knee Pain");
         doctor.setTreatableSymptom("wrist Pain");
         doctor.setContactNumber("989898659887");
         doctor.setDepartmentInfo(dep);
-        doctorList.add(doctor);
-
+        Hospital.doctorList.add(doctor);
     }
 }

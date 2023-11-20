@@ -14,11 +14,16 @@ public class PatientRecord implements IMedicalRecords {
     private static final Logger logger = LogManager.getLogger(PatientRecord.class);
 
 
-    private Patient patient ;
-    private Boolean prescriptionStatus;
+    private Patient patient;
     private ArrayList<Billing> billingsList;
     private ArrayList<Doctor> assignedDoctorList;
     private ArrayList<MedicalRecord> medicalRecordList;
+    private Boolean patientAssignedDoctor = false;
+    private MedicalRecord medicalRecord = new MedicalRecord();
+
+    public PatientRecord() {
+
+    }
 
     public Patient getPatient() {
         return this.patient;
@@ -27,22 +32,6 @@ public class PatientRecord implements IMedicalRecords {
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
-
-    private Boolean patientAssignedDoctor = false;
-
-//    public Boolean getPrescriptionStatus() {
-//        return this.prescriptionStatus;
-//    }
-
-//    public void setPrescriptionStatus(Boolean prescriptionStatus) {
-//        this.prescriptionStatus = prescriptionStatus;
-//    }
-
-    private MedicalRecord medicalRecord = new MedicalRecord();
-
-    public PatientRecord() {
-    }
-
 
     public ArrayList<Billing> getBillingsList() {
 
@@ -110,11 +99,12 @@ public class PatientRecord implements IMedicalRecords {
         if (medicalRecordList != null) {
             for (MedicalRecord medicalRecord : medicalRecordList) {
 //               medicalRecords.setPrescriptionStatus(true);
-               status = true;
+                status = true;
             }
         }
-        return status ;
+        return status;
     }
+
     public String printTestName() {
         String testName = "No Test is assigned";
         if (medicalRecordList != null) {
@@ -134,23 +124,26 @@ public class PatientRecord implements IMedicalRecords {
         }
         return billNumber;
     }
+
     public String toString() {
-        return  "\tPatient Id: " +  this.getPatient().getPatientId() +"\n" +
+        return "\tPatient Id: " + this.getPatient().getPatientId() + "\n" +
                 "\tDoctor Id: " + this.printDoctorInfo() + "\n" +
-                "\tFirst Name: " + this.getPatient().getPerson().getFirstName()+ "\n" +
-                "\tGender: " + this.getPatient().getPerson().getGender() + "\n" +
-//                "\tAge: " + this.getPatient().getPerson().getAge() + "\n" +
-                "\tContact Number: " + this.getPatient().getPerson().getContactNumber() + "\n" +
-                "\tEmail Address: " + this.getPatient().getPerson().getEmailAddress() + "\n" +
-                "\tIllness Category: " + this.getPatient().getSymptoms().getPatientSymptom()+ "\n" +
+                "\tFirst Name: " + this.getPatient().getFirstName() + "\n" +
+                "\tGender: " + this.getPatient().getGender() + "\n" +
+                "\tContact Number: " + this.getPatient().getContactNumber() + "\n" +
+                "\tEmail Address: " + this.getPatient().getEmailAddress() + "\n" +
+                "\tInsurance Name: " + this.getPatient().getInsurance().getInsuranceName() + "\n" +
+                "\tInsurance Number: " + this.getPatient().getInsurance().getInsuranceNumber() + "\n" +
+                "\tAnnual Income : " + this.getPatient().getAnnualIncome()+ "\n" +
+                "\tIllness Category: " + this.getPatient().getSymptoms().getPatientSymptom() + "\n" +
                 "\tVisited status: " + this.getPatientAssignedDoctor() + "\n" +
                 "\tPrescription Status: " + this.printPrescriptionStatus() + "\n" +
-                "\tTest Name: " + this.printTestName() + "\n" ;
+                "\tTest Name: " + this.printTestName() + "\n";
     }
 
     public void printInformation() {
         logger.info("Patient Id: " + this.getPatient().getPatientId());
-        logger.info("Patient Name: " + this.getPatient().getPerson().getFirstName());
+        logger.info("Patient Name: " + this.getPatient().getFirstName());
         logger.info("Patient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
     }
 
@@ -158,13 +151,12 @@ public class PatientRecord implements IMedicalRecords {
     public void printPatientMedicalRecords() {
 
         logger.info("Patient Id: " + this.getPatient().getPatientId());
-        logger.info("Patient Name: " + this.getPatient().getPerson().getFirstName());
+        logger.info("Patient Name: " + this.getPatient().getFirstName());
         logger.info("Patient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
-        for(MedicalRecord record : medicalRecordList)
-        {
+        for (MedicalRecord record : medicalRecordList) {
             logger.info("Patient Test Name: " + record.getTestName());
             logger.info("Patient Prescription Status: " + record.getPrescriptionStatus());
-    }
+        }
 
     }
 }

@@ -1,6 +1,6 @@
 package com.solvd.hospital.personalInformation;
 
-public class Parameter <T>{
+public class Parameter<T> {
 
 
     T obj;
@@ -16,8 +16,6 @@ public class Parameter <T>{
     public void setObj(T obj) {
         this.obj = obj;
     }
-
-
 
 
 }
