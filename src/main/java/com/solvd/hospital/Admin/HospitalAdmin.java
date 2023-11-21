@@ -1,16 +1,13 @@
-package com.solvd.hospital.Admin;
+package com.solvd.hospital.admin;
 
 import com.solvd.hospital.medicalrecords.IMedicalRecords;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
     private static final Logger logger = LogManager.getLogger(HospitalAdmin.class);
-    Scanner in = new Scanner(System.in);
-
     @Override
     public void welcomePage() {
         logger.info("Welcome to Hospital Portal!");
@@ -26,19 +23,19 @@ public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
         logger.info("Exit Portal -- option 9");
         logger.info("Please Enter your option");
     }
-
     public String getPatientId() throws ExceptionHospitalAdmin {
-
+        Scanner in = new Scanner(System.in);
         logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
         String patientId = in.next();
         String regex = "[0-9]+";
         if (!Pattern.matches(regex, patientId)) {
+
             throw new ExceptionHospitalAdmin("Not Valid Id");
         } else {
+
             return patientId;
         }
     }
-
     @Override
     public void printPatientMedicalRecords() {
     }

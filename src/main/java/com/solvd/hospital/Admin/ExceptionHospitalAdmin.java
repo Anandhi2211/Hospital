@@ -1,11 +1,6 @@
-package com.solvd.hospital.Admin;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+package com.solvd.hospital.admin;
 
 public class ExceptionHospitalAdmin extends RuntimeException {
-    private static final Logger logger = LogManager.getLogger(ExceptionHospitalAdmin.class);
-
     public ExceptionHospitalAdmin(String message) {
         super(message);
     }

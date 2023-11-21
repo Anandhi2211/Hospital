@@ -1,15 +1,15 @@
 package com.solvd.hospital;
 
-import com.solvd.hospital.Admin.ExceptionHospitalAdmin;
-import com.solvd.hospital.Admin.HospitalAdmin;
-import com.solvd.hospital.PatientRecord.PatientRecord;
+import com.solvd.hospital.admin.ExceptionHospitalAdmin;
+import com.solvd.hospital.admin.HospitalAdmin;
 import com.solvd.hospital.billing.Billing;
 import com.solvd.hospital.department.Department;
 import com.solvd.hospital.doctor.Doctor;
-import com.solvd.hospital.generatingData.GeneratingData;
+import com.solvd.hospital.generatingdata.GeneratingData;
 import com.solvd.hospital.medicalrecords.MedicalRecord;
 import com.solvd.hospital.medicalrecords.Symptoms;
 import com.solvd.hospital.patient.Patient;
+import com.solvd.hospital.patientrecord.PatientRecord;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,7 +17,6 @@ import java.util.*;
 
 
 public class Hospital {
-
     public static Integer patientId = 1000;
     private static final Logger logger = LogManager.getLogger(Hospital.class);
     public static ArrayList<PatientRecord> patientRecordList = new ArrayList<>();
@@ -26,8 +25,6 @@ public class Hospital {
     public static HashSet<Department> departmentList = new HashSet<>();
     public static HashSet<Billing> billNumbers = new HashSet<>();
     public static HashSet<Patient> newPatientList = new HashSet<>();
-
-
     public static void main(String[] args) {
         int option;
         Scanner in = new Scanner(System.in);
@@ -49,7 +46,6 @@ public class Hospital {
                             hospital.printPatientDetails();
                             hospital.printDoctorDetails();
                             hospital.printDepartmentInfo();
-
                             break;
                         case 2:
                             hospital.assignDoctorToPatient();
@@ -83,11 +79,11 @@ public class Hospital {
                 } while (option < 9);
             }
         } finally {
+            in.close();
             logger.info("Finally No Exception found");
         }
     }
-
-    private void newPatientList() {
+    private void newPatientList()  {
         logger.info("Do you want add to the patient List  Y/N ");
         Iterator iterator = newPatientList.iterator();
         while (iterator.hasNext()) {
@@ -117,7 +113,6 @@ public class Hospital {
     private void printAllPatientRecords() {
         logger.info(patientRecordHashMap);
     }
-
     private void doctorPrescribingPatient() throws ExceptionHospitalAdmin { //Doctor Prescribes Test for the patient
         HospitalAdmin admin = new HospitalAdmin();
         String patientId = admin.getPatientId();
@@ -210,7 +205,6 @@ public class Hospital {
                         logger.info("Bill Generated for the Patient : " + billing.getBillingNumber());
                         p.setBillingsList(billing);
                         patientRecordHashMap.put(patientId, p);
-//                        billNumber.add(billing.getBillingNumber());
                         billNumbers.add(billing);
                         logger.info("Co-pay amount for Dermatology visit: " + Billing.dermatologyCoPay);
                     } else if (assignedDoctor.getDepartmentInfo().getDepartmentCode().equals("101")) {
@@ -252,7 +246,6 @@ public class Hospital {
     }
 
     private void assignDoctorToPatient() throws ExceptionHospitalAdmin { // Checks the symptoms and assign doctor to a patient
-        Scanner in = new Scanner(System.in);
         HospitalAdmin admin = new HospitalAdmin();
         String patientId = admin.getPatientId();
         if (patientRecordHashMap.containsKey(patientId)) {
@@ -260,8 +253,9 @@ public class Hospital {
             if (!p.getPatientAssignedDoctor()) {
                 String patientSymptom = p.getPatient().getSymptoms().getPatientSymptom();
                 logger.info("Patient Symptoms: " + patientSymptom);
-                logger.info("Do you want to make appointment?  Y/N ");
-                String answer = in.next();
+                logger.info("Do you want to make appointment?  Y/N");
+                Scanner in = new Scanner(System.in);
+                String answer =in.next();
                 if (!answer.equals("Y") && (!answer.equals("y") && (!answer.equals("N")) && (!answer.equals("n")))) {
                     throw new ExceptionHospitalAdmin("Inside Exception Enter either y/n");
                 } else {
@@ -286,7 +280,7 @@ public class Hospital {
                     }
                 }
             }
-            if (p.getPatientAssignedDoctor()) {
+            else if (p.getPatientAssignedDoctor()) {
                 logger.info("Already Doctor Assigned for the Patient");
             }
         } else {
@@ -301,25 +295,20 @@ public class Hospital {
             doc.printInformation(); // displays only Doctor Details name abstract method overloading
         }
     }
-
     private void printPatientDetails() { // Prints the Patient Details(Name, ID and Symptoms
         logger.info("Printing Patient Details");
         for (String patientId : patientRecordHashMap.keySet()) {
             patientRecordHashMap.get(patientId).printInformation();
         }
     }
-
     private void printAllBillNumber() throws ExceptionHospitalAdmin {
         logger.info("Entire Bill List");
-        Iterator iterator = billNumbers.iterator();
-        while (iterator.hasNext()) {
-            logger.info(iterator.next());
+        for (Billing billNumber : billNumbers) {
+            logger.info(billNumber);
         }
     }
-
     private void printDepartmentInfo() {
         logger.info("Departments in the Hospital");
         logger.info(departmentList);
-
     }
 }
