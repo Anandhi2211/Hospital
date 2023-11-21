@@ -1,4 +1,4 @@
-package com.solvd.hospital.personalInformation;
+package com.solvd.hospital.personalinformation;
 
 public class Parameter<T> {
 

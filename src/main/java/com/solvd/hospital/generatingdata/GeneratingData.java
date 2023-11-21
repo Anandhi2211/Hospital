@@ -1,18 +1,14 @@
-package com.solvd.hospital.generatingData;
-
+package com.solvd.hospital.generatingdata;
 import com.solvd.hospital.Hospital;
-import com.solvd.hospital.PatientRecord.PatientRecord;
+import com.solvd.hospital.patientrecord.PatientRecord;
 import com.solvd.hospital.department.Department;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.insurance.Insurance;
 import com.solvd.hospital.medicalrecords.Symptoms;
 import com.solvd.hospital.patient.Patient;
-import com.solvd.hospital.personalInformation.ExceptionPersonalInformation;
-
+import com.solvd.hospital.personalinformation.ExceptionPersonalInformation;
 public class GeneratingData {
-
     public void addPatientDetails() throws ExceptionPersonalInformation {
-
         PatientRecord patientRecord = new PatientRecord();
         Symptoms symptoms = new Symptoms();
         Patient patient = new Patient();
@@ -177,12 +173,8 @@ public class GeneratingData {
         insurance.setInsuranceName("cigna");
         patient.setInsurance(insurance);
         Hospital.newPatientList.add(patient);
-
-
-
     }
     public void addDoctorDetails() throws ExceptionPersonalInformation {
-
         Doctor doctor = new Doctor();
         Department dep = new Department();
         doctor.setContactNumber("7898653212");

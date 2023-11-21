@@ -1,37 +1,33 @@
 package com.solvd.hospital.insurance;
 
+import java.util.regex.Pattern;
+
 public class Insurance {
     private String insuranceName;
     private String insuranceNumber;
-//    private String benefitsEligibilityStatus;
-
     public String getInsuranceName() {
 
         return insuranceName;
     }
-
     public void setInsuranceName(String insuranceName) {
 
-        this.insuranceName = insuranceName;
+        String regex = "[A-Za-z ]+";
+        if (!Pattern.matches(regex, insuranceName)) {
+            throw new ExceptionInsurance("Not a Insurance Name");
+        } else {
+            this.insuranceName = insuranceName;
+        }
     }
-
     public String getInsuranceNumber() {
 
         return insuranceNumber;
     }
-
     public void setInsuranceNumber(String insuranceNumber) {
 
+        String regex = "[0-9]+";
+        if (!Pattern.matches(regex, insuranceNumber)) {
+            throw new ExceptionInsurance("Not Valid Insurance Number");
+        }
         this.insuranceNumber = insuranceNumber;
     }
-
-//    public String getBenefitsEligibilityStatus() {
-//
-//        return benefitsEligibilityStatus;
-//    }
-//
-//    public void setBenefitsEligibilityStatus(String benefitsEligibilityStatus) {
-//
-//        this.benefitsEligibilityStatus = benefitsEligibilityStatus;
-//    }
 }
