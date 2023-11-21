@@ -48,23 +48,23 @@ public class Hospital {
                             hospital.printDepartmentInfo();
                             break;
                         case 2:
-                            hospital.assignDoctorToPatient();
+                            hospital.assignDoctorToPatient(in);
                             break;
                         case 3:
-                            hospital.viewPatientRecord();
+                            hospital.viewPatientRecord(in);
                             break;
                         case 4:
-                            hospital.generateBillForEachPatient();
+                            hospital.generateBillForEachPatient(in);
                             break;
                         case 5:
-                            hospital.doctorPrescribingPatient();
+                            hospital.doctorPrescribingPatient(in);
                             break;
                         case 6:
                             hospital.printAllPatientRecords();
                             break;
                         case 7:
                             data.addNewPatientList();
-                            hospital.newPatientList();
+                            hospital.newPatientList(in);
                             break;
                         case 8:
                             hospital.printAllBillNumber();
@@ -83,14 +83,13 @@ public class Hospital {
             logger.info("Finally No Exception found");
         }
     }
-    private void newPatientList()  {
+    private void newPatientList(Scanner in)  {
         logger.info("Do you want add to the patient List  Y/N ");
         Iterator iterator = newPatientList.iterator();
         while (iterator.hasNext()) {
             Patient patient;
             patient = (Patient) iterator.next();
             logger.info("Add this new Patient " + patient.getFirstName() + "?:  Y/N");
-            Scanner in = new Scanner(System.in);
             String answer = in.next();
             if (answer.equalsIgnoreCase("y")) {
                 logger.info("Enter the symptoms");
@@ -113,15 +112,14 @@ public class Hospital {
     private void printAllPatientRecords() {
         logger.info(patientRecordHashMap);
     }
-    private void doctorPrescribingPatient() throws ExceptionHospitalAdmin { //Doctor Prescribes Test for the patient
+    private void doctorPrescribingPatient(Scanner in) throws ExceptionHospitalAdmin { //Doctor Prescribes Test for the patient
         HospitalAdmin admin = new HospitalAdmin();
-        String patientId = admin.getPatientId();
+        String patientId = admin.getPatientId(in);
         PatientRecord p = patientRecordHashMap.get(patientId);
         if (patientRecordHashMap.containsKey(patientId)) {
             if (p.getPatientAssignedDoctor()) {
                 p.printInformation();
                 logger.info("Enter the Prescriptions : y/n");
-                Scanner in = new Scanner(System.in);
                 String answer = in.next();
                 if (answer.equalsIgnoreCase("y")) {
                     MedicalRecord medicalRecord = new MedicalRecord();
@@ -192,9 +190,9 @@ public class Hospital {
         }
     }
 
-    private void generateBillForEachPatient() throws ExceptionHospitalAdmin { // Generate bill once only after assigning doctor to a patient
+    private void generateBillForEachPatient(Scanner in) throws ExceptionHospitalAdmin { // Generate bill once only after assigning doctor to a patient
         HospitalAdmin admin = new HospitalAdmin();
-        String patientId = admin.getPatientId();
+        String patientId = admin.getPatientId(in);
         if (patientRecordHashMap.containsKey(patientId)) {
             PatientRecord p = patientRecordHashMap.get(patientId);
             if (p.getPatientAssignedDoctor()) {
@@ -234,9 +232,9 @@ public class Hospital {
         logger.info("*************************************************");
     }
 
-    private void viewPatientRecord() throws ExceptionHospitalAdmin { // View particular patient Record
+    private void viewPatientRecord(Scanner in) throws ExceptionHospitalAdmin { // View particular patient Record
         HospitalAdmin admin = new HospitalAdmin();
-        String patientId = admin.getPatientId();
+        String patientId = admin.getPatientId(in);
         if (patientRecordHashMap.containsKey(patientId)) {
             logger.info(patientRecordHashMap.get(patientId));
         } else {
@@ -245,16 +243,15 @@ public class Hospital {
         logger.info("*************************************************");
     }
 
-    private void assignDoctorToPatient() throws ExceptionHospitalAdmin { // Checks the symptoms and assign doctor to a patient
+    private void assignDoctorToPatient(Scanner in) throws ExceptionHospitalAdmin { // Checks the symptoms and assign doctor to a patient
         HospitalAdmin admin = new HospitalAdmin();
-        String patientId = admin.getPatientId();
+        String patientId = admin.getPatientId(in);
         if (patientRecordHashMap.containsKey(patientId)) {
             PatientRecord p = patientRecordHashMap.get(patientId);
             if (!p.getPatientAssignedDoctor()) {
                 String patientSymptom = p.getPatient().getSymptoms().getPatientSymptom();
                 logger.info("Patient Symptoms: " + patientSymptom);
                 logger.info("Do you want to make appointment?  Y/N");
-                Scanner in = new Scanner(System.in);
                 String answer =in.next();
                 if (!answer.equals("Y") && (!answer.equals("y") && (!answer.equals("N")) && (!answer.equals("n")))) {
                     throw new ExceptionHospitalAdmin("Inside Exception Enter either y/n");

@@ -23,8 +23,13 @@ public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
         logger.info("Exit Portal -- option 9");
         logger.info("Please Enter your option");
     }
+
+    @Override
     public String getPatientId() throws ExceptionHospitalAdmin {
-        Scanner in = new Scanner(System.in);
+        return null;
+    }
+
+    public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {
         logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
         String patientId = in.next();
         String regex = "[0-9]+";
