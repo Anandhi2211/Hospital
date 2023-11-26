@@ -7,6 +7,7 @@
 
     <properties>
         <log4jVersion>2.21.1</log4jVersion>
+        <commons-ioVersion>2.11.0</commons-ioVersion>
     </properties>
 
     <dependencies>
@@ -15,6 +16,16 @@
             <artifactId>log4j-core</artifactId>
             <version>${log4jVersion}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>${commons-ioVersion}</version>
+        </dependency>
+
+
+
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-api</artifactId>
