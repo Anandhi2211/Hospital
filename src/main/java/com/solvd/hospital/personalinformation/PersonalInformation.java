@@ -2,42 +2,42 @@ package com.solvd.hospital.personalinformation;
 
 import java.util.regex.Pattern;
 
-public abstract class PersonalInformation {
-    private String firstname;
-    private String gender;
-    private String contactNumber;
-    private String emailAddress;
-    public String getFirstName() {
+public abstract class PersonalInformation <S> {
+    private S firstname;
+    private S gender;
+    private S contactNumber;
+    private S emailAddress;
+    public S getFirstName() {
         return firstname;
     }
-    public void setFirstName(String firstName) throws ExceptionPersonalInformation {
+    public void setFirstName(S firstName) throws ExceptionPersonalInformation {
         String regex = "[A-Za-z]+";
-        if (!Pattern.matches(regex, firstName)) {
+        if (!Pattern.matches(regex, (CharSequence) firstName)) {
             throw new ExceptionPersonalInformation("Not Valid Name");
         } else {
             this.firstname = firstName;
         }
     }
-    public String getGender() {
+    public S getGender() {
         return gender;
     }
-    public void setGender(String gender) throws ExceptionPersonalInformation {
+    public void setGender(S gender) throws ExceptionPersonalInformation {
         if ((!gender.equals("M")) && (!gender.equals("F"))) {
             throw new ExceptionPersonalInformation("Gender should be either M/F");
         } else {
             this.gender = gender;
         }
     }
-    public String getContactNumber() {
+    public S getContactNumber() {
         return contactNumber;
     }
-    public void setContactNumber(String contactNumber) {
+    public void setContactNumber(S contactNumber) {
         this.contactNumber = contactNumber;
     }
-    public String getEmailAddress() {
+    public S getEmailAddress() {
         return emailAddress;
     }
-    public void setEmailAddress(String emailAddress) {
+    public void setEmailAddress(S emailAddress) {
         this.emailAddress = emailAddress;
     }
     public abstract void printInformation(); // Abstract method overloading
