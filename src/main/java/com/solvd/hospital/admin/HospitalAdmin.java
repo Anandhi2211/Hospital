@@ -1,12 +1,11 @@
 package com.solvd.hospital.admin;
 
-import com.solvd.hospital.medicalrecords.IMedicalRecords;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
+public class HospitalAdmin implements IHospitalAdmin {
     private static final Logger logger = LogManager.getLogger(HospitalAdmin.class);
     @Override
     public void welcomePage() {
@@ -39,7 +38,7 @@ public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
             return patientId;
         }
     }
-    @Override
-    public void printPatientMedicalRecords() {
-    }
+//    @Override
+//    public void printPatientMedicalRecords() {
+//    }
 }

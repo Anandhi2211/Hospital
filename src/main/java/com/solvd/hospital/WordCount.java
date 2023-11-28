@@ -22,6 +22,7 @@ public class WordCount {
         File input = new File("src/main/resources/input.txt");
         File output = new File("src/main/resources/output.txt");
         String str = FileUtils.readFileToString(input, "UTF-8");
+
         str = str.replaceAll("[\\r\\n]+", " ");
         for (String wordSplitWithLine : StringUtils.split(str,"\n")) {
             for (String wordSplitWithSpace : wordSplitWithLine.split(" ")) {
