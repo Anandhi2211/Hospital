@@ -23,12 +23,10 @@ public class WordCount {
         File output = new File("src/main/resources/output.txt");
         String str = FileUtils.readFileToString(input, "UTF-8");
         str = str.replaceAll("[\\r\\n]+", " ");
-        for (String wordSplitWithLine : str.split("\n")) {
+        for (String wordSplitWithLine : StringUtils.split(str,"\n")) {
             for (String wordSplitWithSpace : wordSplitWithLine.split(" ")) {
-                StringUtils.replace(wordSplitWithSpace.trim(),"."," ");
-//                wordSplitWithSpace = wordSplitWithSpace.trim().replace(".", " ");
-                StringUtils.replace(wordSplitWithSpace.trim(),","," ");
-//                wordSplitWithSpace = wordSplitWithSpace.trim().replace(",", " ");
+                StringUtils.replace(wordSplitWithSpace.trim(), ".", " ");
+                StringUtils.replace(wordSplitWithSpace.trim(), ",", " ");
                 listOfWords.add(wordSplitWithSpace.trim());
             }
             do {
@@ -48,7 +46,6 @@ public class WordCount {
         logger.info("Enter the word find the occurrences:");
         word = in.next();
         for (String output : listOfWords) {
-//            if (output.trim().equalsIgnoreCase(word))
             if(StringUtils.compareIgnoreCase(output.trim(),word)==0)
             {
                 count++;

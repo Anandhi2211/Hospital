@@ -24,20 +24,18 @@ public class HospitalAdmin implements IHospitalAdmin, IMedicalRecords {
         logger.info("Please Enter your option");
     }
 
-    @Override
-    public String getPatientId() throws ExceptionHospitalAdmin {
-        return null;
-    }
+//    @Override
+//    public String getPatientId() throws ExceptionHospitalAdmin {
+//        return null;
+//    }
 
     public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {
         logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
         String patientId = in.next();
         String regex = "[0-9]+";
         if (!Pattern.matches(regex, patientId)) {
-
             throw new ExceptionHospitalAdmin("Not Valid Id");
         } else {
-
             return patientId;
         }
     }
