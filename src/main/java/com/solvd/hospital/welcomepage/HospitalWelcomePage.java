@@ -1,14 +1,15 @@
-package com.solvd.hospital.admin;
+package com.solvd.hospital.welcomepage;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class HospitalAdmin implements IHospitalAdmin {
-    private static final Logger logger = LogManager.getLogger(HospitalAdmin.class);
+public class HospitalWelcomePage implements IHospitalAdmin {
+    private static final Logger logger = LogManager.getLogger(HospitalWelcomePage.class);
     @Override
     public void welcomePage() {
+
         logger.info("Welcome to Hospital Portal!");
         logger.info("Please choose the options");
         logger.info("Patient, Doctor and Department Details  using Collections-- option 1");

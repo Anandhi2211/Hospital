@@ -1,4 +1,4 @@
-package com.solvd.hospital.admin;
+package com.solvd.hospital.welcomepage;
 
 import java.util.Scanner;
 
