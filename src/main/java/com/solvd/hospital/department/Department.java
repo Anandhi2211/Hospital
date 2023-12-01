@@ -9,20 +9,23 @@ public class Department extends Doctor {
     public String getDepartmentName() {
         return this.departmentName;
     }
+
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName;
     }
+
     public String getDepartmentCode() {
         return this.departmentCode;
     }
+
     public void setDepartmentCode(String departmentCode) {
         this.departmentCode = departmentCode;
     }
+
     @Override
     public String toString() {
-        return  "\n"+
-                "\tdepartmentName= " + this.getDepartmentName() + "\n" +
-                "\tdepartmentCode= " + this.getDepartmentCode() + "\n" ;
+        return "\tdepartmentName= " + this.getDepartmentName() + "\n" +
+                "\tdepartmentCode= " + this.getDepartmentCode() + "\n";
     }
     @Override
     public boolean equals(Object obj) {

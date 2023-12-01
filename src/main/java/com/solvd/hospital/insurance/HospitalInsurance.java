@@ -5,14 +5,11 @@ public enum HospitalInsurance {
     MEDICAID(5),
     ANTHEM(20),
     CAREPLUS(15);
-
-    public int getPercentConcession() {
-        return percentConcession;
+    final int percentageConcession;
+    public int getPercentageConcession() {
+        return this.percentageConcession;
     }
-
-    final int percentConcession;
-
     HospitalInsurance(int percentConcession) {
-        this.percentConcession = percentConcession;
+        this.percentageConcession = percentConcession;
     }
 }

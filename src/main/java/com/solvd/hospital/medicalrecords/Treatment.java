@@ -8,13 +8,10 @@ public enum Treatment {
     physiotherapy(400),
     antibiotics(200),
     painKillers(200);
-
-    public int getPriceAmt() {
-        return priceAmt;
-    }
-
     final int priceAmt;
-
+    public int getPriceAmt() {
+        return this.priceAmt;
+    }
     Treatment( int priceAmt) {
         this.priceAmt = priceAmt;
     }

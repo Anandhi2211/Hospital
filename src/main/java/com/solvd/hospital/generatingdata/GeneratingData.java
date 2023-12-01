@@ -19,13 +19,11 @@ import java.util.HashSet;
 
 public class GeneratingData {
     public HashMap<String, PatientRecord> addToHashMap(HashMap<String, PatientRecord> patientRecordHashMap, ArrayList<PatientRecord> patientRecordList) {
-
         for (PatientRecord p : patientRecordList) {
             patientRecordHashMap.put(p.getPatient().getPatientId(), p);
         }
         return patientRecordHashMap;
     }
-
     public ArrayList<PatientRecord> addPatientDetails(ArrayList<PatientRecord> patientRecordList) throws ExceptionPersonalInformation {
         PatientRecord patientRecord = new PatientRecord();
         Symptoms symptoms = new Symptoms();
@@ -156,66 +154,74 @@ public class GeneratingData {
         return patientRecordList;
     }
 
-    //    public void addNewPatientList() {
-//
-//        Patient patient = new Patient();
-//        Insurance insurance = new Insurance();
-//        patient.setFirstName("Lakshmi");
-//        patient.setGender("F");
-//        patient.setContactNumber("9897786545");
-//        patient.setEmailAddress("laksmi@gmail.com");
-//        patient.setAnnualIncome("80000");
-//        insurance.setInsuranceNumber("879865");
-//        insurance.setInsuranceName("cigna");
-//        patient.setInsurance(insurance);
-//        Hospital.newPatientList.add(patient);
-//
-//        patient = new Patient();
-//        insurance = new Insurance();
-//        patient.setFirstName("Nithya");
-//        patient.setGender("F");
-//        patient.setContactNumber("9897786545");
-//        patient.setEmailAddress("Nithya@gmail.com");
-//        patient.setAnnualIncome("80000");
-//        insurance.setInsuranceNumber("879865");
-//        insurance.setInsuranceName("cigna");
-//        patient.setInsurance(insurance);
-//        Hospital.newPatientList.add(patient);
-//
-//        patient = new Patient();
-//        insurance = new Insurance();
-//        patient.setFirstName("Hema");
-//        patient.setGender("F");
-//        patient.setContactNumber("9897786545");
-//        patient.setEmailAddress("hema@gmail.com");
-//        patient.setAnnualIncome("80000");
-//        insurance.setInsuranceNumber("879865");
-//        insurance.setInsuranceName("cigna");
-//        patient.setInsurance(insurance);
-//        Hospital.newPatientList.add(patient);
-//
-//        patient = new Patient();
-//        insurance = new Insurance();
-//        patient.setFirstName("Chandru");
-//        patient.setGender("F");
-//        patient.setContactNumber("9897786545");
-//        patient.setEmailAddress("chan@gmail.com");
-//        patient.setAnnualIncome("80000");
-//        insurance.setInsuranceNumber("879865");
-//        insurance.setInsuranceName("cigna");
-//        patient.setInsurance(insurance);
-//        Hospital.newPatientList.add(patient);
-//    }
+    public HashSet<Patient> addNewPatientList(HashSet<Patient> newPatientList) {
+
+        PersonalInformation<String> personalInformation = new PersonalInformation<>();
+        Patient patient = new Patient();
+        Insurance insurance = new Insurance();
+        personalInformation.setFirstName("Lakshmi");
+        personalInformation.setGender("F");
+        personalInformation.setContactNumber("9897786545");
+        personalInformation.setEmailAddress("laksmi@gmail.com");
+        patient.setPersonalInformation(personalInformation);
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName(HospitalInsurance.CIGNA.name());
+        patient.setInsurance(insurance);
+        newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        personalInformation = new PersonalInformation<>();
+        personalInformation.setFirstName("Nithya");
+        personalInformation.setGender("F");
+        personalInformation.setContactNumber("9897786545");
+        personalInformation.setEmailAddress("Nithya@gmail.com");
+        patient.setPersonalInformation(personalInformation);
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName(HospitalInsurance.CAREPLUS.name());
+        patient.setInsurance(insurance);
+        newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        personalInformation = new PersonalInformation<>();
+        personalInformation.setFirstName("Hema");
+        personalInformation.setGender("F");
+        personalInformation.setContactNumber("9897786545");
+        personalInformation.setEmailAddress("hema@gmail.com");
+        patient.setPersonalInformation(personalInformation);
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName(HospitalInsurance.ANTHEM.name());
+        patient.setInsurance(insurance);
+        newPatientList.add(patient);
+
+        patient = new Patient();
+        insurance = new Insurance();
+        personalInformation = new PersonalInformation<>();
+        personalInformation.setFirstName("Chandru");
+        personalInformation.setGender("F");
+        personalInformation.setContactNumber("9897786545");
+        personalInformation.setEmailAddress("chan@gmail.com");
+        patient.setPersonalInformation(personalInformation);
+        patient.setAnnualIncome("80000");
+        insurance.setInsuranceNumber("879865");
+        insurance.setInsuranceName(HospitalInsurance.MEDICAID.name());
+        patient.setInsurance(insurance);
+        newPatientList.add(patient);
+
+        return newPatientList;
+    }
 
     public HashSet<Department> addDepartmentDetails(ArrayList<Doctor> doctorList, HashSet<Department> departmentList) {
-        for(Doctor doctor : doctorList)
-        {
+        for (Doctor doctor : doctorList) {
             departmentList.add(doctor.getDepartmentInfo());
         }
         return departmentList;
     }
     public ArrayList<Doctor> addDoctorDetails(ArrayList<Doctor> doctorList) throws ExceptionPersonalInformation {
-
         Doctor doctor = new Doctor();
         Department dep = new Department();
         PersonalInformation<String> personalInformation = new PersonalInformation<>();

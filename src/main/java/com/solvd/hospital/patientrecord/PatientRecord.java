@@ -17,21 +17,32 @@ public class PatientRecord implements IMedicalRecords {
     private ArrayList<Doctor> assignedDoctorList;
     private ArrayList<MedicalRecord> medicalRecordList;
     private boolean patientAssignedDoctor;
+    public MedicalRecord getMedicalRecord() {
+        return this.medicalRecord;
+    }
+    public void setMedicalRecord(MedicalRecord medicalRecord) {
+        if (medicalRecord == null) {
+            this.medicalRecord = new MedicalRecord();
+        }
+        this.medicalRecord = medicalRecord;
+    }
     private MedicalRecord medicalRecord = new MedicalRecord();
+
     public PatientRecord() {
     }
     public Patient getPatient() {
         return this.patient;
     }
+
     public void setPatient(Patient patient) {
         this.patient = patient;
     }
+
     public ArrayList<Billing> getBillingsList() {
 
         return this.billingsList;
     }
     public void setBillingsList(Billing billingNumber) {
-
         if (billingsList == null) {
             this.billingsList = new ArrayList<>();
         }
@@ -48,19 +59,15 @@ public class PatientRecord implements IMedicalRecords {
         this.assignedDoctorList.add(doctor);
     }
     public boolean getPatientAssignedDoctor() {
-
         return this.patientAssignedDoctor;
     }
     public void setPatientAssignedDoctor(boolean patientAssignedDoctor) {
-
         this.patientAssignedDoctor = patientAssignedDoctor;
     }
     public ArrayList<MedicalRecord> getMedicalRecords() {
-
         return this.medicalRecordList;
     }
     public void setMedicalRecords(MedicalRecord medicalRecord) {
-
         if (this.medicalRecordList == null) {
             this.medicalRecordList = new ArrayList<>();
         } else {
@@ -112,7 +119,7 @@ public class PatientRecord implements IMedicalRecords {
                 "\tEmail Address: " + this.getPatient().getPersonalInformation().getEmailAddress() + "\n" +
                 "\tInsurance Name: " + this.getPatient().getInsurance().getInsuranceName() + "\n" +
                 "\tInsurance Number: " + this.getPatient().getInsurance().getInsuranceNumber() + "\n" +
-                "\tAnnual Income : " + this.getPatient().getAnnualIncome()+ "\n" +
+                "\tAnnual Income : " + this.getPatient().getAnnualIncome() + "\n" +
                 "\tIllness Category: " + this.getPatient().getSymptoms().getPatientSymptom() + "\n" +
                 "\tVisited status: " + this.getPatientAssignedDoctor() + "\n" +
                 "\tPrescription Status: " + this.printPrescriptionStatus() + "\n" +
@@ -125,7 +132,6 @@ public class PatientRecord implements IMedicalRecords {
     }
     @Override
     public void printPatientMedicalRecords() {
-
         logger.info("Patient Id: " + this.getPatient().getPatientId());
         logger.info("Patient Name: " + this.getPatient().getPersonalInformation().getFirstName());
         logger.info("Patient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());

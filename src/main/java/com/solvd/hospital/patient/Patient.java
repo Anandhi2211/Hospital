@@ -17,7 +17,7 @@ public class Patient extends Person {
         this.symptoms = symptoms;
     }
     public String getPatientId() {
-        return patientId;
+        return this.patientId;
     }
     public void setPatientId(String patientId) {
 //        this.patientId = String.valueOf(Hospital.patientId);

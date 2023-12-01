@@ -4,17 +4,17 @@ public class PatientIdGenerator {
 
     private static PatientIdGenerator patientIdGenerator = null;
     private static long patientId = 999;
-    public PatientIdGenerator( ) {
+
+    public PatientIdGenerator() {
     }
     public static PatientIdGenerator patientIdGenerator() {
-        if(patientIdGenerator == null)
-        {
+        if (patientIdGenerator == null) {
             patientIdGenerator = new PatientIdGenerator();
         }
         return patientIdGenerator;
     }
     public String getPatientIdGenerator() {
-        patientId ++ ;
+        patientId++;
         return String.valueOf(patientId);
     }
 }

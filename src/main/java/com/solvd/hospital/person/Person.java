@@ -6,16 +6,13 @@ import com.solvd.hospital.personalinformation.PersonalInformation;
 public abstract class Person  {
     private Insurance insurance;
     private String annualIncome;
-
+    private PersonalInformation personalInformation;
     public PersonalInformation getPersonalInformation() {
         return this.personalInformation;
     }
-
     public void setPersonalInformation(PersonalInformation personalInformation) {
         this.personalInformation = personalInformation;
     }
-
-    private PersonalInformation personalInformation;
     public Person( ) {
     }
     public String getAnnualIncome() {
