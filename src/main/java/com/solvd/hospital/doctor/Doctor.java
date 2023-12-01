@@ -1,34 +1,40 @@
 package com.solvd.hospital.doctor;
+
 import com.solvd.hospital.department.Department;
-import com.solvd.hospital.personalinformation.PersonalInformation;
+import com.solvd.hospital.person.Person;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import java.util.ArrayList;
 
-public class Doctor extends PersonalInformation {
+public class Doctor extends Person {
     private static final Logger logger = LogManager.getLogger(Doctor.class);
     private String doctorId;
     private Department departmentInfo;
+    private boolean doctorAssigned;
     private ArrayList<String> treatableSymptomList;
-
     public Doctor() {
     }
     public String getDoctorId() {
         return this.doctorId;
     }
+
     public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
+
     public Department getDepartmentInfo() {
         if (this.departmentInfo == null) {
             this.departmentInfo = new Department();
-            return departmentInfo;
+            return this.departmentInfo;
         } else
-            return departmentInfo;
+            return this.departmentInfo;
     }
+
     public void setDepartmentInfo(Department departmentInfo) {
         this.departmentInfo = departmentInfo;
     }
+
     public ArrayList<String> getTreatableSymptomList() {
         return this.treatableSymptomList;
     }
@@ -40,6 +46,7 @@ public class Doctor extends PersonalInformation {
         } else
             this.treatableSymptomList.add(symptom);
     }
+
     public boolean isTreatable(String symptom) {
         if (this.treatableSymptomList == null) {
             this.treatableSymptomList = new ArrayList<String>();
@@ -47,13 +54,16 @@ public class Doctor extends PersonalInformation {
         }
         return this.treatableSymptomList.contains(symptom);
     }
+
     public String toString() {
         return this.doctorId;
     }
+
     @Override
     public void printInformation() {
-        logger.info("Name: " + this.getFirstName());
+        logger.info("Name: Dr." + this.getPersonalInformation().getFirstName());
         logger.info("Id: " + this.getDoctorId());
+        logger.info("Dept Code: " + this.getDepartmentInfo().getDepartmentCode());
         logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
     }
     public void symptomsDoctorTreat(String doctorId) {
@@ -66,5 +76,12 @@ public class Doctor extends PersonalInformation {
                 }
             }
         }
+    }
+    public boolean isDoctorAssigned() {
+        return this.doctorAssigned;
+    }
+
+    public void setDoctorAssigned(boolean doctorAssigned) {
+        this.doctorAssigned = doctorAssigned;
     }
 }

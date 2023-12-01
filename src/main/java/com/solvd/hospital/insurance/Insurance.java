@@ -6,11 +6,9 @@ public class Insurance {
     private String insuranceName;
     private String insuranceNumber;
     public String getInsuranceName() {
-
-        return insuranceName;
+        return this.insuranceName;
     }
     public void setInsuranceName(String insuranceName) {
-
         String regex = "[A-Za-z ]+";
         if (!Pattern.matches(regex, insuranceName)) {
             throw new ExceptionInsurance("Not a Insurance Name");
@@ -20,10 +18,9 @@ public class Insurance {
     }
     public String getInsuranceNumber() {
 
-        return insuranceNumber;
+        return this.insuranceNumber;
     }
     public void setInsuranceNumber(String insuranceNumber) {
-
         String regex = "[0-9]+";
         if (!Pattern.matches(regex, insuranceNumber)) {
             throw new ExceptionInsurance("Not Valid Insurance Number");

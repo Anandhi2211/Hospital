@@ -1,4 +1,4 @@
-package com.solvd.hospital.admin;
+package com.solvd.hospital.welcomepage;
 
 public class ExceptionHospitalAdmin extends RuntimeException {
     public ExceptionHospitalAdmin(String message) {

@@ -2,7 +2,7 @@ package com.solvd.hospital.personalinformation;
 
 import java.util.regex.Pattern;
 
-public abstract class PersonalInformation <S> {
+public class PersonalInformation <S> {
     private S firstname;
     private S gender;
     private S contactNumber;
@@ -40,6 +40,5 @@ public abstract class PersonalInformation <S> {
     public void setEmailAddress(S emailAddress) {
         this.emailAddress = emailAddress;
     }
-    public abstract void printInformation(); // Abstract method overloading
 
 }
