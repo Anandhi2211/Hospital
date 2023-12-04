@@ -1,21 +1,26 @@
 package com.solvd.hospital.symptoms;
 
-import com.solvd.hospital.department.HospitalDepartment;
-
 public enum ListOfSymptoms {
-    SKIN_INFECTION(HospitalDepartment.DERMATOLOGY),
-    PIGMENTATION_REMOVAL(HospitalDepartment.DERMATOLOGY),
-    SKIN_RASHES(HospitalDepartment.DERMATOLOGY),
-    TAN_REMOVAL(HospitalDepartment.DERMATOLOGY),
+    SKIN_INFECTION(1),
+    PIGMENTATION_REMOVAL(2),
+    SKIN_RASHES(3),
+    TAN_REMOVAL(4),
 
-    NECK_PAIN(HospitalDepartment.ORTHOPEDIC),
-    BACK_PAIN(HospitalDepartment.ORTHOPEDIC),
-    KNEE_PAIN(HospitalDepartment.ORTHOPEDIC),
-    WRIST_PAIN(HospitalDepartment.ORTHOPEDIC),
+    NECK_PAIN(5),
+    BACK_PAIN(6),
+    KNEE_PAIN(7),
 
-    EAR_FLUID(HospitalDepartment.OTOLARYNGOLOGY),
-    EAR_PAIN(HospitalDepartment.OTOLARYNGOLOGY),
-    EAR_INFECTION(HospitalDepartment.OTOLARYNGOLOGY);
-    ListOfSymptoms(HospitalDepartment dermatology) {
+    EAR_FLUID(8),
+    EAR_PAIN(9),
+    EAR_INFECTION(10);
+
+    public int getValue() {
+        return value;
+    }
+
+    final int value;
+
+    ListOfSymptoms(int value) {
+        this.value = value;
     }
 }

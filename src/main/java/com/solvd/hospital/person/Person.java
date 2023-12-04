@@ -5,7 +5,8 @@ import com.solvd.hospital.personalinformation.PersonalInformation;
 
 public abstract class Person  {
     private Insurance insurance;
-    private String annualIncome;
+    private int annualIncome;
+    private boolean financialBenefits;
     private PersonalInformation personalInformation;
     public PersonalInformation getPersonalInformation() {
         return this.personalInformation;
@@ -15,10 +16,16 @@ public abstract class Person  {
     }
     public Person( ) {
     }
-    public String getAnnualIncome() {
+    public boolean isFinancialBenefits() {
+        return this.financialBenefits;
+    }
+    public void setFinancialBenefits(boolean financialBenefits) {
+        this.financialBenefits = financialBenefits;
+    }
+    public int getAnnualIncome() {
         return this.annualIncome;
     }
-    public void setAnnualIncome(String annualIncome) {
+    public void setAnnualIncome(int annualIncome) {
         this.annualIncome = annualIncome;
     }
     public Insurance getInsurance() {

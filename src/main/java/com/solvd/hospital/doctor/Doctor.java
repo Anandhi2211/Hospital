@@ -66,18 +66,18 @@ public class Doctor extends Person {
         logger.info("Dept Code: " + this.getDepartmentInfo().getDepartmentCode());
         logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
     }
-    public void symptomsDoctorTreat(String doctorId) {
-        if (this.treatableSymptomList == null) {
-            this.treatableSymptomList = new ArrayList<String>();
-        } else {
-            if (this.doctorId.equals(doctorId)) {
-                for (String sym : this.treatableSymptomList) {
-                    logger.info("List of symptoms: " + sym);
-                }
-            }
-        }
-    }
-    public boolean isDoctorAssigned() {
+//    public void symptomsDoctorTreat(String doctorId) {
+//        if (this.treatableSymptomList == null) {
+//            this.treatableSymptomList = new ArrayList<String>();
+//        } else {
+//            if (this.doctorId.equals(doctorId)) {
+//                for (String sym : this.treatableSymptomList) {
+//                    logger.info("List of symptoms: " + sym);
+//                }
+//            }
+//        }
+//    }
+    public boolean getDoctorAssigned() {
         return this.doctorAssigned;
     }
 

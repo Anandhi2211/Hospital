@@ -1,6 +1,10 @@
 package com.solvd.hospital.billing;
 
-public class Billing implements IBilling {
+import com.solvd.hospital.financialbenefits.FinancialBenefits;
+import com.solvd.hospital.patientrecord.PatientRecord;
+import com.solvd.hospital.payement.IPayment;
+
+public class Billing implements IBilling, IPayment {
     private String billingNumber;
     private int billingAmount;
     private boolean billingStatus;
@@ -42,6 +46,37 @@ public class Billing implements IBilling {
     }
     @Override
     public void billCalculation() {
+
     }
+
+    @Override
+    public PatientRecord checkFinancialBenefits( PatientRecord patientRecord) {
+
+        FinancialBenefits financialBenefits = new FinancialBenefits();
+        if(patientRecord.getPatient().getAnnualIncome() <50000)
+        {
+            financialBenefits.setBenefitPercent(75);
+            financialBenefits.setBenefitStatus(true);
+        }
+        else if((patientRecord.getPatient().getAnnualIncome() >= 50000) && (patientRecord.getPatient().getAnnualIncome() < 75000))
+        {
+            financialBenefits.setBenefitPercent(50);
+            financialBenefits.setBenefitStatus(true);
+        }
+        else if((patientRecord.getPatient().getAnnualIncome() >= 75000) && (patientRecord.getPatient().getAnnualIncome() <100000))
+        {
+            financialBenefits.setBenefitPercent(25);
+            financialBenefits.setBenefitStatus(true);
+        }
+        else if((patientRecord.getPatient().getAnnualIncome() >= 100000))
+        {
+            financialBenefits.setBenefitPercent(1);
+            financialBenefits.setBenefitStatus(false);
+        }
+        patientRecord.setFinancialBenefits(financialBenefits);
+
+        return patientRecord;
+    }
+
 }
 

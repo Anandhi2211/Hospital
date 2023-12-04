@@ -19,9 +19,11 @@ import java.util.HashSet;
 
 public class GeneratingData {
     public HashMap<String, PatientRecord> addToHashMap(HashMap<String, PatientRecord> patientRecordHashMap, ArrayList<PatientRecord> patientRecordList) {
-        for (PatientRecord p : patientRecordList) {
-            patientRecordHashMap.put(p.getPatient().getPatientId(), p);
-        }
+        patientRecordList.stream().forEach(x->patientRecordHashMap.put(x.getPatient().getPatientId(),x));
+//        for (PatientRecord p : patientRecordList)
+//        {
+//            patientRecordHashMap.put(p.getPatient().getPatientId(), p);
+//        }
         return patientRecordHashMap;
     }
     public ArrayList<PatientRecord> addPatientDetails(ArrayList<PatientRecord> patientRecordList) throws ExceptionPersonalInformation {
@@ -35,7 +37,7 @@ public class GeneratingData {
         personalInformation.setGender("M");
         personalInformation.setContactNumber("2222222222");
         personalInformation.setEmailAddress("ashokkumar@gmail.com");
-        patient.setAnnualIncome("40000");
+        patient.setAnnualIncome(40000);
         insurance.setInsuranceName(HospitalInsurance.CIGNA.name());
         insurance.setInsuranceNumber("459878");
         patient.setInsurance(insurance);
@@ -56,7 +58,7 @@ public class GeneratingData {
         personalInformation.setGender("M");
         personalInformation.setContactNumber("33333333");
         personalInformation.setEmailAddress("anand@gmail.com");
-        patient.setAnnualIncome("50000");
+        patient.setAnnualIncome(50000);
         insurance.setInsuranceName(HospitalInsurance.ANTHEM.name());
         insurance.setInsuranceNumber("658975");
         patient.setInsurance(insurance);
@@ -77,12 +79,12 @@ public class GeneratingData {
         personalInformation.setGender("F");
         personalInformation.setContactNumber("4444444444");
         personalInformation.setEmailAddress("abi@gmail.com");
-        patient.setAnnualIncome("120000");
+        patient.setAnnualIncome(120000);
         insurance.setInsuranceName(HospitalInsurance.MEDICAID.name());
         insurance.setInsuranceNumber("659894");
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
-        symptoms.setPatientSymptom(ListOfSymptoms.EAR_FLUID.name());
+        symptoms.setPatientSymptom(ListOfSymptoms.SKIN_RASHES.name());
         patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
@@ -98,7 +100,7 @@ public class GeneratingData {
         personalInformation.setGender("M");
         personalInformation.setContactNumber("33333333");
         personalInformation.setEmailAddress("ranjith@gmail.com");
-        patient.setAnnualIncome("100000");
+        patient.setAnnualIncome(100000);
         insurance.setInsuranceName(HospitalInsurance.CAREPLUS.name());
         insurance.setInsuranceNumber("658975");
         patient.setInsurance(insurance);
@@ -119,7 +121,7 @@ public class GeneratingData {
         personalInformation.setGender("M");
         personalInformation.setContactNumber("33333333");
         personalInformation.setEmailAddress("anil@gmail.com");
-        patient.setAnnualIncome("90000");
+        patient.setAnnualIncome(90000);
         insurance.setInsuranceName(HospitalInsurance.CIGNA.name());
         insurance.setInsuranceNumber("989865");
         patient.setInsurance(insurance);
@@ -140,7 +142,7 @@ public class GeneratingData {
         personalInformation.setGender("M");
         personalInformation.setContactNumber("9999998888");
         personalInformation.setEmailAddress("arav@gmail.com");
-        patient.setAnnualIncome("150000");
+        patient.setAnnualIncome(150000);
         insurance.setInsuranceName(HospitalInsurance.ANTHEM.name());
         insurance.setInsuranceNumber("989877");
         patient.setInsurance(insurance);
@@ -164,7 +166,7 @@ public class GeneratingData {
         personalInformation.setContactNumber("9897786545");
         personalInformation.setEmailAddress("laksmi@gmail.com");
         patient.setPersonalInformation(personalInformation);
-        patient.setAnnualIncome("80000");
+        patient.setAnnualIncome(80000);
         insurance.setInsuranceNumber("879865");
         insurance.setInsuranceName(HospitalInsurance.CIGNA.name());
         patient.setInsurance(insurance);
@@ -178,7 +180,7 @@ public class GeneratingData {
         personalInformation.setContactNumber("9897786545");
         personalInformation.setEmailAddress("Nithya@gmail.com");
         patient.setPersonalInformation(personalInformation);
-        patient.setAnnualIncome("80000");
+        patient.setAnnualIncome(80000);
         insurance.setInsuranceNumber("879865");
         insurance.setInsuranceName(HospitalInsurance.CAREPLUS.name());
         patient.setInsurance(insurance);
@@ -192,7 +194,7 @@ public class GeneratingData {
         personalInformation.setContactNumber("9897786545");
         personalInformation.setEmailAddress("hema@gmail.com");
         patient.setPersonalInformation(personalInformation);
-        patient.setAnnualIncome("80000");
+        patient.setAnnualIncome(80000);
         insurance.setInsuranceNumber("879865");
         insurance.setInsuranceName(HospitalInsurance.ANTHEM.name());
         patient.setInsurance(insurance);
@@ -206,7 +208,7 @@ public class GeneratingData {
         personalInformation.setContactNumber("9897786545");
         personalInformation.setEmailAddress("chan@gmail.com");
         patient.setPersonalInformation(personalInformation);
-        patient.setAnnualIncome("80000");
+        patient.setAnnualIncome(80000);
         insurance.setInsuranceNumber("879865");
         insurance.setInsuranceName(HospitalInsurance.MEDICAID.name());
         patient.setInsurance(insurance);
@@ -216,9 +218,11 @@ public class GeneratingData {
     }
 
     public HashSet<Department> addDepartmentDetails(ArrayList<Doctor> doctorList, HashSet<Department> departmentList) {
-        for (Doctor doctor : doctorList) {
-            departmentList.add(doctor.getDepartmentInfo());
-        }
+        doctorList.stream().forEach(x->departmentList.add(x.getDepartmentInfo()));
+//        for (Doctor doctor : doctorList)
+//        {
+//            departmentList.add(doctor.getDepartmentInfo());
+//        }
         return departmentList;
     }
     public ArrayList<Doctor> addDoctorDetails(ArrayList<Doctor> doctorList) throws ExceptionPersonalInformation {
@@ -247,6 +251,7 @@ public class GeneratingData {
         dep.setDepartmentName(String.valueOf(HospitalDepartment.OTOLARYNGOLOGY));
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_INFECTION.name());
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_FLUID.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.EAR_PAIN.name());
         personalInformation.setContactNumber("7887877845");
         doctor.setDepartmentInfo(dep);
         doctor.setPersonalInformation(personalInformation);
@@ -274,8 +279,10 @@ public class GeneratingData {
         personalInformation.setFirstName("Tony");
         dep.setDepartmentCode((HospitalDepartment.DERMATOLOGY.getDeptCode()));
         dep.setDepartmentName(String.valueOf(HospitalDepartment.DERMATOLOGY));
+        doctor.setTreatableSymptom(ListOfSymptoms.SKIN_INFECTION.name());
         doctor.setTreatableSymptom(ListOfSymptoms.SKIN_RASHES.name());
         doctor.setTreatableSymptom(ListOfSymptoms.TAN_REMOVAL.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.PIGMENTATION_REMOVAL.name());
         personalInformation.setContactNumber("5432659887");
         doctor.setDepartmentInfo(dep);
         doctor.setPersonalInformation(personalInformation);
@@ -290,6 +297,7 @@ public class GeneratingData {
         dep.setDepartmentName(String.valueOf(HospitalDepartment.OTOLARYNGOLOGY));
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_INFECTION.name());
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_FLUID.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.EAR_PAIN.name());
         personalInformation.setContactNumber("6532655487");
         doctor.setDepartmentInfo(dep);
         doctor.setPersonalInformation(personalInformation);
@@ -302,6 +310,9 @@ public class GeneratingData {
         personalInformation.setFirstName("Jothi");
         dep.setDepartmentCode((HospitalDepartment.ORTHOPEDIC.getDeptCode()));
         dep.setDepartmentName(String.valueOf(HospitalDepartment.ORTHOPEDIC));
+        doctor.setTreatableSymptom(ListOfSymptoms.KNEE_PAIN.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.NECK_PAIN.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.BACK_PAIN.name());
         personalInformation.setContactNumber("326598875421");
         doctor.setDepartmentInfo(dep);
         doctor.setPersonalInformation(personalInformation);
@@ -318,6 +329,7 @@ public class GeneratingData {
         doctor.setTreatableSymptom(ListOfSymptoms.SKIN_INFECTION.name());
         doctor.setTreatableSymptom(ListOfSymptoms.SKIN_RASHES.name());
         doctor.setTreatableSymptom(ListOfSymptoms.TAN_REMOVAL.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.PIGMENTATION_REMOVAL.name());
         personalInformation.setContactNumber("6598875421");
         doctor.setPersonalInformation(personalInformation);
         doctorList.add(doctor);
@@ -330,6 +342,7 @@ public class GeneratingData {
         dep.setDepartmentCode((HospitalDepartment.OTOLARYNGOLOGY.getDeptCode()));
         dep.setDepartmentName(String.valueOf(HospitalDepartment.OTOLARYNGOLOGY));
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_INFECTION.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.EAR_FLUID.name());
         doctor.setTreatableSymptom(ListOfSymptoms.EAR_PAIN.name());
         personalInformation.setContactNumber("9887656598");
         doctor.setDepartmentInfo(dep);
@@ -344,7 +357,8 @@ public class GeneratingData {
         dep.setDepartmentCode(HospitalDepartment.ORTHOPEDIC.getDeptCode());
         dep.setDepartmentName(String.valueOf(HospitalDepartment.ORTHOPEDIC));
         doctor.setTreatableSymptom(ListOfSymptoms.KNEE_PAIN.name());
-        doctor.setTreatableSymptom(ListOfSymptoms.WRIST_PAIN.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.NECK_PAIN.name());
+        doctor.setTreatableSymptom(ListOfSymptoms.BACK_PAIN.name());
         personalInformation.setContactNumber("989898659887");
         doctor.setDepartmentInfo(dep);
         doctor.setPersonalInformation(personalInformation);

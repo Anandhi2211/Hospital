@@ -29,5 +29,15 @@ public class Patient extends Person {
     }
     public void printInformation() {
         logger.info(this.getPersonalInformation().getFirstName());
+        logger.info(this.getPatientId());
+        logger.info(this.getSymptoms().getPatientSymptom());
+    }
+
+    @Override
+    public String toString() {
+        return "Patient{" +
+                "patientId='" + patientId + '\'' +
+                ", symptoms=" + symptoms +
+                '}';
     }
 }
