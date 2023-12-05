@@ -18,11 +18,9 @@ public class Doctor extends Person {
     public String getDoctorId() {
         return this.doctorId;
     }
-
     public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
-
     public Department getDepartmentInfo() {
         if (this.departmentInfo == null) {
             this.departmentInfo = new Department();
@@ -30,11 +28,9 @@ public class Doctor extends Person {
         } else
             return this.departmentInfo;
     }
-
     public void setDepartmentInfo(Department departmentInfo) {
         this.departmentInfo = departmentInfo;
     }
-
     public ArrayList<String> getTreatableSymptomList() {
         return this.treatableSymptomList;
     }
@@ -46,7 +42,6 @@ public class Doctor extends Person {
         } else
             this.treatableSymptomList.add(symptom);
     }
-
     public boolean isTreatable(String symptom) {
         if (this.treatableSymptomList == null) {
             this.treatableSymptomList = new ArrayList<String>();
@@ -54,33 +49,30 @@ public class Doctor extends Person {
         }
         return this.treatableSymptomList.contains(symptom);
     }
-
     public String toString() {
         return this.doctorId;
     }
-
     @Override
     public void printInformation() {
-        logger.info("Name: Dr." + this.getPersonalInformation().getFirstName());
-        logger.info("Id: " + this.getDoctorId());
-        logger.info("Dept Code: " + this.getDepartmentInfo().getDepartmentCode());
-        logger.info("Department Name: " + this.getDepartmentInfo().getDepartmentName());
+        logger.info("\tName: Dr." + this.getPersonalInformation().getFirstName());
+        logger.info("\tId: " + this.getDoctorId());
+        logger.info("\tDept Code: " + this.getDepartmentInfo().getDepartmentCode());
+        logger.info("\tDepartment Name: " + this.getDepartmentInfo().getDepartmentName());
     }
-    public void symptomsDoctorTreat(String doctorId) {
-        if (this.treatableSymptomList == null) {
-            this.treatableSymptomList = new ArrayList<String>();
-        } else {
-            if (this.doctorId.equals(doctorId)) {
-                for (String sym : this.treatableSymptomList) {
-                    logger.info("List of symptoms: " + sym);
-                }
-            }
-        }
-    }
-    public boolean isDoctorAssigned() {
+//    public void symptomsDoctorTreat(String doctorId) {
+//        if (this.treatableSymptomList == null) {
+//            this.treatableSymptomList = new ArrayList<String>();
+//        } else {
+//            if (this.doctorId.equals(doctorId)) {
+//                for (String sym : this.treatableSymptomList) {
+//                    logger.info("List of symptoms: " + sym);
+//                }
+//            }
+//        }
+//    }
+    public boolean getDoctorAssigned() {
         return this.doctorAssigned;
     }
-
     public void setDoctorAssigned(boolean doctorAssigned) {
         this.doctorAssigned = doctorAssigned;
     }

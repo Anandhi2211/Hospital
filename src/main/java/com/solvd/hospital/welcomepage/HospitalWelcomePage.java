@@ -1,5 +1,6 @@
 package com.solvd.hospital.welcomepage;
 
+import com.solvd.hospital.Hospital;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,12 +20,17 @@ public class HospitalWelcomePage implements IHospitalAdmin {
         logger.info("Calculate the amount to pay for each patient--option 5");
         logger.info("Add New Patient to the Portal--option 6");
         logger.info("Display particular patient--option 7");
-        logger.info("View all the patient Details in the Hospital-- option 8");
-        logger.info("Exit Portal -- option 9");
+        logger.info("Change Doctor Assigned Status By Reflection and List all the Patients Financial Benefits -- option 8");
+        logger.info("View all the patient Details in the Hospital-- option 9");
+        logger.info("Exit Portal -- option 0");
         logger.info("Please Enter your option");
     }
     public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {
-        logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
+//        logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
+        logger.info("Enter any of the Patient Id: ");
+//        logger.info("Enter the Patient Id: "+ Hospital.patientRecordHashMap.keySet().stream());
+
+        Hospital.patientRecordHashMap.keySet().stream().sorted().forEach(x-> logger.info(x));
         String patientId = in.next();
         String regex = "[0-9]+";
         if (!Pattern.matches(regex, patientId)) {
