@@ -3,14 +3,12 @@ package com.solvd.hospital.patientrecord;
 import com.solvd.hospital.billing.Billing;
 import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.financialbenefits.FinancialBenefits;
-import com.solvd.hospital.medicalrecords.IMedicalRecords;
 import com.solvd.hospital.medicalrecords.MedicalRecord;
 import com.solvd.hospital.patient.Patient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PatientRecord  {
     private static final Logger logger = LogManager.getLogger(PatientRecord.class);
@@ -58,7 +56,6 @@ public class PatientRecord  {
     public FinancialBenefits getFinancialBenefits() {
         return this.financialBenefits;
     }
-
     public void setFinancialBenefits(FinancialBenefits financialBenefits) {
         this.financialBenefits = financialBenefits;
     }
@@ -74,15 +71,18 @@ public class PatientRecord  {
         }
         this.medicalRecord = medicalRecord;
     }
-    public String printDoctorInfo() {
-        String infoToPrint = "No Doctor is assigned";
-        if (assignedDoctorList != null) {
-            for (Doctor assignedDocctor : assignedDoctorList) {
-
-                infoToPrint = assignedDocctor.getDoctorId();
-            }
-        }
-        return infoToPrint;
+    public String printDoctorInfo()
+    {
+        return assignedDoctorList == null || assignedDoctorList.isEmpty() ?  "NO DOC is assigned " :
+                assignedDoctorList.stream().map(doctor -> doctor.getDoctorId()).findAny().get();
+//        String infoToPrint = "No Doctor is assigned";
+//        if (assignedDoctorList != null) {
+//            for (Doctor assignedDocctor : assignedDoctorList) {
+//                infoToPrint = assignedDocctor.getDoctorId();
+//            }
+//        }
+//        return infoToPrint;
+//        return assignedDoctorList==null? "no doc":assignedDoctorList.stream().map(doctor -> doctor.getDoctorId());
     }
     public String toString() {
         return "\tPatient Id: " + this.getPatient().getPatientId() + "\n" +
@@ -100,8 +100,13 @@ public class PatientRecord  {
                 "\tTest Name: " + this.getMedicalRecord().getTestName() + "\n";
     }
     public void printInformation() {
-        logger.info("Patient Id: " + this.getPatient().getPatientId());
+        logger.info("\tPatient Id: " + this.getPatient().getPatientId());
+        logger.info("\tPatient Name: " + this.getPatient().getPersonalInformation().getFirstName());
+        logger.info("\tPatient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
+    }
+    public void printFinancialBenefits() {
         logger.info("Patient Name: " + this.getPatient().getPersonalInformation().getFirstName());
-        logger.info("Patient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
+        logger.info("Patient Id: " + this.getPatient().getPatientId());
+        logger.info("Benefits Eligible: " + this.getFinancialBenefits().getBenefitPercent()+"%");
     }
 }

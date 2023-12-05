@@ -1,10 +1,8 @@
 package com.solvd.hospital.patient;
 
 public class PatientIdGenerator {
-
     private static PatientIdGenerator patientIdGenerator = null;
     private static long patientId = 999;
-
     public PatientIdGenerator() {
     }
     public static PatientIdGenerator patientIdGenerator() {
@@ -15,6 +13,6 @@ public class PatientIdGenerator {
     }
     public String getPatientIdGenerator() {
         patientId++;
-        return String.valueOf(patientId);
+        return String.valueOf(this.patientId);
     }
 }

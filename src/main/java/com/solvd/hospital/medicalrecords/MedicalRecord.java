@@ -6,7 +6,6 @@ import org.apache.logging.log4j.Logger;
 
 public class MedicalRecord implements IMedicalRecords{
     private static final Logger logger = LogManager.getLogger(PatientRecord.class);
-
     private boolean prescriptionStatus;
     private String testName;
 
@@ -28,13 +27,11 @@ public class MedicalRecord implements IMedicalRecords{
     public void setTestName(String testName) {
         this.testName = testName;
     }
-
     @Override
     public String toString() {
         return "prescriptionStatus= " + prescriptionStatus + "\n"+
                 "testName= " + testName + "\n";
     }
-
     @Override
     public void printPatientMedicalRecords() {
 

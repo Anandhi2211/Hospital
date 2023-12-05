@@ -155,7 +155,6 @@ public class GeneratingData {
 
         return patientRecordList;
     }
-
     public HashSet<Patient> addNewPatientList(HashSet<Patient> newPatientList) {
 
         PersonalInformation<String> personalInformation = new PersonalInformation<>();
@@ -216,7 +215,6 @@ public class GeneratingData {
 
         return newPatientList;
     }
-
     public HashSet<Department> addDepartmentDetails(ArrayList<Doctor> doctorList, HashSet<Department> departmentList) {
         doctorList.stream().forEach(x->departmentList.add(x.getDepartmentInfo()));
 //        for (Doctor doctor : doctorList)

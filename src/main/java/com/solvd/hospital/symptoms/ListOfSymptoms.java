@@ -17,9 +17,7 @@ public enum ListOfSymptoms {
     public int getValue() {
         return value;
     }
-
     final int value;
-
     ListOfSymptoms(int value) {
         this.value = value;
     }

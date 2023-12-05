@@ -2,12 +2,12 @@ package com.solvd.hospital.medicalrecords;
 
 
 public enum Treatment {
-    laserTest(2000),
-    bloodTest(1000),
-    xRay(700),
-    physiotherapy(400),
-    antibiotics(200),
-    painKillers(200);
+    LASER_TEST(2000),
+    BLOOD_TEST(1000),
+    X_RAY(700),
+    PHYSIOTHERAPY(400),
+    ANTIBIOTICS(200),
+    PAIN_KILLERS(200);
     final int priceAmt;
     public int getPriceAmt() {
         return this.priceAmt;

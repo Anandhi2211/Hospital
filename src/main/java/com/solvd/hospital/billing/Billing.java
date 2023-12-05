@@ -48,7 +48,6 @@ public class Billing implements IBilling, IPayment {
     public void billCalculation() {
 
     }
-
     @Override
     public PatientRecord checkFinancialBenefits( PatientRecord patientRecord) {
 
