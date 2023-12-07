@@ -22,7 +22,6 @@ import org.apache.logging.log4j.Logger;
 
 import java.lang.reflect.Field;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Hospital {
     private static final Logger logger = LogManager.getLogger(Hospital.class);
