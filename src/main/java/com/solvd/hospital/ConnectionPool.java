@@ -12,7 +12,7 @@ public class ConnectionPool {
     private static ConnectionPool connectionPool = null;
     private List<Connection> connectionsList = new ArrayList<>();
     public ConnectionPool() {
-        IntStream.range(1, 6).forEach(i -> {
+        IntStream.range(1, 5).forEach(i -> {
             Connection connection = new Connection();
             connection.setName("Connection Name " + i);
             connectionsList.add(connection);
@@ -25,13 +25,10 @@ public class ConnectionPool {
         return connectionPool;
     }
     public synchronized Connection getConnection() {
-        Connection connection = new Connection();
-        if (connectionsList.size() != 0) {
-            connection = connectionsList.get(0);
+            Connection connection = connectionsList.get(0);
             connectionsList.remove(connection);
-            connectionPool.releaseConnection(connection);
-        }
-        return connection;
+            releaseConnection(connection);
+            return connection;
     }
     public synchronized void releaseConnection(Connection connection) {
         connectionsList.add(connection);
