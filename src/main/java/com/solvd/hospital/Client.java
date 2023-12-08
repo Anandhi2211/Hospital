@@ -8,16 +8,20 @@ public class Client {
 
     public static void main(String[] args) {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
-        Connection connection;
+        Connection connection ;
         int timer = 0;
-        while (timer < 5000) {
+
+        while (timer < 5000 ) {
             try {
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             } catch (InterruptedException e) {
             }
             connection = connectionPool.getConnection();
             logger.info(connection.getName());
-            connection.start();
+            if(!connection.isAlive())
+            {
+                connection.start();
+            }
             timer = timer + 1000;
         }
     }

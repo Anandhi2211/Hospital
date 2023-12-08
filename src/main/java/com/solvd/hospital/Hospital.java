@@ -117,7 +117,9 @@ public class Hospital {
         Field[] doctorFields = doctor.getClass().getDeclaredFields();
         logger.info("Enter Doctor Id to change the Doctor Details");
         String answer = in.next();
-        Doctor reflectionDoctor = doctorList.stream().filter(doctor1 -> doctor1.getDoctorId().equalsIgnoreCase(answer)).findAny().get();
+        Doctor reflectionDoctor = doctorList.stream()
+                .filter(doctor1 -> doctor1.getDoctorId()
+                        .equalsIgnoreCase(answer)).findAny().get();
         System.out.println("Before Changing Doctor Status: " + reflectionDoctor.getDoctorAssigned());
         Field fil = Arrays.stream(doctorFields)
                 .filter(y -> y.getName()

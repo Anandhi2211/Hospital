@@ -6,10 +6,10 @@ public class Connection extends Thread {
     private static final Logger logger = LogManager.getLogger(Hospital.class);
     @Override
     public void run() {
-        for (int i = 0; i < 5; i++) {
-            logger.info("Thread " + i);
+        for (int i = 0; i < 10; i++) {
+            logger.info( this.getName()+ "| Thread " + i);
             try {
-                Thread.sleep(500);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
             }
         }
