@@ -1,7 +1,7 @@
 package com.solvd.hospital;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,7 +24,7 @@ public class WordCount {
         String str = FileUtils.readFileToString(input, "UTF-8");
 
         str = str.replaceAll("[\\r\\n]+", " ");
-        for (String wordSplitWithLine : StringUtils.split(str,"\n")) {
+        for (String wordSplitWithLine : StringUtils.split(str, "\n")) {
             for (String wordSplitWithSpace : wordSplitWithLine.split(" ")) {
                 StringUtils.replace(wordSplitWithSpace.trim(), ".", " ");
                 StringUtils.replace(wordSplitWithSpace.trim(), ",", " ");
@@ -32,23 +32,23 @@ public class WordCount {
             }
             do {
                 outputLine = wordCount.findTheCountOfTheWord(in, listOfWords);
-                FileUtils.writeStringToFile(output,  outputLine+"\n", "UTF-8", true);
+                FileUtils.writeStringToFile(output, outputLine + "\n", "UTF-8", true);
                 logger.info("Do want to continue again ?  Y / N ");
                 option = in.next();
             } while (option.equalsIgnoreCase("y"));
             logger.info("The end");
-            FileUtils.writeStringToFile(output,  "THE END"+"\n", "UTF-8", true);
+            FileUtils.writeStringToFile(output, "THE END" + "\n", "UTF-8", true);
             in.close();
         }
     }
+
     public String findTheCountOfTheWord(Scanner in, ArrayList<String> listOfWords) {
         String word;
         int count = 0;
         logger.info("Enter the word find the occurrences:");
         word = in.next();
         for (String output : listOfWords) {
-            if(StringUtils.compareIgnoreCase(output.trim(),word)==0)
-            {
+            if (StringUtils.compareIgnoreCase(output.trim(), word) == 0) {
                 count++;
             }
         }

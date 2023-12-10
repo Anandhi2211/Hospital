@@ -1,8 +1,7 @@
-package com.solvd.hospital.insurance;
+package com.solvd.hospital.exceptions;
 
 public class ExceptionInsurance extends RuntimeException {
-    public ExceptionInsurance(String message)
-    {
+    public ExceptionInsurance(String message) {
         super(message);
     }
 }

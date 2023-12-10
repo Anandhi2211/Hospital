@@ -1,4 +1,4 @@
-package com.solvd.hospital.insurance;
+package com.solvd.hospital.enums;
 
 public enum HospitalInsurance {
     CIGNA(10),
@@ -6,10 +6,12 @@ public enum HospitalInsurance {
     ANTHEM(20),
     CAREPLUS(15);
     final int percentageConcession;
-    public int getPercentageConcession() {
-        return this.percentageConcession;
-    }
+
     HospitalInsurance(int percentConcession) {
         this.percentageConcession = percentConcession;
+    }
+
+    public int getPercentageConcession() {
+        return this.percentageConcession;
     }
 }

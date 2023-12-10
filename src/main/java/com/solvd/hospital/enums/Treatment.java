@@ -1,4 +1,4 @@
-package com.solvd.hospital.medicalrecords;
+package com.solvd.hospital.enums;
 
 
 public enum Treatment {
@@ -9,10 +9,12 @@ public enum Treatment {
     ANTIBIOTICS(200),
     PAIN_KILLERS(200);
     final int priceAmt;
+
+    Treatment(int priceAmt) {
+        this.priceAmt = priceAmt;
+    }
+
     public int getPriceAmt() {
         return this.priceAmt;
-    }
-    Treatment( int priceAmt) {
-        this.priceAmt = priceAmt;
     }
 }
