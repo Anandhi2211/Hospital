@@ -4,13 +4,13 @@ import com.solvd.hospital.absctractclasses.CardDetails;
 
 public class Payment extends CardDetails {
 
-    private boolean paymentStatus;
+    private boolean paymentPaidStatus;
 
-    public boolean isPaymentStatus() {
-        return paymentStatus;
+    public boolean isPaymentPaidStatus() {
+        return this.paymentPaidStatus;
     }
 
-    public void setPaymentStatus(boolean paymentStatus) {
-        this.paymentStatus = paymentStatus;
+    public void setPaymentPaidStatus(boolean paymentPaidStatus) {
+        this.paymentPaidStatus = paymentPaidStatus;
     }
 }

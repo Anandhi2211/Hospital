@@ -49,10 +49,10 @@ public abstract class Person {
 
     @Override
     public String toString() {
-        return "\tFirst Name =" + personalInformation.getFirstName() + "\n" +
-                "\tGender =" + personalInformation.getGender() + "\n" +
-                "\tEmail Address =" + personalInformation.getEmailAddress() + "\n" +
-                "\tContact Number =" + personalInformation.getContactNumber() + "\n" +
+        return "\tFirst Name =" + this.personalInformation.getFirstName() + "\n" +
+                "\tGender =" + this.personalInformation.getGender() + "\n" +
+                "\tEmail Address =" + this.personalInformation.getEmailAddress() + "\n" +
+                "\tContact Number =" + this.personalInformation.getContactNumber() + "\n" +
                 "\tinsurance Number =" + this.insurance.getInsuranceNumber() + "\n" +
                 "\tinsurance Name =" + this.insurance.getInsuranceName() + "\n" +
                 "\tannualIncome='" + this.annualIncome + '\'' +

@@ -17,7 +17,6 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
     public void setBillingGeneratedStatus(boolean billingGeneratedStatus) {
         this.billingGeneratedStatus = billingGeneratedStatus;
     }
-
     public int getBillingAmount() {
         return this.billingAmount;
     }
@@ -36,10 +35,10 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
 
     @Override
     public String toString() {
-        return "\tbillingNumber= " + this.billingNumber + "\n" +
+        return  "\n"+
+                "\ttbillingNumber= " + this.billingNumber + "\n" +
                 "\tBilling Amount='" + this.billingAmount + "\n";
     }
-
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -57,8 +56,6 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
 
     @Override
     public PatientRecord checkFinancialBenefits(PatientRecord patientRecord) {
-
-
         if (patientRecord.getPatient().getAnnualIncome() < 50000) {
             this.setBenefitPercent(75);
             this.setBenefitStatus(true);
@@ -72,15 +69,12 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
             this.setBenefitPercent(1);
             this.setBenefitStatus(false);
         }
-
         patientRecord.setBilling(this);
-
         return patientRecord;
     }
 
     @Override
     public void billCalculation(PatientRecord patientRecord) {
-
     }
 }
 

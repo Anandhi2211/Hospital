@@ -14,8 +14,8 @@ public class HospitalWelcomePage implements IHospitalAdmin {
 
     @Override
     public void welcomePage() {
-        logger.info("Welcome to Hospital Portal!");
-        logger.info("Please choose from the below options");
+        logger.info("\tWelcome to Hospital Portal!");
+        logger.info("\tChoose from the below options");
         logger.info("1  -  Patient, Doctor and Department Details");
         logger.info("2  -  Assign Doctor to each Patient");
         logger.info("3  -  Doctor treats each Patient");
@@ -26,7 +26,7 @@ public class HospitalWelcomePage implements IHospitalAdmin {
         logger.info("8  -  Change Doctor Assigned Status By Reflection");
         logger.info("9  -  View all the patient Details in the Hospital");
         logger.info("0  -  Exit Portal");
-        logger.info("Please Enter your option");
+        logger.info("\tEnter your option");
     }
 
     public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {

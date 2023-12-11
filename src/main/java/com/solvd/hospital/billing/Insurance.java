@@ -20,9 +20,7 @@ public class Insurance {
             this.insuranceName = insuranceName;
         }
     }
-
     public String getInsuranceNumber() {
-
         return this.insuranceNumber;
     }
 

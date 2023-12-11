@@ -50,8 +50,11 @@ public class Hospital {
                     switch (option) {
                         case 1:
                             hospital.printPatientDetails();
+                            logger.info("*****************");
                             hospital.printDoctorDetails();
+                            logger.info("*****************");
                             hospital.printDepartmentInfo();
+                            logger.info("*****************");
                             break;
                         case 2:
                             logger.info("ASSIGNS DOCTOR TO THE PATIENT");
@@ -60,6 +63,7 @@ public class Hospital {
                         case 3:
                             logger.info("DOCTOR TREATS THE PATIENT");
                             hospital.doctorTreatingPatient(in);
+                            logger.info("*****************");
                             break;
                         case 4:
                             logger.info("ADMIN GENERATES BILL FOR ALL THE PATIENT");
@@ -109,7 +113,8 @@ public class Hospital {
         String patientId = admin.getPatientId(in);
         PatientRecord patientRecord = patientRecordHashMap.get(patientId);
         if (patientRecordHashMap.containsKey(patientId)) {
-            if (patientRecord.getBilling().isBillingGeneratedStatus()) {
+
+            if (patientRecord.getBilling().isBillingGeneratedStatus() && patientRecord.getBilling()!=null) {
                 logger.info("Patient Id: " + patientRecord.getPatient().getPatientId());
                 logger.info("Bill Number: " + patientRecord.getBilling().getBillingNumber());
                 logger.info("Bill Amount: " + patientRecord.getBilling().getBillingAmount());
@@ -123,10 +128,12 @@ public class Hospital {
                 logger.info("Enter CVV: ");
                 String cvv = in.next();
                 payment.setCvvNumber(cvv);
-                payment.setPaymentStatus(true);
+                payment.setPaymentPaidStatus(true);
                 patientRecord.setPayment(payment);
                 patientRecordHashMap.put(patientId, patientRecord);
-            } else {
+            }
+
+            else {
                 logger.info("Billing Not Generated");
             }
         } else {
@@ -166,7 +173,7 @@ public class Hospital {
     private void generateBillForPatient(Scanner in) throws ExceptionHospitalAdmin { // Generate bill
         for (String patientId : patientRecordHashMap.keySet()) {
             PatientRecord patientRecord = patientRecordHashMap.get(patientId);
-            if (patientRecord.getBilling() == null) {
+            if (patientRecord.getBilling()!=null) {
                 if (patientRecord.getPatientAssignedDoctor()) {
                     if (patientRecord.getTreatmentDetails() != null) {
                         Treatment treatment = Arrays.stream(Treatment.values())
@@ -191,9 +198,7 @@ public class Hospital {
                         IBilling iBilling = (patientRecordLamda) -> {
                             Billing billingLamda = patientRecordLamda.getBilling();
                             patientRecordLamda = billingLamda.checkFinancialBenefits(patientRecordLamda);
-
                             int financialBenefitsAmt = billingLamda.getBillingAmount() * (patientRecordLamda.getBilling().getBenefitPercent()) / 100;
-
                             int insuranceBenefitsAmt = billingLamda.getBillingAmount() * (hp.getPercentageConcession()) / 100;
                             logger.info("Patient Id: " + patientRecordLamda.getPatient().getPatientId());
                             logger.info("Total Amount Before Financial Benefits: " + patientRecordLamda.getBilling().getBillingAmount());
@@ -216,16 +221,15 @@ public class Hospital {
                         logger.info("Doctor didn't Treat the Patient ");
                     }
                 } else {
-                    logger.info(patientRecord.getPatient().getPatientId() + " Doctor was not assigned to the patient");
+                    logger.info(patientRecord.getPatient().getPatientId() + " No Billing Record");
                 }
             } else {
-                logger.info("Already bill Generated");
                 logger.info("Patient Id: " + patientRecord.getPatient().getPatientId());
                 logger.info("Bill Number: " + patientRecord.getBilling().getBillingNumber());
                 logger.info("Bill Amount: " + patientRecord.getBilling().getBillingAmount());
+                logger.info("*****************");
             }
         }
-        logger.info("*************************************************");
     }
 
     private void newPatientList(HashSet<Patient> newPatientList, Scanner in) {
@@ -270,7 +274,7 @@ public class Hospital {
     }
 
     private void printAllPatientRecords() {
-        logger.info(patientRecordHashMap);
+        patientRecordHashMap.keySet().stream().sorted().forEach(x->logger.info(patientRecordHashMap.get(x)));
     }
 
     private void doctorTreatingPatient(Scanner in) throws ExceptionHospitalAdmin { //Doctor Prescribes Test for the patient
@@ -353,8 +357,6 @@ public class Hospital {
             logger.info("Patient Id Not found");
         }
     }
-
-
     private void viewPatientRecord(Scanner in) throws ExceptionHospitalAdmin { // View particular patient Record
         HospitalWelcomePage admin = new HospitalWelcomePage();
         String patientId = admin.getPatientId(in);

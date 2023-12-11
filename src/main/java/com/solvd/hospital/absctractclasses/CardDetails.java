@@ -1,5 +1,10 @@
 package com.solvd.hospital.absctractclasses;
 
+import com.solvd.hospital.exceptions.ExceptionCardDetails;
+import com.solvd.hospital.exceptions.ExceptionInsurance;
+
+import java.util.regex.Pattern;
+
 public abstract class CardDetails {
     private String cardNumber;
     private String cardName;
@@ -10,7 +15,12 @@ public abstract class CardDetails {
     }
 
     public void setCardNumber(String cardNumber) {
-        this.cardNumber = cardNumber;
+        String regex = "[0-9]+";
+        if (!Pattern.matches(regex, cardNumber) || (!(cardNumber.length() == 11))) {
+            throw new ExceptionCardDetails("Not a Valid Card Number");
+        } else {
+            this.cardNumber = cardNumber;
+        }
     }
 
     public String getCardName() {
@@ -18,7 +28,12 @@ public abstract class CardDetails {
     }
 
     public void setCardName(String cardName) {
-        this.cardName = cardName;
+        String regex = "[A-Za-z ]+";
+        if (!Pattern.matches(regex, cardName)) {
+            throw new ExceptionCardDetails("Not a Valid Card Name");
+        } else {
+            this.cardName = cardName;
+        }
     }
 
     public String getCvvNumber() {
@@ -26,6 +41,11 @@ public abstract class CardDetails {
     }
 
     public void setCvvNumber(String cvvNumber) {
-        this.cvvNumber = cvvNumber;
+        String regex = "[0-9]+";
+        if (!Pattern.matches(regex, cvvNumber)) {
+            throw new ExceptionInsurance("Not a Valid Cvv Number");
+        } else {
+            this.cvvNumber = cvvNumber;
+        }
     }
 }
