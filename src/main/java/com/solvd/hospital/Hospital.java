@@ -31,11 +31,10 @@ public class Hospital {
 
     public static void main(String[] args) {
         int option;
-        Scanner in = new Scanner(System.in);
-        HospitalWelcomePage admin = new HospitalWelcomePage();
-        Hospital hospital = new Hospital();
-        GeneratingData data = new GeneratingData();
-        try {
+        try (Scanner in = new Scanner(System.in)) {
+            HospitalWelcomePage admin = new HospitalWelcomePage();
+            Hospital hospital = new Hospital();
+            GeneratingData data = new GeneratingData();
             patientRecordList = data.addPatientDetails(patientRecordList); // add Patient Details
             patientRecordHashMap = data.addToHashMap(patientRecordHashMap, patientRecordList);
             doctorList = data.addDoctorDetails(doctorList); // add Doctor details
@@ -67,7 +66,7 @@ public class Hospital {
                             break;
                         case 4:
                             logger.info("ADMIN GENERATES BILL FOR ALL THE PATIENT using Lambda expression");
-                            hospital.generateBillForPatient(in);
+                            hospital.generateBillForPatient();
                             break;
                         case 5:
                             logger.info("ENTER THE PATIENT ID TO DO PAYMENT");
@@ -93,16 +92,15 @@ public class Hospital {
                         case 0:
                             logger.info("Thanks for Checking with us");
                             logger.info("*************************************************");
-                            break;
+                            return;
                         default:
                             logger.info("Enter the valid option between 1 and 9: ");
                     }
-                } while (option < 10 && option >= 1);
+                } while (true);
             }
         } catch (Exception e) {
             throw new RuntimeException(e);
         } finally {
-            in.close();
             logger.info("Finally No Exception found");
         }
     }
@@ -153,17 +151,23 @@ public class Hospital {
         String answer = in.next();
         Doctor reflectionDoctor = doctorList.stream()
                 .filter(doctor1 -> doctor1.getDoctorId().equalsIgnoreCase(answer))
-                .findAny().get();
-        System.out.println("Before Changing Doctor Status: " + reflectionDoctor.getDoctorAssigned());
-        Field fil = Arrays.stream(doctorFields)
-                .filter(y -> y.getName().equalsIgnoreCase("doctorAssigned"))
-                .findAny().get();
-        fil.setAccessible(true);
-        fil.set(reflectionDoctor, true);
-        System.out.println("After Changing Doctor Status: " + reflectionDoctor.getDoctorAssigned());
+                .findAny().orElse(null);
+        if (reflectionDoctor != null) {
+            System.out.println("Before Changing Doctor Status: " + reflectionDoctor.getDoctorAssigned());
+            Field fil = Arrays.stream(doctorFields)
+                    .filter(y -> y.getName().equalsIgnoreCase("doctorAssigned"))
+                    .findAny().orElse(null);
+            if (fil != null) {
+                fil.setAccessible(true);
+                fil.set(reflectionDoctor, true);
+            }
+            System.out.println("After Changing Doctor Status: " + reflectionDoctor.getDoctorAssigned());
+        } else {
+            logger.info("Not a valid Doctor Id");
+        }
     }
 
-    private void generateBillForPatient(Scanner in) throws ExceptionHospitalAdmin { // Generate bill
+    private void generateBillForPatient() throws ExceptionHospitalAdmin { // Generate bill
         for (String patientId : patientRecordHashMap.keySet()) {
             PatientRecord patientRecord = patientRecordHashMap.get(patientId);
             if ((!(patientRecord.getBilling().isBillingGeneratedStatus()) && (patientRecord.getTreatmentDetails().getPrescriptionStatus()))) {
@@ -177,30 +181,34 @@ public class Hospital {
                         billing.setBillingGeneratedStatus(true);
                         CoPay coPay = Arrays.stream(CoPay.values())
                                 .filter(coPay1 -> patientRecord.getAssignedDoctor().getDepartmentInfo().getDepartmentCode().equals(coPay1.getDepCode()))
-                                .findFirst().get();
-                        if (treatment == null) {
-                            billing.setBillingAmount(coPay.getCoPayAmt());
-                            patientRecord.setBilling(billing);
-                        } else {
-                            billing.setBillingAmount(coPay.getCoPayAmt() + treatment.getPriceAmt());
-                            patientRecord.setBilling(billing);
+                                .findFirst().orElse(null);
+                        if (coPay != null) {
+                            if (treatment == null) {
+                                billing.setBillingAmount(coPay.getCoPayAmt());
+                                patientRecord.setBilling(billing);
+                            } else {
+                                billing.setBillingAmount(coPay.getCoPayAmt() + treatment.getPriceAmt());
+                                patientRecord.setBilling(billing);
+                            }
                         }
                         HospitalInsurance hp = Arrays.stream(HospitalInsurance.values())
                                 .filter(hospitalInsurance1 -> hospitalInsurance1.name().equalsIgnoreCase(patientRecord.getPatient().getInsurance().getInsuranceName()))
-                                .findAny().get();
-                        IBilling iBilling = (patientRecordLamda) -> {
-                            Billing billingLamda = patientRecordLamda.getBilling();
-                            patientRecordLamda = billingLamda.checkFinancialBenefits(patientRecordLamda);
-                            int financialBenefitsAmt = billingLamda.getBillingAmount() * (patientRecordLamda.getBilling().getBenefitPercent()) / 100;
-                            int insuranceBenefitsAmt = billingLamda.getBillingAmount() * (hp.getPercentageConcession()) / 100;
-                            logger.info("Patient Id: " + patientRecordLamda.getPatient().getPatientId());
-                            logger.info("Total Amount Before Financial Benefits: " + patientRecordLamda.getBilling().getBillingAmount());
-                            logger.info("Deductible amount as per the insurance: " + insuranceBenefitsAmt);
-                            logger.info("Deductible amount as per the Financial benefits: " + financialBenefitsAmt);
-                            logger.info("Patient final amount to pay: " + (billingLamda.getBillingAmount() - insuranceBenefitsAmt - financialBenefitsAmt));
-                            billingLamda.setBillingAmount((billingLamda.getBillingAmount() - insuranceBenefitsAmt - financialBenefitsAmt));
-                            patientRecordLamda.setBilling(billingLamda);
-                            patientRecordHashMap.put(patientId, patientRecordLamda);
+                                .findAny().orElse(null);
+                        IBilling iBilling = (patientRecordLambda) -> {
+                            if (hp != null) {
+                                Billing billingLambda = patientRecordLambda.getBilling();
+                                patientRecordLambda = billingLambda.checkFinancialBenefits(patientRecordLambda);
+                                int financialBenefitsAmt = billingLambda.getBillingAmount() * (patientRecordLambda.getBilling().getBenefitPercent()) / 100;
+                                int insuranceBenefitsAmt = billingLambda.getBillingAmount() * (hp.getPercentageConcession()) / 100;
+                                logger.info("Patient Id: " + patientRecordLambda.getPatient().getPatientId());
+                                logger.info("Total Amount Before Financial Benefits: " + patientRecordLambda.getBilling().getBillingAmount());
+                                logger.info("Deductible amount as per the insurance: " + insuranceBenefitsAmt);
+                                logger.info("Deductible amount as per the Financial benefits: " + financialBenefitsAmt);
+                                logger.info("Patient final amount to pay: " + (billingLambda.getBillingAmount() - insuranceBenefitsAmt - financialBenefitsAmt));
+                                billingLambda.setBillingAmount((billingLambda.getBillingAmount() - insuranceBenefitsAmt - financialBenefitsAmt));
+                                patientRecordLambda.setBilling(billingLambda);
+                                patientRecordHashMap.put(patientId, patientRecordLambda);
+                            }
                         };
                         iBilling.billCalculation(patientRecord);
                         logger.info("Bill Number: " + billing.getBillingNumber());
@@ -239,19 +247,21 @@ public class Hospital {
                 int value = in.nextInt();
                 ListOfSymptoms listOfSymptoms = Arrays.stream(ListOfSymptoms.values())
                         .filter(l -> l.getValue() == value)
-                        .findAny().get();
-                Symptoms symptoms = new Symptoms();
-                PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
-                symptoms.setPatientSymptom(listOfSymptoms.name());
-                patient.setSymptoms(symptoms);
-                patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
-                PatientRecord patientRecord = new PatientRecord();
-                patientRecord.setPatient(patient);
-                patientRecordList.add(patientRecord);
-                GeneratingData data = new GeneratingData();
-                patientRecordHashMap = data.addToHashMap(patientRecordHashMap, patientRecordList);
-                logger.info(listOfSymptoms.name() + " is assigned to " + patient.getPersonalInformation().getFirstName());
-                logger.info("Patient Id: " + patient.getPatientId());
+                        .findAny().orElse(null);
+                if (listOfSymptoms != null) {
+                    Symptoms symptoms = new Symptoms();
+                    PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+                    symptoms.setPatientSymptom(listOfSymptoms.name());
+                    patient.setSymptoms(symptoms);
+                    patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+                    PatientRecord patientRecord = new PatientRecord();
+                    patientRecord.setPatient(patient);
+                    patientRecordList.add(patientRecord);
+                    GeneratingData data = new GeneratingData();
+                    patientRecordHashMap = data.addToHashMap(patientRecordHashMap, patientRecordList);
+                    logger.info(listOfSymptoms.name() + " is assigned to " + patient.getPersonalInformation().getFirstName());
+                    logger.info("Patient Id: " + patient.getPatientId());
+                }
             } else if (answer.equalsIgnoreCase("N")) {
                 logger.info("Look into next Patient");
             } else {
@@ -371,18 +381,15 @@ public class Hospital {
                     throw new ExceptionHospitalAdmin("Inside Exception Enter either y/n");
                 } else {
                     if (answer.equalsIgnoreCase("y")) {
-                        boolean doctorIdentified = false;
                         Doctor filteredDoc = doctorList.stream()
                                 .filter(doctor -> doctor.isTreatable(patientSymptom))
-                                .filter(doctor -> !(doctor.getDoctorAssigned())).findAny().get();
-                        filteredDoc.setDoctorAssigned(true);
-                        logger.info("Dr." + filteredDoc.getPersonalInformation().getFirstName() + " is assigned for the patient");
-                        filteredDoc.setDoctorAssigned(true);
-                        p.setAssignedDoctor(filteredDoc);
-                        p.setPatientAssignedDoctor(true);
-                        doctorIdentified = true;
-                        if (!doctorIdentified) {
-                            logger.info("Doctor is not available");
+                                .filter(doctor -> !(doctor.getDoctorAssigned())).findAny().orElse(null);
+                        if (filteredDoc != null) {
+                            filteredDoc.setDoctorAssigned(true);
+                            logger.info("Dr." + filteredDoc.getPersonalInformation().getFirstName() + " is assigned for the patient");
+                            filteredDoc.setDoctorAssigned(true);
+                            p.setAssignedDoctor(filteredDoc);
+                            p.setPatientAssignedDoctor(true);
                         }
                     }
                     if (answer.equalsIgnoreCase("N")) {
@@ -400,7 +407,7 @@ public class Hospital {
 
     private void printDoctorDetails() { //Prints all the Doctor Details
         logger.info("\nPrinting Doctor Details");
-        doctorList.stream().forEach(doctor -> doctor.printInformation());
+        doctorList.forEach(Doctor::printInformation);
     }
 
     private void printPatientDetails() {
@@ -410,6 +417,6 @@ public class Hospital {
 
     private void printDepartmentInfo() {
         logger.info("\nDepartments in the Hospital");
-        departmentList.stream().forEach(department -> department.printDepartmentDetails());
+        departmentList.forEach(Department::printDepartmentDetails);
     }
 }
