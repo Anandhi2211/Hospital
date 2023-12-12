@@ -7,7 +7,7 @@ import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.enums.*;
 import com.solvd.hospital.exceptions.ExceptionHospitalAdmin;
 import com.solvd.hospital.generatingdata.GeneratingData;
-import com.solvd.hospital.generatingdata.PatientIdGenerator;
+import com.solvd.hospital.generatingdata.SingletonIdUtil;
 import com.solvd.hospital.interfaces.IBilling;
 import com.solvd.hospital.patient.Patient;
 import com.solvd.hospital.patient.PatientRecord;
@@ -250,10 +250,10 @@ public class Hospital {
                         .findAny().orElse(null);
                 if (listOfSymptoms != null) {
                     Symptoms symptoms = new Symptoms();
-                    PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+                    SingletonIdUtil singletonIdUtil = SingletonIdUtil.patientIdGenerator();
                     symptoms.setPatientSymptom(listOfSymptoms.name());
                     patient.setSymptoms(symptoms);
-                    patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+                    patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
                     PatientRecord patientRecord = new PatientRecord();
                     patientRecord.setPatient(patient);
                     patientRecordList.add(patientRecord);

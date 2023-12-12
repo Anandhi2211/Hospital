@@ -26,7 +26,7 @@ public class GeneratingData {
         PatientRecord patientRecord = new PatientRecord();
         Symptoms symptoms = new Symptoms();
         Patient patient = new Patient();
-        PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        SingletonIdUtil singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         Insurance insurance = new Insurance();
         PersonalInformation<String> personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ashok");
@@ -39,7 +39,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.SKIN_INFECTION.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
@@ -47,7 +47,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anand");
@@ -60,7 +60,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.NECK_PAIN.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
@@ -68,7 +68,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Abi");
@@ -81,7 +81,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.SKIN_RASHES.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
@@ -89,7 +89,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ranjith");
@@ -102,7 +102,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.EAR_PAIN.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
@@ -110,7 +110,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anil");
@@ -123,7 +123,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.PIGMENTATION_REMOVAL.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
@@ -131,7 +131,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+        singletonIdUtil = SingletonIdUtil.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Arav");
@@ -144,7 +144,7 @@ public class GeneratingData {
         patient.setInsurance(insurance);
         patient.setPersonalInformation(personalInformation);
         symptoms.setPatientSymptom(ListOfSymptoms.BACK_PAIN.name());
-        patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+        patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
         patient.setSymptoms(symptoms);
         patientRecord.setPatient(patient);
         patientRecordList.add(patientRecord);
