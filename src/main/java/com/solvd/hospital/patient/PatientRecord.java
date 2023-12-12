@@ -15,7 +15,6 @@ public class PatientRecord {
     private Doctor assignedDoctor;
     private TreatmentDetails treatmentDetails;
     private FinancialBenefits financialBenefits;
-
     private Payment payment;
     private boolean patientAssignedDoctor;
 
@@ -31,12 +30,10 @@ public class PatientRecord {
     }
 
     public Doctor getAssignedDoctor() {
-
         return this.assignedDoctor;
     }
 
     public void setAssignedDoctor(Doctor doctor) {
-
         this.assignedDoctor = doctor;
     }
 
@@ -53,11 +50,7 @@ public class PatientRecord {
     }
 
     public Billing getBilling() {
-        if(this.billing == null)
-        {
-            this.billing = new Billing();
-        }
-        return this.billing;
+        return this.billing == null ? this.billing = new Billing() : this.billing;
     }
 
     public void setBilling(Billing billing) {
@@ -65,8 +58,7 @@ public class PatientRecord {
     }
 
     public Payment getPayment() {
-        return  this.payment == null ? this.payment = new Payment() : this.payment;
-
+        return this.payment == null ? this.payment = new Payment() : this.payment;
     }
 
     public void setPayment(Payment payment) {
@@ -74,10 +66,6 @@ public class PatientRecord {
             this.payment = new Payment();
         } else
             this.payment = payment;
-    }
-
-    public FinancialBenefits getFinancialBenefits() {
-        return this.financialBenefits;
     }
 
     public void setFinancialBenefits(FinancialBenefits financialBenefits) {
@@ -89,7 +77,7 @@ public class PatientRecord {
     }
 
     public void setTreatmentDetails(TreatmentDetails treatmentDetails) {
-        if (treatmentDetails == null) {
+        if (this.treatmentDetails == null) {
 
             this.treatmentDetails = new TreatmentDetails();
         } else
@@ -97,19 +85,11 @@ public class PatientRecord {
     }
 
     public String printDoctorName() {
-        String infoPrint = "No Doc Assigned";
-        if (this.getAssignedDoctor() != null) {
-            infoPrint = "Dr." + this.getAssignedDoctor().getPersonalInformation().getFirstName();
-        }
-        return infoPrint;
+        return this.getAssignedDoctor() != null ? "Dr." + this.getAssignedDoctor().getPersonalInformation().getFirstName() : "No Doc Assigned";
     }
 
     public String printPrescriptionTestName() {
-        String infoPrint = "No Prescription Assigned";
-        if (this.getTreatmentDetails() != null) {
-            infoPrint = this.getTreatmentDetails().getTestName();
-        }
-        return infoPrint;
+        return this.getTreatmentDetails().getTestName() != null ? this.getTreatmentDetails().getTestName() : "No Prescription Assigned";
     }
 
     public String toString() {
@@ -129,30 +109,20 @@ public class PatientRecord {
                 "\tTest Name: " + this.printPrescriptionTestName() + "\n" +
                 "\tBill Number: " + this.printBillNumber() + "\n" +
                 "\tBill Amount: " + this.printBillAmount() + "\n" +
-                "\tPayment Paid Status:" + this.getPayment().isPaymentPaidStatus();
-
-
+                "\tPayment Paid Status:" + this.getPayment().isPaymentPaidStatus() + "\n";
     }
 
-    private String printBillAmount() {
-        String infoPrint = "Bill Amount Not Generated";
-        if (this.getBilling() != null) {
-            infoPrint = String.valueOf(this.getBilling().getBillingAmount());
-        }
-        return infoPrint;
+    public String printBillAmount() {
+        return this.getBilling().getBillingAmount() != 0 ? String.valueOf(this.getBilling().getBillingAmount()) : "Bill Amount Not Generated";
     }
 
-    private String printBillNumber() {
-        String infoPrint = "Bill Number Not Generated";
-        if (this.getBilling() != null) {
-            infoPrint = this.getBilling().getBillingNumber();
-        }
-        return infoPrint;
+    public String printBillNumber() {
+        return this.getBilling().getBillingNumber() != null ? this.getBilling().getBillingNumber() : "Bill Number Not Generated";
     }
 
     public void printInformation() {
         logger.info("\tPatient Id: " + this.getPatient().getPatientId());
         logger.info("\tPatient Name: " + this.getPatient().getPersonalInformation().getFirstName());
-        logger.info("\tPatient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
+        logger.info("\tPatient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom() + "\n");
     }
 }

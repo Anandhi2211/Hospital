@@ -11,7 +11,6 @@ public class TreatmentDetails implements ITreatmentDetails {
     private String testName;
 
     public boolean getPrescriptionStatus() {
-
         return this.prescriptionStatus;
     }
 
@@ -20,11 +19,7 @@ public class TreatmentDetails implements ITreatmentDetails {
     }
 
     public String getTestName() {
-
-        if (this.testName == null) {
-            this.testName = "No Test Assigned";
-        }
-        return this.testName;
+        return this.testName == null ? this.testName = "No Test Assigned" : this.testName;
     }
 
     public void setTestName(String testName) {
@@ -39,12 +34,7 @@ public class TreatmentDetails implements ITreatmentDetails {
 
     @Override
     public void printPatientMedicalRecords() {
-
-//        logger.info("Patient Id: " + this.getPatient().getPatientId());
-//        logger.info("Patient Name: " + this.getPatient().getPersonalInformation().getFirstName());
-//        logger.info("Patient Symptoms: " + this.getPatient().getSymptoms().getPatientSymptom());
-        logger.info("Doctor Prescribed to Patient: " + this.getTestName());
-        logger.info("Patient Prescription Status: " + this.getPrescriptionStatus());
-
+        logger.info("\tDoctor Prescribed to Patient: " + this.getTestName());
+        logger.info("\tPatient Prescription Status: " + this.getPrescriptionStatus());
     }
 }

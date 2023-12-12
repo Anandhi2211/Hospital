@@ -17,6 +17,7 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
     public void setBillingGeneratedStatus(boolean billingGeneratedStatus) {
         this.billingGeneratedStatus = billingGeneratedStatus;
     }
+
     public int getBillingAmount() {
         return this.billingAmount;
     }
@@ -35,10 +36,11 @@ public class Billing extends FinancialBenefits implements IBilling, IPayment {
 
     @Override
     public String toString() {
-        return  "\n"+
-                "\ttbillingNumber= " + this.billingNumber + "\n" +
+        return "\n" +
+                "\tBillingNumber= " + this.billingNumber + "\n" +
                 "\tBilling Amount='" + this.billingAmount + "\n";
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

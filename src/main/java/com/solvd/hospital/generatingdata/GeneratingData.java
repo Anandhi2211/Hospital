@@ -26,7 +26,7 @@ public class GeneratingData {
         PatientRecord patientRecord = new PatientRecord();
         Symptoms symptoms = new Symptoms();
         Patient patient = new Patient();
-        PatientIdGenerator patientIdGenerator = new PatientIdGenerator();
+        PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         Insurance insurance = new Insurance();
         PersonalInformation<String> personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ashok");
@@ -47,7 +47,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anand");
@@ -68,7 +68,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Abi");
@@ -89,7 +89,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ranjith");
@@ -110,7 +110,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anil");
@@ -131,7 +131,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Arav");

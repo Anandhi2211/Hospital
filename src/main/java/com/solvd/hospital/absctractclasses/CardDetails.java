@@ -10,21 +10,13 @@ public abstract class CardDetails {
     private String cardName;
     private String cvvNumber;
 
-    public String getCardNumber() {
-        return this.cardNumber;
-    }
-
     public void setCardNumber(String cardNumber) {
         String regex = "[0-9]+";
-        if (!Pattern.matches(regex, cardNumber) || (!(cardNumber.length() == 11))) {
+        if (!Pattern.matches(regex, cardNumber) || (!(cardNumber.length() == 16))) {
             throw new ExceptionCardDetails("Not a Valid Card Number");
         } else {
             this.cardNumber = cardNumber;
         }
-    }
-
-    public String getCardName() {
-        return this.cardName;
     }
 
     public void setCardName(String cardName) {
@@ -36,16 +28,21 @@ public abstract class CardDetails {
         }
     }
 
-    public String getCvvNumber() {
-        return this.cvvNumber;
-    }
-
     public void setCvvNumber(String cvvNumber) {
         String regex = "[0-9]+";
-        if (!Pattern.matches(regex, cvvNumber)) {
+        if (!Pattern.matches(regex, cvvNumber) && !(this.cvvNumber.length() == 3)) {
             throw new ExceptionInsurance("Not a Valid Cvv Number");
         } else {
             this.cvvNumber = cvvNumber;
         }
+    }
+
+    @Override
+    public String toString() {
+        return "CardDetails{" +
+                "cardNumber='" + cardNumber + '\'' +
+                ", cardName='" + cardName + '\'' +
+                ", cvvNumber='" + cvvNumber + '\'' +
+                '}';
     }
 }

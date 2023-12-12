@@ -33,7 +33,7 @@ public class Department extends Doctor {
 
     public void printDepartmentDetails() {
         logger.info("\tDepartment Name: " + this.getDepartmentName());
-        logger.info("\tDepartment Code: " + this.getDepartmentCode());
+        logger.info("\tDepartment Code: " + this.getDepartmentCode() + "\n");
     }
 
     @Override

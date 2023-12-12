@@ -3,7 +3,6 @@ package com.solvd.hospital.billing;
 import com.solvd.hospital.absctractclasses.CardDetails;
 
 public class Payment extends CardDetails {
-
     private boolean paymentPaidStatus;
 
     public boolean isPaymentPaidStatus() {
@@ -12,5 +11,12 @@ public class Payment extends CardDetails {
 
     public void setPaymentPaidStatus(boolean paymentPaidStatus) {
         this.paymentPaidStatus = paymentPaidStatus;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentPaidStatus=" + paymentPaidStatus +
+                '}';
     }
 }

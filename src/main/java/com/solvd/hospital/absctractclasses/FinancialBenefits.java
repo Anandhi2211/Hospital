@@ -19,4 +19,12 @@ public abstract class FinancialBenefits {
     public void setBenefitStatus(boolean benefitStatus) {
         this.benefitStatus = benefitStatus;
     }
+
+    @Override
+    public String toString() {
+        return "FinancialBenefits{" +
+                "benefitPercent=" + benefitPercent +
+                ", benefitStatus=" + benefitStatus +
+                '}';
+    }
 }

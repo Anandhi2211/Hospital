@@ -20,6 +20,7 @@ public class Insurance {
             this.insuranceName = insuranceName;
         }
     }
+
     public String getInsuranceNumber() {
         return this.insuranceNumber;
     }
@@ -30,5 +31,13 @@ public class Insurance {
             throw new ExceptionInsurance("Not Valid Insurance Number");
         }
         this.insuranceNumber = insuranceNumber;
+    }
+
+    @Override
+    public String toString() {
+        return "Insurance{" +
+                "insuranceName='" + insuranceName + '\'' +
+                ", insuranceNumber='" + insuranceNumber + '\'' +
+                '}';
     }
 }

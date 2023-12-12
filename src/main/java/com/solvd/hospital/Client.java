@@ -10,7 +10,6 @@ public class Client {
         ConnectionPool connectionPool = ConnectionPool.getInstance();
         Connection connection;
         int timer = 0;
-
         while (timer < 5000) {
             try {
                 Thread.sleep(1000);

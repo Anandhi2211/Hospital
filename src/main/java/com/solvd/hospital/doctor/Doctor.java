@@ -28,24 +28,17 @@ public class Doctor extends Person {
     }
 
     public Department getDepartmentInfo() {
-        if (this.departmentInfo == null) {
-            this.departmentInfo = new Department();
-            return this.departmentInfo;
-        } else
-            return this.departmentInfo;
+        return this.departmentInfo == null ? this.departmentInfo = new Department() : this.departmentInfo;
     }
 
     public void setDepartmentInfo(Department departmentInfo) {
         this.departmentInfo = departmentInfo;
     }
 
-    public ArrayList<String> getTreatableSymptomList() {
-        return this.treatableSymptomList;
-    }
-
     public void setTreatableSymptom(String symptom) {
+
         if (this.treatableSymptomList == null) {
-            this.treatableSymptomList = new ArrayList<String>();
+            this.treatableSymptomList = new ArrayList<>();
             this.treatableSymptomList.add(symptom);
         } else
             this.treatableSymptomList.add(symptom);
@@ -53,7 +46,7 @@ public class Doctor extends Person {
 
     public boolean isTreatable(String symptom) {
         if (this.treatableSymptomList == null) {
-            this.treatableSymptomList = new ArrayList<String>();
+            this.treatableSymptomList = new ArrayList<>();
             return this.treatableSymptomList.contains(symptom);
         }
         return this.treatableSymptomList.contains(symptom);
@@ -68,7 +61,7 @@ public class Doctor extends Person {
         logger.info("\tName: Dr." + this.getPersonalInformation().getFirstName());
         logger.info("\tId: " + this.getDoctorId());
         logger.info("\tDept Code: " + this.getDepartmentInfo().getDepartmentCode());
-        logger.info("\tDepartment Name: " + this.getDepartmentInfo().getDepartmentName());
+        logger.info("\tDepartment Name: " + this.getDepartmentInfo().getDepartmentName() + "\n");
     }
 
     public boolean getDoctorAssigned() {
