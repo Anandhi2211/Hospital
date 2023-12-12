@@ -7,7 +7,7 @@ import com.solvd.hospital.doctor.Doctor;
 import com.solvd.hospital.enums.*;
 import com.solvd.hospital.exceptions.ExceptionHospitalAdmin;
 import com.solvd.hospital.generatingdata.GeneratingData;
-import com.solvd.hospital.generatingdata.PatientIdGenerator;
+import com.solvd.hospital.generatingdata.SingletonIdUtil;
 import com.solvd.hospital.interfaces.IBilling;
 import com.solvd.hospital.patient.Patient;
 import com.solvd.hospital.patient.PatientRecord;
@@ -250,10 +250,10 @@ public class Hospital {
                         .findAny().orElse(null);
                 if (listOfSymptoms != null) {
                     Symptoms symptoms = new Symptoms();
-                    PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
+                    SingletonIdUtil singletonIdUtil = SingletonIdUtil.patientIdGenerator();
                     symptoms.setPatientSymptom(listOfSymptoms.name());
                     patient.setSymptoms(symptoms);
-                    patient.setPatientId(patientIdGenerator.getPatientIdGenerator());
+                    patient.setPatientId(singletonIdUtil.getPatientIdGenerator());
                     PatientRecord patientRecord = new PatientRecord();
                     patientRecord.setPatient(patient);
                     patientRecordList.add(patientRecord);
@@ -269,12 +269,10 @@ public class Hospital {
             }
         }
     }
-
     private void printAllPatientRecords() {
 
         patientRecordHashMap.keySet().stream().sorted().forEach(x -> logger.info(patientRecordHashMap.get(x)));
     }
-
     private void doctorTreatingPatient(Scanner in) throws ExceptionHospitalAdmin { //Doctor Prescribes Test for the patient
         HospitalWelcomePage admin = new HospitalWelcomePage();
         String patientId = admin.getPatientId(in);
@@ -355,7 +353,6 @@ public class Hospital {
             logger.info("Patient Id Not found");
         }
     }
-
     private void viewPatientRecord(Scanner in) throws ExceptionHospitalAdmin { // View particular patient Record
         HospitalWelcomePage admin = new HospitalWelcomePage();
         String patientId = admin.getPatientId(in);
@@ -366,7 +363,6 @@ public class Hospital {
         }
         logger.info("*************************************************");
     }
-
     private void assignDoctorToPatient(Scanner in) throws ExceptionHospitalAdmin { // Checks the symptoms and assign doctor to a patient
         HospitalWelcomePage admin = new HospitalWelcomePage();
         String patientId = admin.getPatientId(in);
@@ -404,17 +400,14 @@ public class Hospital {
         }
         logger.info("*************************************************");
     }
-
     private void printDoctorDetails() { //Prints all the Doctor Details
         logger.info("\nPrinting Doctor Details");
         doctorList.forEach(Doctor::printInformation);
     }
-
     private void printPatientDetails() {
         logger.info("\nPrinting Patient Details");
         patientRecordHashMap.keySet().stream().sorted().forEach(x -> patientRecordHashMap.get(x).printInformation());
     }
-
     private void printDepartmentInfo() {
         logger.info("\nDepartments in the Hospital");
         departmentList.forEach(Department::printDepartmentDetails);
