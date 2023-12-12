@@ -1,6 +1,8 @@
 package com.solvd.hospital.welcomepage;
 
 import com.solvd.hospital.Hospital;
+import com.solvd.hospital.exceptions.ExceptionHospitalAdmin;
+import com.solvd.hospital.interfaces.IHospitalAdmin;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -8,29 +10,28 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class HospitalWelcomePage implements IHospitalAdmin {
-    private static final Logger logger = LogManager.getLogger(HospitalWelcomePage.class);
+    private static final Logger logger = LogManager.getLogger(Hospital.class);
+
     @Override
     public void welcomePage() {
-        logger.info("Welcome to Hospital Portal!");
-        logger.info("Please choose the options");
-        logger.info("Patient, Doctor and Department Details--option 1");
-        logger.info("Assign Doctor for each Patient--option 2");
-        logger.info("Doctor treats each Patient--option 3");
-        logger.info("Generate Bill for each patient--option 4 ");
-        logger.info("Calculate the amount to pay for each patient--option 5");
-        logger.info("Add New Patient to the Portal--option 6");
-        logger.info("Display particular patient--option 7");
-        logger.info("Change Doctor Assigned Status By Reflection and List all the Patients Financial Benefits -- option 8");
-        logger.info("View all the patient Details in the Hospital-- option 9");
-        logger.info("Exit Portal -- option 0");
-        logger.info("Please Enter your option");
+        logger.info("\tWelcome to Hospital Portal!");
+        logger.info("\tChoose from the below options");
+        logger.info("1  -  Patient, Doctor and Department Details");
+        logger.info("2  -  Assign Doctor to each Patient");
+        logger.info("3  -  Doctor treats each Patient");
+        logger.info("4  -  Generating Billing Details for all the patients using Lambda Expression");
+        logger.info("5  -  Patient Pays Bill");
+        logger.info("6  -  Add a New Patient to the Portal");
+        logger.info("7  -  Display particular patient");
+        logger.info("8  -  Change Doctor Assigned Status By Reflection");
+        logger.info("9  -  View all the patient Details in the Hospital");
+        logger.info("0  -  Exit Portal");
+        logger.info("\tEnter your option");
     }
-    public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {
-//        logger.info("Enter the Patient Id: (1000,1001,1002,1003,1004)");
-        logger.info("Enter any of the Patient Id: ");
-//        logger.info("Enter the Patient Id: "+ Hospital.patientRecordHashMap.keySet().stream());
 
-        Hospital.patientRecordHashMap.keySet().stream().sorted().forEach(x-> logger.info(x));
+    public String getPatientId(Scanner in) throws ExceptionHospitalAdmin {
+        logger.info("Enter any of the Patient Id: ");
+        Hospital.patientRecordHashMap.keySet().stream().sorted().forEach(x -> logger.info(x));
         String patientId = in.next();
         String regex = "[0-9]+";
         if (!Pattern.matches(regex, patientId)) {

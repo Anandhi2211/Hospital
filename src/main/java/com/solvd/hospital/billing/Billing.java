@@ -1,36 +1,46 @@
 package com.solvd.hospital.billing;
 
-import com.solvd.hospital.financialbenefits.FinancialBenefits;
-import com.solvd.hospital.patientrecord.PatientRecord;
-import com.solvd.hospital.payement.IPayment;
+import com.solvd.hospital.absctractclasses.FinancialBenefits;
+import com.solvd.hospital.interfaces.IBilling;
+import com.solvd.hospital.interfaces.IPayment;
+import com.solvd.hospital.patient.PatientRecord;
 
-public class Billing implements IBilling, IPayment {
+public class Billing extends FinancialBenefits implements IBilling, IPayment {
     private String billingNumber;
     private int billingAmount;
-    private boolean billingStatus;
-    public boolean isBillingStatus() {
-        return this.billingStatus;
+    private boolean billingGeneratedStatus;
+
+    public boolean isBillingGeneratedStatus() {
+        return this.billingGeneratedStatus;
     }
-    public void setBillingStatus(boolean billingStatus) {
-        this.billingStatus = billingStatus;
+
+    public void setBillingGeneratedStatus(boolean billingGeneratedStatus) {
+        this.billingGeneratedStatus = billingGeneratedStatus;
     }
+
     public int getBillingAmount() {
         return this.billingAmount;
     }
+
     public void setBillingAmount(int billingAmount) {
-        this.billingAmount = this.billingAmount + billingAmount;
+        this.billingAmount = billingAmount;
     }
+
     public String getBillingNumber() {
         return this.billingNumber;
     }
+
     public void setBillingNumber(String billingNumber) {
         this.billingNumber = billingNumber;
     }
+
     @Override
     public String toString() {
-        return "\tbillingNumber= " + this.billingNumber + "\n" +
+        return "\n" +
+                "\tBillingNumber= " + this.billingNumber + "\n" +
                 "\tBilling Amount='" + this.billingAmount + "\n";
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -40,42 +50,33 @@ public class Billing implements IBilling, IPayment {
             return false;
         return (this.billingNumber.equals(((Billing) obj).billingNumber));
     }
+
     @Override
     public int hashCode() {
         return billingNumber.hashCode();
     }
+
     @Override
-    public void billCalculation() {
-
-    }
-    @Override
-    public PatientRecord checkFinancialBenefits( PatientRecord patientRecord) {
-
-        FinancialBenefits financialBenefits = new FinancialBenefits();
-        if(patientRecord.getPatient().getAnnualIncome() <50000)
-        {
-            financialBenefits.setBenefitPercent(75);
-            financialBenefits.setBenefitStatus(true);
+    public PatientRecord checkFinancialBenefits(PatientRecord patientRecord) {
+        if (patientRecord.getPatient().getAnnualIncome() < 50000) {
+            this.setBenefitPercent(75);
+            this.setBenefitStatus(true);
+        } else if ((patientRecord.getPatient().getAnnualIncome() >= 50000) && (patientRecord.getPatient().getAnnualIncome() < 75000)) {
+            this.setBenefitPercent(50);
+            this.setBenefitStatus(true);
+        } else if ((patientRecord.getPatient().getAnnualIncome() >= 75000) && (patientRecord.getPatient().getAnnualIncome() < 100000)) {
+            this.setBenefitPercent(25);
+            this.setBenefitStatus(true);
+        } else if ((patientRecord.getPatient().getAnnualIncome() >= 100000)) {
+            this.setBenefitPercent(1);
+            this.setBenefitStatus(false);
         }
-        else if((patientRecord.getPatient().getAnnualIncome() >= 50000) && (patientRecord.getPatient().getAnnualIncome() < 75000))
-        {
-            financialBenefits.setBenefitPercent(50);
-            financialBenefits.setBenefitStatus(true);
-        }
-        else if((patientRecord.getPatient().getAnnualIncome() >= 75000) && (patientRecord.getPatient().getAnnualIncome() <100000))
-        {
-            financialBenefits.setBenefitPercent(25);
-            financialBenefits.setBenefitStatus(true);
-        }
-        else if((patientRecord.getPatient().getAnnualIncome() >= 100000))
-        {
-            financialBenefits.setBenefitPercent(1);
-            financialBenefits.setBenefitStatus(false);
-        }
-        patientRecord.setFinancialBenefits(financialBenefits);
-
+        patientRecord.setBilling(this);
         return patientRecord;
     }
 
+    @Override
+    public void billCalculation(PatientRecord patientRecord) {
+    }
 }
 

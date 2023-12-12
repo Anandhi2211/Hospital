@@ -1,17 +1,16 @@
 package com.solvd.hospital.generatingdata;
 
+import com.solvd.hospital.billing.Insurance;
 import com.solvd.hospital.department.Department;
-import com.solvd.hospital.department.HospitalDepartment;
 import com.solvd.hospital.doctor.Doctor;
-import com.solvd.hospital.insurance.HospitalInsurance;
-import com.solvd.hospital.patient.PatientIdGenerator;
-import com.solvd.hospital.patientrecord.PatientRecord;
-import com.solvd.hospital.insurance.Insurance;
-import com.solvd.hospital.symptoms.ListOfSymptoms;
-import com.solvd.hospital.symptoms.Symptoms;
+import com.solvd.hospital.enums.HospitalDepartment;
+import com.solvd.hospital.enums.HospitalInsurance;
+import com.solvd.hospital.enums.ListOfSymptoms;
+import com.solvd.hospital.exceptions.ExceptionPersonalInformation;
 import com.solvd.hospital.patient.Patient;
-import com.solvd.hospital.personalinformation.ExceptionPersonalInformation;
-import com.solvd.hospital.personalinformation.PersonalInformation;
+import com.solvd.hospital.patient.PatientRecord;
+import com.solvd.hospital.patient.Symptoms;
+import com.solvd.hospital.patient.personalinformation.PersonalInformation;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,18 +18,15 @@ import java.util.HashSet;
 
 public class GeneratingData {
     public HashMap<String, PatientRecord> addToHashMap(HashMap<String, PatientRecord> patientRecordHashMap, ArrayList<PatientRecord> patientRecordList) {
-        patientRecordList.stream().forEach(x->patientRecordHashMap.put(x.getPatient().getPatientId(),x));
-//        for (PatientRecord p : patientRecordList)
-//        {
-//            patientRecordHashMap.put(p.getPatient().getPatientId(), p);
-//        }
+        patientRecordList.stream().forEach(x -> patientRecordHashMap.put(x.getPatient().getPatientId(), x));
         return patientRecordHashMap;
     }
+
     public ArrayList<PatientRecord> addPatientDetails(ArrayList<PatientRecord> patientRecordList) throws ExceptionPersonalInformation {
         PatientRecord patientRecord = new PatientRecord();
         Symptoms symptoms = new Symptoms();
         Patient patient = new Patient();
-        PatientIdGenerator patientIdGenerator = new PatientIdGenerator();
+        PatientIdGenerator patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         Insurance insurance = new Insurance();
         PersonalInformation<String> personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ashok");
@@ -51,7 +47,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anand");
@@ -72,7 +68,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Abi");
@@ -93,7 +89,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Ranjith");
@@ -114,7 +110,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Anil");
@@ -135,7 +131,7 @@ public class GeneratingData {
         patientRecord = new PatientRecord();
         symptoms = new Symptoms();
         patient = new Patient();
-        patientIdGenerator = new PatientIdGenerator();
+        patientIdGenerator = PatientIdGenerator.patientIdGenerator();
         insurance = new Insurance();
         personalInformation = new PersonalInformation<>();
         personalInformation.setFirstName("Arav");
@@ -155,6 +151,7 @@ public class GeneratingData {
 
         return patientRecordList;
     }
+
     public HashSet<Patient> addNewPatientList(HashSet<Patient> newPatientList) {
 
         PersonalInformation<String> personalInformation = new PersonalInformation<>();
@@ -215,14 +212,12 @@ public class GeneratingData {
 
         return newPatientList;
     }
+
     public HashSet<Department> addDepartmentDetails(ArrayList<Doctor> doctorList, HashSet<Department> departmentList) {
-        doctorList.stream().forEach(x->departmentList.add(x.getDepartmentInfo()));
-//        for (Doctor doctor : doctorList)
-//        {
-//            departmentList.add(doctor.getDepartmentInfo());
-//        }
+        doctorList.stream().forEach(x -> departmentList.add(x.getDepartmentInfo()));
         return departmentList;
     }
+
     public ArrayList<Doctor> addDoctorDetails(ArrayList<Doctor> doctorList) throws ExceptionPersonalInformation {
         Doctor doctor = new Doctor();
         Department dep = new Department();
